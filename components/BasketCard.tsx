@@ -6,7 +6,8 @@ import { Check } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { PromoModal } from "@/components/promo-modal"
+import { useBasket } from "@/context/BasketContext"
+import { BasketType } from "@/types/basket"
 
 interface BasketCardProps {
   title: string
@@ -14,13 +15,22 @@ interface BasketCardProps {
   price: string
   items: string[]
   imageSrc: string
+  showWeekText?: boolean
+  emoji?: string
+  basketType: BasketType
 }
 
-export function BasketCard({ title, description, price, items, imageSrc }: BasketCardProps) {
-  const [isPromoModalOpen, setIsPromoModalOpen] = useState(false)
+export function BasketCard({ title, description, price, items, imageSrc, showWeekText = true, emoji, basketType }: BasketCardProps) {
+  const { setSelectedBasketType } = useBasket()
 
   const handlePreOrder = () => {
-    setIsPromoModalOpen(true)
+    // Scroll to order form
+    const orderForm = document.getElementById("order")
+    if (orderForm) {
+      orderForm.scrollIntoView({ behavior: "smooth" })
+      // Set the selected basket type in context
+      setSelectedBasketType(basketType)
+    }
   }
 
   return (
@@ -30,13 +40,16 @@ export function BasketCard({ title, description, price, items, imageSrc }: Baske
           <Image src={imageSrc || "/placeholder.svg"} alt={title} fill className="object-cover" />
         </div>
         <CardHeader className="pb-2">
-          <CardTitle className="text-xl text-emerald-700">{title}</CardTitle>
+          <CardTitle className="text-xl text-emerald-700 flex items-center gap-2">
+            {emoji && <span className="text-2xl">{emoji}</span>}
+            {title}
+          </CardTitle>
           <CardDescription>{description}</CardDescription>
         </CardHeader>
         <CardContent className="flex-1">
           <div className="text-2xl font-bold mb-4">
             {price}
-            <span className="text-sm text-muted-foreground"> / week</span>
+            {showWeekText && <span className="text-sm text-muted-foreground"> / week</span>}
           </div>
           <ul className="space-y-2">
             {items.map((item, index) => (
@@ -53,12 +66,6 @@ export function BasketCard({ title, description, price, items, imageSrc }: Baske
           </Button>
         </CardFooter>
       </Card>
-
-      <PromoModal
-        isOpen={isPromoModalOpen}
-        onClose={() => setIsPromoModalOpen(false)}
-        basketType={title.split(" ")[0]}
-      />
     </>
   )
 }

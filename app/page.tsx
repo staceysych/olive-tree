@@ -3,8 +3,9 @@ import Link from "next/link"
 import { Leaf, Truck, ShoppingBasket } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { BasketCard } from "@/components/basket-card"
-import { OrderForm } from "@/components/order-form"
+import { BasketCard } from "@/components/BasketCard"
+import { OrderForm } from "@/components/OrderForm"
+import { BasketType } from "@/types/basket"
 
 export default function Home() {
   return (
@@ -36,7 +37,9 @@ export default function Home() {
               >
                 About
               </Link>
-              <Button size="sm">Order</Button>
+              <Button size="sm" asChild>
+                <Link href="#order">Order</Link>
+              </Button>
             </nav>
           </div>
         </div>
@@ -49,10 +52,10 @@ export default function Home() {
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-emerald-800">
-                  Fresh Farm Goods Delivered Across Cyprus
+                  Farm-Fresh Goodness, Delivered Across Cyprus
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Milk, meat, eggs & more – straight from trusted local farms to your doorstep.
+                  Straight from local farms to your table – enjoy the taste of real, seasonal produce without lifting a finger.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700" asChild>
@@ -133,25 +136,32 @@ export default function Home() {
             </div>
             <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3 lg:gap-12">
               <BasketCard
-                title="Dairy Basket"
-                description="Fresh dairy products from local farms"
-                price="€25"
-                items={["Farm-fresh milk", "Greek yogurt", "Free-range eggs", "Local cheese"]}
+                title="Trial Basket"
+                description="Curious to taste the difference? Try our one-time basket packed with nature's best."
+                price="Only €90"
+                items={["15–20 handpicked seasonal items", "Up to 10 kg of fresh fruits, veggies, herbs & greens", "No commitment – just pure, farm-fresh flavor"]}
                 imageSrc="/placeholder.svg?height=200&width=300"
+                showWeekText={false}
+                emoji="🌱"
+                basketType={BasketType.TRIAL}
               />
               <BasketCard
-                title="Meat Basket"
-                description="Premium quality meats from Cyprus farms"
-                price="€35"
-                items={["Grass-fed beef", "Free-range chicken", "Artisanal sausages", "Lamb cuts"]}
+                title="Standard Basket"
+                description="Perfect for singles or couples who want a weekly dose of vibrant health."
+                price="€85"
+                items={["Weekly delivery for 1-2 people", "15–20 rotating seasonal items", "Up to 10 kg of fresh, nutrient-rich produce"]}
                 imageSrc="/placeholder.svg?height=200&width=300"
+                emoji="🥗"
+                basketType={BasketType.STANDARD}
               />
               <BasketCard
-                title="Mixed Essentials"
-                description="A little bit of everything for your weekly needs"
-                price="€45"
-                items={["Dairy selection", "Meat selection", "Seasonal vegetables", "Fresh herbs"]}
+                title="Family Basket"
+                description="Feeding the whole family? This one's for you."
+                price="€140"
+                items={["Weekly delivery for 3–5 people", "20+ rotating seasonal items", "Up to 20 kg of the healthiest food around"]}
                 imageSrc="/placeholder.svg?height=200&width=300"
+                emoji="🍎"
+                basketType={BasketType.FAMILY}
               />
             </div>
           </div>
@@ -185,9 +195,8 @@ export default function Home() {
                   About Olive Tree
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  At Olive Tree, we're committed to supporting local Cyprus farmers while bringing the freshest, most
-                  nutritious food to your table. Our mission is to create a sustainable food system that benefits both
-                  producers and consumers, promoting healthier lifestyles and stronger communities across the island.
+                  At Olive Tree, we believe real food comes from real farms. That's why we work with trusted local growers across Cyprus to deliver seasonal, sustainable produce straight to your door. No middlemen, no chemicals – just honest food that's good for you.
+                  Let us take the hassle out of shopping so you can spend more time enjoying fresh, delicious meals with the people you love.
                 </p>
               </div>
             </div>
@@ -202,17 +211,6 @@ export default function Home() {
             <Leaf className="h-5 w-5" />
             <span>Olive Tree</span>
           </div>
-          <nav className="flex gap-4 sm:gap-6">
-            <Link href="#about" className="text-sm font-medium hover:underline underline-offset-4">
-              About
-            </Link>
-            <Link href="#" className="text-sm font-medium hover:underline underline-offset-4">
-              Contact
-            </Link>
-            <Link href="#" className="text-sm font-medium hover:underline underline-offset-4">
-              Instagram
-            </Link>
-          </nav>
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Olive Tree. All rights reserved.
           </p>
