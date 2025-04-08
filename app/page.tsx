@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { BasketCard } from "@/components/BasketCard"
 import { OrderForm } from "@/components/OrderForm"
 import { BasketType } from "@/types/basket"
-import { FaqSection } from "@/components/FAQSection"
+import { FaqSection } from "@/components/FAQ"
 import { MobileMenu } from "@/components/MobileMenu"
 
 export default function Home() {
