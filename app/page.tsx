@@ -63,9 +63,9 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-              <div className="relative h-[300px] lg:h-[400px] rounded-xl overflow-hidden">
+              <div className="relative h-[300px] lg:h-[400px] rounded-xl overflow-hidden mix-blend-multiply">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/hero.jpeg"
                   alt="Fresh farm goods"
                   fill
                   className="object-cover"
@@ -140,31 +140,28 @@ export default function Home() {
                 description="Curious to taste the difference? Try our one-time basket packed with nature's best."
                 price="Only €90"
                 items={["15–20 handpicked seasonal items", "Up to 10 kg of fresh fruits, veggies, herbs & greens", "No commitment – just pure, farm-fresh flavor"]}
-                imageSrc="/placeholder.svg?height=200&width=300"
+                imageSrc="/trialBasket.jpg"
                 showWeekText={false}
-                emoji="🌱"
                 basketType={BasketType.TRIAL}
-                viewText="View what’s in season"
+                viewText="View what's in season"
               />
               <BasketCard
                 title="Standard Basket"
                 description="Perfect for singles or couples who want a weekly dose of vibrant health."
                 price="€85"
                 items={["Weekly delivery for 1-2 people", "15–20 rotating seasonal items", "Up to 10 kg of fresh, nutrient-rich produce"]}
-                imageSrc="/placeholder.svg?height=200&width=300"
-                emoji="🥗"
+                imageSrc="/standardBasket.jpg"
                 basketType={BasketType.STANDARD}
-                viewText="See what’s included this week"
+                viewText="See what's included this week"
               />
               <BasketCard
                 title="Family Basket"
                 description="Feeding the whole family? This one's for you."
                 price="€140"
                 items={["Weekly delivery for 3–5 people", "20+ rotating seasonal items", "Up to 20 kg of the healthiest food around"]}
-                imageSrc="/placeholder.svg?height=200&width=300"
-                emoji="🍎"
+                imageSrc="/familyBasket.jpg"
                 basketType={BasketType.FAMILY}
-                viewText="Discover this week’s harvest"
+                viewText="Discover this week's harvest"
               />
             </div>
           </div>

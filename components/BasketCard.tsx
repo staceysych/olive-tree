@@ -17,12 +17,11 @@ interface BasketCardProps {
   items: string[]
   imageSrc: string
   showWeekText?: boolean
-  emoji?: string
   basketType: BasketType
   viewText?: string
 }
 
-export function BasketCard({ title, description, price, items, imageSrc, showWeekText = true, emoji, basketType, viewText }: BasketCardProps) {
+export function BasketCard({ title, description, price, items, imageSrc, showWeekText = true, basketType, viewText }: BasketCardProps) {
   const { setSelectedBasketType } = useBasket()
 
 
@@ -43,7 +42,6 @@ export function BasketCard({ title, description, price, items, imageSrc, showWee
         </div>
         <CardHeader className="pb-2">
           <CardTitle className="text-xl text-emerald-700 flex items-center gap-2">
-            {emoji && <span className="text-2xl">{emoji}</span>}
             {title}
           </CardTitle>
           <CardDescription>{description}</CardDescription>
