@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useBasket } from "@/context/BasketContext"
 import { BasketType } from "@/types/basket"
 
+
 interface BasketCardProps {
   title: string
   description: string
@@ -18,17 +19,18 @@ interface BasketCardProps {
   showWeekText?: boolean
   emoji?: string
   basketType: BasketType
+  viewText?: string
 }
 
-export function BasketCard({ title, description, price, items, imageSrc, showWeekText = true, emoji, basketType }: BasketCardProps) {
+export function BasketCard({ title, description, price, items, imageSrc, showWeekText = true, emoji, basketType, viewText }: BasketCardProps) {
   const { setSelectedBasketType } = useBasket()
 
+
   const handlePreOrder = () => {
-    // Scroll to order form
     const orderForm = document.getElementById("order")
     if (orderForm) {
       orderForm.scrollIntoView({ behavior: "smooth" })
-      // Set the selected basket type in context
+
       setSelectedBasketType(basketType)
     }
   }

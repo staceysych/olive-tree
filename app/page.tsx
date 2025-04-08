@@ -144,6 +144,7 @@ export default function Home() {
                 showWeekText={false}
                 emoji="🌱"
                 basketType={BasketType.TRIAL}
+                viewText="View what’s in season"
               />
               <BasketCard
                 title="Standard Basket"
@@ -153,6 +154,7 @@ export default function Home() {
                 imageSrc="/placeholder.svg?height=200&width=300"
                 emoji="🥗"
                 basketType={BasketType.STANDARD}
+                viewText="See what’s included this week"
               />
               <BasketCard
                 title="Family Basket"
@@ -162,6 +164,7 @@ export default function Home() {
                 imageSrc="/placeholder.svg?height=200&width=300"
                 emoji="🍎"
                 basketType={BasketType.FAMILY}
+                viewText="Discover this week’s harvest"
               />
             </div>
           </div>
