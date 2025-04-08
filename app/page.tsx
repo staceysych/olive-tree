@@ -7,6 +7,7 @@ import { BasketCard } from "@/components/BasketCard"
 import { OrderForm } from "@/components/OrderForm"
 import { BasketType } from "@/types/basket"
 import { FaqSection } from "@/components/FAQSection"
+import { MobileMenu } from "@/components/MobileMenu"
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
             <span>Olive Tree</span>
           </div>
           <div className="flex flex-1 items-center justify-end space-x-4">
-            <nav className="flex items-center space-x-2">
+            <nav className="hidden md:flex items-center space-x-2">
               <Link
                 href="#how-it-works"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -48,6 +49,7 @@ export default function Home() {
                 <Link href="#order">Order</Link>
               </Button>
             </nav>
+            <MobileMenu />
           </div>
         </div>
       </header>
