@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { BasketCard } from "@/components/BasketCard"
 import { OrderForm } from "@/components/OrderForm"
 import { BasketType } from "@/types/basket"
+import { FaqSection } from "@/components/FAQSection"
 
 export default function Home() {
   return (
@@ -30,6 +31,12 @@ export default function Home() {
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 Baskets
+              </Link>
+              <Link
+                href="#faq"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                FAQ
               </Link>
               <Link
                 href="#about"
@@ -186,6 +193,11 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section id="faq">
+          <FaqSection />
+        </section>
+
         {/* About Section */}
         <section id="about" className="w-full py-12 md:py-24 bg-emerald-50">
           <div className="container px-4 md:px-6">
@@ -201,7 +213,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </section> 
       </main>
 
       {/* Footer */}
