@@ -38,7 +38,14 @@ export function BasketCard({ title, description, price, items, imageSrc, showWee
     <>
       <Card className="flex flex-col overflow-hidden border-2 transition-all hover:border-emerald-200 hover:shadow-md">
         <div className="relative h-[200px] w-full">
-          <Image src={imageSrc || "/placeholder.svg"} alt={title} fill className="object-cover" />
+          <Image
+            src={imageSrc}
+            alt={title}
+            fill
+            className="object-cover rounded-t-lg"
+            quality={75}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+          />
         </div>
         <CardHeader className="pb-2">
           <CardTitle className="text-xl text-emerald-700 flex items-center gap-2">
