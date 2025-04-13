@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "@/components/ui/use-toast"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import useSendOrderEmail from "@/utils/useSendOrderEmail"
+import { sendOrderEmail } from "@/utils/send-email"
 import { formatDeliveryPreference } from "@/utils/formatDeliveryPreference"
 
 const formSchema = z.object({
@@ -65,10 +65,6 @@ export function OrderForm() {
     },
   })
 
-  const sendEmail = useSendOrderEmail({
-    reset: form.reset,
-  })
-
   useEffect(() => {
     if (selectedBasketType) {
       form.setValue("basket", selectedBasketType)
@@ -82,11 +78,35 @@ export function OrderForm() {
     form.setValue("deliveryPreference", preference)
   }, [form.watch("deliveryMorning"), form.watch("deliveryEvening")])
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
-    console.log(values)
-    sendEmail(values)
-    setIsSubmitting(false)
+    try {
+      await sendOrderEmail({
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        location: values.location,
+        basket: values.basket,
+        deliveryPreference: values.deliveryPreference,
+        promotion: values.promotion,
+        notes: values.notes,
+      })
+      
+      toast({
+        title: "Order received!",
+        description: "We'll contact you soon to confirm your order details.",
+      })
+      form.reset()
+    } catch (error) {
+      console.error("Failed to send email:", error)
+      toast({
+        title: "Error",
+        description: "Failed to send order. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
