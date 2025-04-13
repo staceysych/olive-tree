@@ -33,6 +33,7 @@
     "title": "Basket Options",
     "subtitle": "Choose the perfect basket to suit your needs",
     "order": "Order Now",
+    "seeAllButton": "See All Available Items",
     "trial": {
       "title": "Trial Basket",
       "description": "Curious to taste the difference? Try our one-time basket packed with nature's best.",
@@ -193,5 +194,76 @@
   "metadata": {
     "title": "Olive Tree - Farm Fresh Delivery in Cyprus",
     "description": "Get fresh farm goods delivered to your doorstep in Cyprus"
+  },
+  "availableItems": {
+    "title": "Available Items",
+    "description": "Here's what's currently available in our farm-fresh selection. Items may vary based on seasonal availability.",
+    "categories": {
+      "vegetables": {
+        "title": "Vegetables",
+        "items": [
+          "Tomatoes",
+          "Asparagus",
+          "Artichoke",
+          "Zucchini",
+          "Cucumbers",
+          "Cauliflower",
+          "Brussels Sprouts",
+          "Green Bell Pepper",
+          "Radish",
+          "Green Onion",
+          "New Potatoes",
+          "Broccoli",
+          "Arugula (Seasonal)",
+          "Fava Beans (Seasonal)",
+          "Green Peas (Seasonal)"
+        ]
+      },
+      "mushrooms": {
+        "title": "Mushrooms",
+        "items": ["Champignon Mushrooms"]
+      },
+      "nuts": {
+        "title": "Nuts",
+        "items": ["Walnut"]
+      },
+      "fruits": {
+        "title": "Fruits",
+        "items": [
+          "Pears",
+          "Melon",
+          "Pomegranate",
+          "Plums",
+          "Dragon Fruit",
+          "Loquat (Medlar)",
+          "Grapefruit",
+          "Bananas",
+          "Papaya",
+          "Strawberries (Seasonal)",
+          "Cherries (Seasonal)",
+          "Apricots (Seasonal)",
+          "Melons (Seasonal – early harvest)"
+        ]
+      },
+      "herbs": {
+        "title": "Herbs (Seasonal – Fresh Spring Herbs)",
+        "items": ["Mint", "Basil", "Parsley", "Dill", "Cilantro"]
+      }
+    },
+    "notes": {
+      "title": "Important Notes",
+      "items": [
+        "Items are selected based on seasonal availability.",
+        "Not all listed items will be included in every delivery — we choose the freshest produce available on the day of packing.",
+        "We aim to vary each delivery.",
+        "To keep things exciting and seasonal, we mix up the contents so your basket includes a variety of different items each time."
+      ],
+      "customRequests": {
+        "title": "Custom Requests Welcome!",
+        "description": "If there's anything you prefer not to receive, just let us know! We'll gladly replace it with another item from the available selection.",
+        "updateNote": "The list of items is updated based on the season and availability. Make sure to check back regularly to see what's new and fresh!"
+      }
+    },
+    "close": "Close"
   }
 }

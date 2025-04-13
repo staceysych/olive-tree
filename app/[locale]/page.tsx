@@ -1,17 +1,18 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Leaf, Truck, ShoppingBasket } from "lucide-react"
+import { Leaf, Truck, ShoppingBasket, List } from "lucide-react"
 import { useTranslations } from 'next-intl'
 
 import { Button } from "@/components/ui/button"
-import { BasketCard } from "@/components/BasketCard"
 import { OrderForm } from "@/components/OrderForm"
-import { BasketType } from "@/types/basket"
 import { FaqSection } from "@/components/FAQ"
 import { Header } from "@/components/Header"
+import { BasketOptions } from "@/components/BasketOptions"
+
 
 export default function Home() {
   const t = useTranslations()
+
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -96,50 +97,7 @@ export default function Home() {
         </section>
 
         {/* Basket Options */}
-        <section id="baskets" className="w-full py-12 md:py-24 bg-emerald-50">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-emerald-800">
-                  {t('baskets.title')}
-                </h2>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  {t('baskets.subtitle')}
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3 md:gap-12">
-              <BasketCard
-                title={t('baskets.trial.title')}
-                description={t('baskets.trial.description')}
-                price={t('baskets.trial.price')}
-                items={t.raw('baskets.trial.items')}
-                imageSrc="/trialBasket.jpg"
-                showWeekText={false}
-                basketType={BasketType.TRIAL}
-                viewText={t('baskets.trial.viewText')}
-              />
-              <BasketCard
-                title={t('baskets.standard.title')}
-                description={t('baskets.standard.description')}
-                price={t('baskets.standard.price')}
-                items={t.raw('baskets.standard.items')}
-                imageSrc="/standardBasket.jpg"
-                basketType={BasketType.STANDARD}
-                viewText={t('baskets.standard.viewText')}
-              />
-              <BasketCard
-                title={t('baskets.family.title')}
-                description={t('baskets.family.description')}
-                price={t('baskets.family.price')}
-                items={t.raw('baskets.family.items')}
-                imageSrc="/familyBasket.jpg"
-                basketType={BasketType.FAMILY}
-                viewText={t('baskets.family.viewText')}
-              />
-            </div>
-          </div>
-        </section>
+        <BasketOptions />
 
         {/* Order Form */}
         <section id="order" className="w-full py-12 md:py-24 bg-white">
