@@ -1,4 +1,11 @@
 {
+  "header": {
+    "howItWorks": "How It Works",
+    "baskets": "Baskets",
+    "faq": "FAQ",
+    "about": "About",
+    "order": "Order"
+  },
   "hero": {
     "title": "Farm-Fresh Goodness, Delivered Across Cyprus",
     "description": "Straight from local farms to your table – enjoy the taste of real, seasonal produce without lifting a finger.",
@@ -25,6 +32,7 @@
   "baskets": {
     "title": "Basket Options",
     "subtitle": "Choose the perfect basket to suit your needs",
+    "order": "Order Now",
     "trial": {
       "title": "Trial Basket",
       "description": "Curious to taste the difference? Try our one-time basket packed with nature's best.",
@@ -61,7 +69,82 @@
   },
   "order": {
     "title": "Order Now",
-    "subtitle": "Get fresh farm goods delivered to your doorstep"
+    "subtitle": "Get fresh farm goods delivered to your doorstep",
+    "orderForm": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name",
+        "error": "Name must be at least 2 characters."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your.email@example.com",
+        "error": "Please enter a valid email address."
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "Your phone number",
+        "error": "Please enter a valid phone number."
+      },
+      "location": {
+        "label": "Location (City)",
+        "placeholder": "Your city in Cyprus",
+        "error": "Please enter your city."
+      },
+      "basket": {
+        "label": "Basket Choice",
+        "placeholder": "Select a basket",
+        "error": "Please select a basket.",
+        "options": {
+          "trial": "Trial Basket - €90 (One-time)",
+          "standard": "Standard Basket - €85/week",
+          "family": "Family Basket - €140/week"
+        }
+      },
+      "delivery": {
+        "title": "Delivery Preference",
+        "morning": {
+          "label": "Morning (8am - 12pm)"
+        },
+        "evening": {
+          "label": "Evening (4pm - 8pm)"
+        },
+        "hint": "Select your preferred delivery time slots."
+      },
+      "promotion": {
+        "title": "Promotional Offer",
+        "options": {
+          "free-delivery": {
+            "title": "Free Delivery for First Month",
+            "description": "Get your basket delivered for free for the first month (4 deliveries)."
+          },
+          "free-tomatoes": {
+            "title": "Free Kilo of Premium Tomatoes",
+            "description": "Receive a complimentary kilo of farm-fresh tomatoes with your first delivery."
+          },
+          "discount": {
+            "title": "15% Off Your First Two Orders",
+            "description": "Enjoy a 15% discount on your first two basket deliveries."
+          }
+        }
+      },
+      "notes": {
+        "label": "Notes",
+        "placeholder": "Let us know about any allergies, dietary restrictions, or specific items you'd like to exclude or replace in your basket. We'll do our best to accommodate your preferences!"
+      },
+      "submit": {
+        "text": "Order Now",
+        "processing": "Processing..."
+      },
+      "success": {
+        "title": "Order received!",
+        "description": "We'll contact you soon to confirm your order details."
+      },
+      "error": {
+        "title": "Error",
+        "description": "Failed to send order. Please try again."
+      }
+    }
   },
   "about": {
     "title": "About Olive Tree",
@@ -70,5 +153,44 @@
   "footer": {
     "brand": "Olive Tree",
     "copyright": "All rights reserved."
+  },
+  "faq": {
+    "title": "Olive Tree — FAQ",
+    "subtitle": "Find answers to commonly asked questions about our service",
+    "gotQuestions": "Got Questions?",
+    "items": {
+      "deliveryCities": {
+        "question": "Which cities do you deliver to?",
+        "answer": "For now, we deliver to:",
+        "cities": {
+          "paphos": "Paphos and surrounding towns",
+          "limassol": "Limassol and surrounding towns"
+        }
+      },
+      "customization": {
+        "question": "Can I customise my basket?",
+        "answer": "Yes — you can specify in the notes section what you want to include or exclude, and we will confirm your total price before delivery."
+      },
+      "ordering": {
+        "question": "How do I place an order?",
+        "answer": "Simply fill out the order form on our website. Choose your basket, delivery area, and we'll contact you with the final confirmation."
+      },
+      "payment": {
+        "question": "How do I pay?",
+        "answer": "We currently accept:",
+        "methods": {
+          "cash": "Cash on delivery (for MVP)",
+          "online": "Online payments (coming soon)"
+        }
+      },
+      "feedback": {
+        "question": "How do I leave feedback or suggestions?",
+        "answer": "We love hearing from you! After your order, we'll send a short feedback form. You can also message us directly through the website or email."
+      }
+    }
+  },
+  "metadata": {
+    "title": "Olive Tree - Farm Fresh Delivery",
+    "description": "Get fresh farm goods delivered to your doorstep in Cyprus"
   }
 }

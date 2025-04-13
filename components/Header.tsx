@@ -1,11 +1,14 @@
 import Link from "next/link"
 import { Leaf } from "lucide-react"
+import { useTranslations } from 'next-intl'
 
 import { Button } from "@/components/ui/button"
 import { MobileMenu } from "@/components/MobileMenu"
 import { LanguageSelector } from "./LanguageSelector"
 
 export function Header() {
+  const t = useTranslations()
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
@@ -19,29 +22,29 @@ export function Header() {
               href="#how-it-works"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              How It Works
+              {t('header.howItWorks')}
             </Link>
             <Link
               href="#baskets"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              Baskets
+              {t('header.baskets')}
             </Link>
             <Link
               href="#faq"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              FAQ
+              {t('header.faq')}
             </Link>
             <Link
               href="#about"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              About
+              {t('header.about')}
             </Link>
             <LanguageSelector />
             <Button size="sm" asChild>
-              <Link href="#order">Order</Link>
+              <Link href="#order">{t('header.order')}</Link>
             </Button>
           </nav>
           <div className="flex items-center space-x-2 md:hidden">

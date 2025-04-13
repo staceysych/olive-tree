@@ -2,6 +2,7 @@
 
 import { useBasket } from "@/context/BasketContext"
 import { BasketType } from "@/types/basket"
+import { useTranslations } from "next-intl"
 
 import { useState, useEffect, useRef } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -19,35 +20,36 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { sendOrderEmail } from "@/utils/send-email"
 import { formatDeliveryPreference } from "@/utils/formatDeliveryPreference"
 
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  phone: z.string().min(8, {
-    message: "Please enter a valid phone number.",
-  }),
-  location: z.string().min(2, {
-    message: "Please enter your city.",
-  }),
-  basket: z.nativeEnum(BasketType, {
-    required_error: "Please select a basket.",
-  }),
-  deliveryMorning: z.boolean().default(false).optional(),
-  deliveryEvening: z.boolean().default(false).optional(),
-  deliveryPreference: z.string().optional(),
-  promotion: z.string().optional(),
-  notes: z.string().optional(),
-})
-
-type FormValues = z.infer<typeof formSchema>
-
 export function OrderForm() {
+  const t = useTranslations()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { selectedBasketType } = useBasket()
   const formRef = useRef<HTMLFormElement>(null!)
+
+  const formSchema = z.object({
+    name: z.string().min(2, {
+      message: t("order.orderForm.name.error"),
+    }),
+    email: z.string().email({
+      message: t("order.orderForm.email.error"),
+    }),
+    phone: z.string().min(8, {
+      message: t("order.orderForm.phone.error"),
+    }),
+    location: z.string().min(2, {
+      message: t("order.orderForm.location.error"),
+    }),
+    basket: z.nativeEnum(BasketType, {
+      required_error: t("order.orderForm.basket.error"),
+    }),
+    deliveryMorning: z.boolean().default(false).optional(),
+    deliveryEvening: z.boolean().default(false).optional(),
+    deliveryPreference: z.string().optional(),
+    promotion: z.string().optional(),
+    notes: z.string().optional(),
+  })
+
+  type FormValues = z.infer<typeof formSchema>
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -93,15 +95,15 @@ export function OrderForm() {
       })
       
       toast({
-        title: "Order received!",
-        description: "We'll contact you soon to confirm your order details.",
+        title: t("order.orderForm.success.title"),
+        description: t("order.orderForm.success.description"),
       })
       form.reset()
     } catch (error) {
       console.error("Failed to send email:", error)
       toast({
-        title: "Error",
-        description: "Failed to send order. Please try again.",
+        title: t("order.orderForm.error.title"),
+        description: t("order.orderForm.error.description"),
         variant: "destructive",
       })
     } finally {
@@ -119,9 +121,9 @@ export function OrderForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>{t("order.orderForm.name.label")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your name" {...field} />
+                    <Input placeholder={t("order.orderForm.name.placeholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -132,9 +134,9 @@ export function OrderForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t("order.orderForm.email.label")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="your.email@example.com" {...field} />
+                    <Input placeholder={t("order.orderForm.email.placeholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -145,9 +147,9 @@ export function OrderForm() {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone</FormLabel>
+                  <FormLabel>{t("order.orderForm.phone.label")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your phone number" {...field} />
+                    <Input placeholder={t("order.orderForm.phone.placeholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -158,9 +160,9 @@ export function OrderForm() {
               name="location"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Location (City)</FormLabel>
+                  <FormLabel>{t("order.orderForm.location.label")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your city in Cyprus" {...field} />
+                    <Input placeholder={t("order.orderForm.location.placeholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -171,17 +173,17 @@ export function OrderForm() {
               name="basket"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Basket Choice</FormLabel>
+                  <FormLabel>{t("order.orderForm.basket.label")}</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a basket" />
+                        <SelectValue placeholder={t("order.orderForm.basket.placeholder")} />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value={BasketType.TRIAL}>Trial Basket - €90 (One-time)</SelectItem>
-                      <SelectItem value={BasketType.STANDARD}>Standard Basket - €85/week</SelectItem>
-                      <SelectItem value={BasketType.FAMILY}>Family Basket - €140/week</SelectItem>
+                      <SelectItem value={BasketType.TRIAL}>{t("order.orderForm.basket.options.trial")}</SelectItem>
+                      <SelectItem value={BasketType.STANDARD}>{t("order.orderForm.basket.options.standard")}</SelectItem>
+                      <SelectItem value={BasketType.FAMILY}>{t("order.orderForm.basket.options.family")}</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -194,17 +196,17 @@ export function OrderForm() {
               name="promotion"
               render={({ field }) => (
                 <FormItem className="space-y-3">
-                  <FormLabel>Promotional Offer</FormLabel>
+                  <FormLabel>{t("order.orderForm.promotion.title")}</FormLabel>
                   <FormControl>
                     <RadioGroup onValueChange={field.onChange} value={field.value} className="space-y-3">
                       <label htmlFor="r-free-delivery" className="flex items-start space-x-3 space-y-0 rounded-md border p-3 hover:bg-muted/50 cursor-pointer">
                         <RadioGroupItem value="free-delivery" id="r-free-delivery" />
                         <div className="space-y-1 leading-none">
                           <div className="font-medium">
-                            Free Delivery for First Month
+                            {t("order.orderForm.promotion.options.free-delivery.title")}
                           </div>
                           <p className="text-sm text-muted-foreground">
-                            Get your basket delivered for free for the first month (4 deliveries).
+                            {t("order.orderForm.promotion.options.free-delivery.description")}
                           </p>
                         </div>
                       </label>
@@ -212,10 +214,10 @@ export function OrderForm() {
                         <RadioGroupItem value="free-tomatoes" id="r-free-tomatoes" />
                         <div className="space-y-1 leading-none">
                           <div className="font-medium">
-                            Free Kilo of Premium Tomatoes
+                            {t("order.orderForm.promotion.options.free-tomatoes.title")}
                           </div>
                           <p className="text-sm text-muted-foreground">
-                            Receive a complimentary kilo of farm-fresh tomatoes with your first delivery.
+                            {t("order.orderForm.promotion.options.free-tomatoes.description")}
                           </p>
                         </div>
                       </label>
@@ -223,10 +225,10 @@ export function OrderForm() {
                         <RadioGroupItem value="discount" id="r-discount" />
                         <div className="space-y-1 leading-none">
                           <div className="font-medium">
-                            15% Off Your First Two Orders
+                            {t("order.orderForm.promotion.options.discount.title")}
                           </div>
                           <p className="text-sm text-muted-foreground">
-                            Enjoy a 15% discount on your first two basket deliveries.
+                            {t("order.orderForm.promotion.options.discount.description")}
                           </p>
                         </div>
                       </label>
@@ -238,18 +240,18 @@ export function OrderForm() {
             />
 
             <div className="space-y-3">
-              <div className="mb-2 font-medium">Delivery Preference</div>
-            <FormField
-              control={form.control}
+              <div className="mb-2 font-medium">{t("order.orderForm.delivery.title")}</div>
+              <FormField
+                control={form.control}
                 name="deliveryMorning"
-              render={({ field }) => (
+                render={({ field }) => (
                   <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                  <FormControl>
+                    <FormControl>
                       <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
-                        <div className="space-y-1 leading-none">
-                      <FormLabel>Morning (8am - 12pm)</FormLabel>
-                        </div>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel>{t("order.orderForm.delivery.morning.label")}</FormLabel>
+                    </div>
                   </FormItem>
                 )}
               />
@@ -261,13 +263,13 @@ export function OrderForm() {
                     <FormControl>
                       <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
-                        <div className="space-y-1 leading-none">
-                      <FormLabel>Evening (4pm - 8pm)</FormLabel>
-                        </div>
-                </FormItem>
-              )}
-            />
-              <div className="text-sm text-muted-foreground">Select your preferred delivery time slots.</div>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel>{t("order.orderForm.delivery.evening.label")}</FormLabel>
+                    </div>
+                  </FormItem>
+                )}
+              />
+              <div className="text-sm text-muted-foreground">{t("order.orderForm.delivery.hint")}</div>
             </div>
 
             <FormField
@@ -275,11 +277,11 @@ export function OrderForm() {
               name="notes"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Notes</FormLabel>
+                  <FormLabel>{t("order.orderForm.notes.label")}</FormLabel>
                   <FormControl>
                     <textarea
                       className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      placeholder="Let us know about any allergies, dietary restrictions, or specific items you'd like to exclude or replace in your basket. We'll do our best to accommodate your preferences!"
+                      placeholder={t("order.orderForm.notes.placeholder")}
                       {...field}
                     />
                   </FormControl>
@@ -289,7 +291,7 @@ export function OrderForm() {
             />
 
             <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700" disabled={isSubmitting}>
-              {isSubmitting ? "Processing..." : "Order Now"}
+              {isSubmitting ? t("order.orderForm.submit.processing") : t("order.orderForm.submit.text")}
             </Button>
           </form>
         </Form>

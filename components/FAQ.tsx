@@ -4,22 +4,25 @@ import { Leaf, Truck, CreditCard, MessageSquare, MapPin, Pencil } from "lucide-r
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
+import { useTranslations } from "next-intl"
 
 export function FaqSection() {
+  const t = useTranslations("faq")
+
   return (
     <div className="w-full py-12 md:py-24 bg-white">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="inline-block rounded-lg bg-emerald-100 px-3 py-1 text-sm text-emerald-700">
-            Got Questions?
+            {t("gotQuestions")}
           </div>
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-emerald-800 flex items-center justify-center gap-2">
               <Leaf className="h-8 w-8 text-emerald-600" />
-              <span>Olive Tree — FAQ</span>
+              <span>{t("title")}</span>
             </h2>
             <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Find answers to commonly asked questions about our service
+              {t("subtitle")}
             </p>
           </div>
         </div>
@@ -30,23 +33,21 @@ export function FaqSection() {
               <AccordionTrigger className="text-lg font-medium">
                 <div className="flex items-center gap-3 text-left">
                   <MapPin className="h-5 w-5 text-emerald-600 shrink-0" />
-                  <span>Which cities do you deliver to?</span>
+                  <span>{t("items.deliveryCities.question")}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pl-10">
-                <p className="text-muted-foreground mb-4">For now, we deliver to:</p>
+                <p className="text-muted-foreground mb-4">{t("items.deliveryCities.answer")}</p>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="bg-emerald-50">
-                      Paphos
+                      {t("items.deliveryCities.cities.paphos")}
                     </Badge>
-                    <span className="text-sm text-muted-foreground">and surrounding towns</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="bg-emerald-50">
-                      Limassol
+                      {t("items.deliveryCities.cities.limassol")}
                     </Badge>
-                    <span className="text-sm text-muted-foreground">and surrounding towns</span>
                   </div>
                 </div>
               </AccordionContent>
@@ -56,13 +57,12 @@ export function FaqSection() {
               <AccordionTrigger className="text-lg font-medium">
                 <div className="flex items-center gap-3 text-left">
                   <Pencil className="h-5 w-5 text-emerald-600 shrink-0" />
-                  <span>Can I customise my basket?</span>
+                  <span>{t("items.customization.question")}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pl-10">
                 <p className="text-muted-foreground">
-                  Yes — you can specify in the notes section what you want to include or exclude, and we will confirm
-                  your total price before delivery.
+                  {t("items.customization.answer")}
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -71,13 +71,12 @@ export function FaqSection() {
               <AccordionTrigger className="text-lg font-medium">
                 <div className="flex items-center gap-3 text-left">
                   <Truck className="h-5 w-5 text-emerald-600 shrink-0" />
-                  <span>How do I place an order?</span>
+                  <span>{t("items.ordering.question")}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pl-10">
                 <p className="text-muted-foreground">
-                  Simply fill out the order form on our website. Choose your basket, delivery area, and we'll contact
-                  you with the final confirmation.
+                  {t("items.ordering.answer")}
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -86,23 +85,21 @@ export function FaqSection() {
               <AccordionTrigger className="text-lg font-medium">
                 <div className="flex items-center gap-3 text-left">
                   <CreditCard className="h-5 w-5 text-emerald-600 shrink-0" />
-                  <span>How do I pay?</span>
+                  <span>{t("items.payment.question")}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pl-10">
-                <p className="text-muted-foreground mb-4">We currently accept:</p>
+                <p className="text-muted-foreground mb-4">{t("items.payment.answer")}</p>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="bg-emerald-50">
-                      Cash on delivery
+                      {t("items.payment.methods.cash")}
                     </Badge>
-                    <span className="text-sm text-muted-foreground">(for MVP)</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="bg-emerald-50">
-                      Online payments
+                      {t("items.payment.methods.online")}
                     </Badge>
-                    <span className="text-sm text-muted-foreground">(coming soon)</span>
                   </div>
                 </div>
               </AccordionContent>
@@ -112,13 +109,12 @@ export function FaqSection() {
               <AccordionTrigger className="text-lg font-medium">
                 <div className="flex items-center gap-3 text-left">
                   <MessageSquare className="h-5 w-5 text-emerald-600 shrink-0" />
-                  <span>How do I leave feedback or suggestions?</span>
+                  <span>{t("items.feedback.question")}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pl-10">
                 <p className="text-muted-foreground">
-                  We love hearing from you! After your order, we'll send a short feedback form. You can also message us
-                  directly through the website or email.
+                  {t("items.feedback.answer")}
                 </p>
               </AccordionContent>
             </AccordionItem>

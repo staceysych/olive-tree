@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useBasket } from "@/context/BasketContext"
 import { BasketType } from "@/types/basket"
-
+import { useTranslations } from "next-intl"
 
 interface BasketCardProps {
   title: string
@@ -23,6 +23,7 @@ interface BasketCardProps {
 
 export function BasketCard({ title, description, price, items, imageSrc, showWeekText = true, basketType, viewText }: BasketCardProps) {
   const { setSelectedBasketType } = useBasket()
+  const t = useTranslations()
 
 
   const handlePreOrder = () => {
@@ -69,7 +70,7 @@ export function BasketCard({ title, description, price, items, imageSrc, showWee
         </CardContent>
         <CardFooter>
           <Button className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={handlePreOrder}>
-            Pre-order Now
+            {t('baskets.order')}
           </Button>
         </CardFooter>
       </Card>
