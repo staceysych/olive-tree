@@ -23,7 +23,7 @@ import { formatDeliveryPreference } from "@/utils/formatDeliveryPreference"
 export function OrderForm() {
   const t = useTranslations()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const { selectedBasketType } = useBasket()
+  const { selectedBasketType, setSelectedBasketType } = useBasket()
   const formRef = useRef<HTMLFormElement>(null!)
 
   const formSchema = z.object({
@@ -36,8 +36,8 @@ export function OrderForm() {
     phone: z.string().min(8, {
       message: t("order.orderForm.phone.error"),
     }),
-    location: z.string().min(2, {
-      message: t("order.orderForm.location.error"),
+    address: z.string().min(2, {
+      message: t("order.orderForm.address.error"),
     }),
     basket: z.nativeEnum(BasketType, {
       required_error: t("order.orderForm.basket.error"),
@@ -57,7 +57,7 @@ export function OrderForm() {
       name: "",
       email: "",
       phone: "",
-      location: "",
+      address: "",
       deliveryMorning: false,
       deliveryEvening: false,
       deliveryPreference: "",
@@ -74,11 +74,20 @@ export function OrderForm() {
   }, [selectedBasketType, form])
 
   useEffect(() => {
+    const basket = form.watch("basket")
+    if (!basket || basket === BasketType.TRIAL) {
+      form.setValue("promotion", undefined)
+    }
+  }, [form.watch("basket")])
+
+  useEffect(() => {
     const morning = form.watch("deliveryMorning")
     const evening = form.watch("deliveryEvening")
     const preference = formatDeliveryPreference(morning, evening)
     form.setValue("deliveryPreference", preference)
   }, [form.watch("deliveryMorning"), form.watch("deliveryEvening")])
+
+
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
@@ -87,18 +96,20 @@ export function OrderForm() {
         name: values.name,
         email: values.email,
         phone: values.phone,
-        location: values.location,
+        location: values.address,
         basket: values.basket,
-        deliveryPreference: values.deliveryPreference,
-        promotion: values.promotion,
+        deliveryPreference: values.deliveryPreference || 'Anytime',
+        promotion: values.promotion || 'N/A',
         notes: values.notes,
       })
       
       toast({
         title: t("order.orderForm.success.title"),
         description: t("order.orderForm.success.description"),
+        variant: "success",
       })
       form.reset()
+      setSelectedBasketType(null)
     } catch (error) {
       console.error("Failed to send email:", error)
       toast({
@@ -157,12 +168,12 @@ export function OrderForm() {
             />
             <FormField
               control={form.control}
-              name="location"
+              name="address"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t("order.orderForm.location.label")}</FormLabel>
+                  <FormLabel>{t("order.orderForm.address.label")}</FormLabel>
                   <FormControl>
-                    <Input placeholder={t("order.orderForm.location.placeholder")} {...field} />
+                    <Input placeholder={t("order.orderForm.address.placeholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -191,53 +202,55 @@ export function OrderForm() {
               )}
             />
 
-            <FormField
-              control={form.control}
-              name="promotion"
-              render={({ field }) => (
-                <FormItem className="space-y-3">
-                  <FormLabel>{t("order.orderForm.promotion.title")}</FormLabel>
-                  <FormControl>
-                    <RadioGroup onValueChange={field.onChange} value={field.value} className="space-y-3">
-                      <label htmlFor="r-free-delivery" className="flex items-start space-x-3 space-y-0 rounded-md border p-3 hover:bg-muted/50 cursor-pointer">
-                        <RadioGroupItem value="free-delivery" id="r-free-delivery" />
-                        <div className="space-y-1 leading-none">
-                          <div className="font-medium">
-                            {t("order.orderForm.promotion.options.free-delivery.title")}
+            {form.watch("basket") && form.watch("basket") !== BasketType.TRIAL && (
+              <FormField
+                control={form.control}
+                name="promotion"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel>{t("order.orderForm.promotion.title")}</FormLabel>
+                    <FormControl>
+                      <RadioGroup onValueChange={field.onChange} value={field.value} className="space-y-3">
+                        <label htmlFor="r-free-delivery" className="flex items-start space-x-3 space-y-0 rounded-md border p-3 hover:bg-muted/50 cursor-pointer">
+                          <RadioGroupItem value="free-delivery" id="r-free-delivery" />
+                          <div className="space-y-1 leading-none">
+                            <div className="font-medium">
+                              {t("order.orderForm.promotion.options.free-delivery.title")}
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              {t("order.orderForm.promotion.options.free-delivery.description")}
+                            </p>
                           </div>
-                          <p className="text-sm text-muted-foreground">
-                            {t("order.orderForm.promotion.options.free-delivery.description")}
-                          </p>
-                        </div>
-                      </label>
-                      <label htmlFor="r-free-tomatoes" className="flex items-start space-x-3 space-y-0 rounded-md border p-3 hover:bg-muted/50 cursor-pointer">
-                        <RadioGroupItem value="free-tomatoes" id="r-free-tomatoes" />
-                        <div className="space-y-1 leading-none">
-                          <div className="font-medium">
-                            {t("order.orderForm.promotion.options.free-tomatoes.title")}
+                        </label>
+                        <label htmlFor="r-free-tomatoes" className="flex items-start space-x-3 space-y-0 rounded-md border p-3 hover:bg-muted/50 cursor-pointer">
+                          <RadioGroupItem value="free-tomatoes" id="r-free-tomatoes" />
+                          <div className="space-y-1 leading-none">
+                            <div className="font-medium">
+                              {t("order.orderForm.promotion.options.free-tomatoes.title")}
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              {t("order.orderForm.promotion.options.free-tomatoes.description")}
+                            </p>
                           </div>
-                          <p className="text-sm text-muted-foreground">
-                            {t("order.orderForm.promotion.options.free-tomatoes.description")}
-                          </p>
-                        </div>
-                      </label>
-                      <label htmlFor="r-discount" className="flex items-start space-x-3 space-y-0 rounded-md border p-3 hover:bg-muted/50 cursor-pointer">
-                        <RadioGroupItem value="discount" id="r-discount" />
-                        <div className="space-y-1 leading-none">
-                          <div className="font-medium">
-                            {t("order.orderForm.promotion.options.discount.title")}
+                        </label>
+                        <label htmlFor="r-discount" className="flex items-start space-x-3 space-y-0 rounded-md border p-3 hover:bg-muted/50 cursor-pointer">
+                          <RadioGroupItem value="discount" id="r-discount" />
+                          <div className="space-y-1 leading-none">
+                            <div className="font-medium">
+                              {t("order.orderForm.promotion.options.discount.title")}
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              {t("order.orderForm.promotion.options.discount.description")}
+                            </p>
                           </div>
-                          <p className="text-sm text-muted-foreground">
-                            {t("order.orderForm.promotion.options.discount.description")}
-                          </p>
-                        </div>
-                      </label>
-                    </RadioGroup>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                        </label>
+                      </RadioGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
 
             <div className="space-y-3">
               <div className="mb-2 font-medium">{t("order.orderForm.delivery.title")}</div>

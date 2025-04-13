@@ -63,7 +63,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-3 md:gap-12">
+            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3 md:gap-12">
               <div className="flex flex-col items-center space-y-4 text-center">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
                   <ShoppingBasket className="h-8 w-8 text-emerald-600" />
@@ -108,7 +108,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3 lg:gap-12">
+            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3 md:gap-12">
               <BasketCard
                 title={t('baskets.trial.title')}
                 description={t('baskets.trial.description')}

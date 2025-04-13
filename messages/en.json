@@ -38,9 +38,10 @@
       "description": "Curious to taste the difference? Try our one-time basket packed with nature's best.",
       "price": "Only €90",
       "items": [
+        "No commitment – just pure, farm-fresh flavor",
         "15–20 handpicked seasonal items",
-        "Up to 10 kg of fresh fruits, veggies, herbs & greens",
-        "No commitment – just pure, farm-fresh flavor"
+        "Up to 10 kg of fresh fruits, veggies, herbs & greens"
+        
       ],
       "viewText": "View what's in season"
     },
@@ -86,10 +87,10 @@
         "placeholder": "Your phone number",
         "error": "Please enter a valid phone number."
       },
-      "location": {
-        "label": "Location (City)",
-        "placeholder": "Your city in Cyprus",
-        "error": "Please enter your city."
+      "address": {
+        "label": "Full Address",
+        "placeholder": "Your full address including street, house number, and city",
+        "error": "Please enter your full address."
       },
       "basket": {
         "label": "Basket Choice",

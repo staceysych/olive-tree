@@ -62,7 +62,7 @@ export function BasketCard({ title, description, price, items, imageSrc, showWee
           <ul className="space-y-2">
             {items.map((item, index) => (
               <li key={index} className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-emerald-500" />
+                <Check size={16} className="text-emerald-500 min-w-[16px] min-h-[16px] flex-shrink-0" />
                 <span className="text-sm">{item}</span>
               </li>
             ))}

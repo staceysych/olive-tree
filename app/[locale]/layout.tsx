@@ -6,6 +6,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { getTranslations } from 'next-intl/server';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -46,6 +47,7 @@ export default async function RootLayout({
         <NextIntlClientProvider locale={locale}>
           <BasketProvider>
             {children}
+            <Toaster />
           </BasketProvider>
         </NextIntlClientProvider>
       </body>
