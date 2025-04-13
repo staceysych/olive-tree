@@ -1,10 +1,9 @@
 "use client"
 
-import { Label } from "@/components/ui/label"
 import { useBasket } from "@/context/BasketContext"
 import { BasketType } from "@/types/basket"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -17,6 +16,8 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "@/components/ui/use-toast"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import useSendOrderEmail from "@/utils/useSendOrderEmail"
+import { formatDeliveryPreference } from "@/utils/formatDeliveryPreference"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -36,16 +37,19 @@ const formSchema = z.object({
   }),
   deliveryMorning: z.boolean().default(false).optional(),
   deliveryEvening: z.boolean().default(false).optional(),
+  deliveryPreference: z.string().optional(),
   promotion: z.string().optional(),
   notes: z.string().optional(),
 })
 
+type FormValues = z.infer<typeof formSchema>
+
 export function OrderForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { selectedBasketType } = useBasket()
+  const formRef = useRef<HTMLFormElement>(null!)
 
-
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -54,39 +58,42 @@ export function OrderForm() {
       location: "",
       deliveryMorning: false,
       deliveryEvening: false,
+      deliveryPreference: "",
       promotion: "free-delivery",
       basket: selectedBasketType || undefined,
       notes: "",
     },
   })
 
-  // Update form when selectedBasketType changes
+  const sendEmail = useSendOrderEmail({
+    reset: form.reset,
+  })
+
   useEffect(() => {
     if (selectedBasketType) {
       form.setValue("basket", selectedBasketType)
     }
   }, [selectedBasketType, form])
 
+  useEffect(() => {
+    const morning = form.watch("deliveryMorning")
+    const evening = form.watch("deliveryEvening")
+    const preference = formatDeliveryPreference(morning, evening)
+    form.setValue("deliveryPreference", preference)
+  }, [form.watch("deliveryMorning"), form.watch("deliveryEvening")])
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
-
-    // Simulate API call
-    setTimeout(() => {
-      console.log(values)
-      setIsSubmitting(false)
-      toast({
-        title: "Order received!",
-        description: "We'll contact you soon to confirm your order details.",
-      })
-      form.reset()
-    }, 1000)
+    console.log(values)
+    sendEmail(values)
+    setIsSubmitting(false)
   }
 
   return (
     <Card>
       <CardContent className="pt-6">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="name"
@@ -212,17 +219,17 @@ export function OrderForm() {
 
             <div className="space-y-3">
               <div className="mb-2 font-medium">Delivery Preference</div>
-              <FormField
-                control={form.control}
+            <FormField
+              control={form.control}
                 name="deliveryMorning"
-                render={({ field }) => (
+              render={({ field }) => (
                   <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl>
+                  <FormControl>
                       <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
-                    <div className="space-y-1 leading-none">
+                        <div className="space-y-1 leading-none">
                       <FormLabel>Morning (8am - 12pm)</FormLabel>
-                    </div>
+                        </div>
                   </FormItem>
                 )}
               />
@@ -234,12 +241,12 @@ export function OrderForm() {
                     <FormControl>
                       <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
-                    <div className="space-y-1 leading-none">
+                        <div className="space-y-1 leading-none">
                       <FormLabel>Evening (4pm - 8pm)</FormLabel>
-                    </div>
-                  </FormItem>
-                )}
-              />
+                        </div>
+                </FormItem>
+              )}
+            />
               <div className="text-sm text-muted-foreground">Select your preferred delivery time slots.</div>
             </div>
 
