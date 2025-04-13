@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Leaf, Truck, ShoppingBasket } from "lucide-react"
+import { useTranslations } from 'next-intl'
 
 import { Button } from "@/components/ui/button"
 import { BasketCard } from "@/components/BasketCard"
@@ -10,6 +11,8 @@ import { FaqSection } from "@/components/FAQ"
 import { Header } from "@/components/Header"
 
 export default function Home() {
+  const t = useTranslations()
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -21,14 +24,14 @@ export default function Home() {
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-emerald-800">
-                  Farm-Fresh Goodness, Delivered Across Cyprus
+                  {t('hero.title')}
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Straight from local farms to your table – enjoy the taste of real, seasonal produce without lifting a finger.
+                  {t('hero.description')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700" asChild>
-                    <Link href="#baskets">Choose Your Basket</Link>
+                    <Link href="#baskets">{t('hero.cta')}</Link>
                   </Button>
                 </div>
               </div>
@@ -53,10 +56,10 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-emerald-800">
-                  How It Works
+                  {t('howItWorks.title')}
                 </h2>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Simple steps to get fresh farm goods delivered to your door
+                  {t('howItWorks.subtitle')}
                 </p>
               </div>
             </div>
@@ -65,27 +68,27 @@ export default function Home() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
                   <ShoppingBasket className="h-8 w-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold text-emerald-700">Pick a Basket</h3>
+                <h3 className="text-xl font-bold text-emerald-700">{t('howItWorks.steps.pick.title')}</h3>
                 <p className="text-muted-foreground">
-                  Choose from our selection of curated baskets filled with farm-fresh goods.
+                  {t('howItWorks.steps.pick.description')}
                 </p>
               </div>
               <div className="flex flex-col items-center space-y-4 text-center">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
                   <Truck className="h-8 w-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold text-emerald-700">We Deliver Weekly</h3>
+                <h3 className="text-xl font-bold text-emerald-700">{t('howItWorks.steps.deliver.title')}</h3>
                 <p className="text-muted-foreground">
-                  We'll deliver your basket to your doorstep every week, fresh from the farm.
+                  {t('howItWorks.steps.deliver.description')}
                 </p>
               </div>
               <div className="flex flex-col items-center space-y-4 text-center">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
                   <Leaf className="h-8 w-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold text-emerald-700">Enjoy Farm-Fresh Food</h3>
+                <h3 className="text-xl font-bold text-emerald-700">{t('howItWorks.steps.enjoy.title')}</h3>
                 <p className="text-muted-foreground">
-                  Savor the taste of fresh, locally-sourced produce and support Cyprus farmers.
+                  {t('howItWorks.steps.enjoy.description')}
                 </p>
               </div>
             </div>
@@ -98,41 +101,41 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-emerald-800">
-                  Basket Options
+                  {t('baskets.title')}
                 </h2>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Choose the perfect basket to suit your needs
+                  {t('baskets.subtitle')}
                 </p>
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3 lg:gap-12">
               <BasketCard
-                title="Trial Basket"
-                description="Curious to taste the difference? Try our one-time basket packed with nature's best."
-                price="Only €90"
-                items={["15–20 handpicked seasonal items", "Up to 10 kg of fresh fruits, veggies, herbs & greens", "No commitment – just pure, farm-fresh flavor"]}
+                title={t('baskets.trial.title')}
+                description={t('baskets.trial.description')}
+                price={t('baskets.trial.price')}
+                items={t.raw('baskets.trial.items')}
                 imageSrc="/trialBasket.jpg"
                 showWeekText={false}
                 basketType={BasketType.TRIAL}
-                viewText="View what's in season"
+                viewText={t('baskets.trial.viewText')}
               />
               <BasketCard
-                title="Standard Basket"
-                description="Perfect for singles or couples who want a weekly dose of vibrant health."
-                price="€85"
-                items={["Weekly delivery for 1-2 people", "15–20 rotating seasonal items", "Up to 10 kg of fresh, nutrient-rich produce"]}
+                title={t('baskets.standard.title')}
+                description={t('baskets.standard.description')}
+                price={t('baskets.standard.price')}
+                items={t.raw('baskets.standard.items')}
                 imageSrc="/standardBasket.jpg"
                 basketType={BasketType.STANDARD}
-                viewText="See what's included this week"
+                viewText={t('baskets.standard.viewText')}
               />
               <BasketCard
-                title="Family Basket"
-                description="Feeding the whole family? This one's for you."
-                price="€140"
-                items={["Weekly delivery for 3–5 people", "20+ rotating seasonal items", "Up to 20 kg of the healthiest food around"]}
+                title={t('baskets.family.title')}
+                description={t('baskets.family.description')}
+                price={t('baskets.family.price')}
+                items={t.raw('baskets.family.items')}
                 imageSrc="/familyBasket.jpg"
                 basketType={BasketType.FAMILY}
-                viewText="Discover this week's harvest"
+                viewText={t('baskets.family.viewText')}
               />
             </div>
           </div>
@@ -144,10 +147,10 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-emerald-800">
-                  Order Now
+                  {t('order.title')}
                 </h2>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Get fresh farm goods delivered to your doorstep
+                  {t('order.subtitle')}
                 </p>
               </div>
             </div>
@@ -168,11 +171,10 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-emerald-800">
-                  About Olive Tree
+                  {t('about.title')}
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  At Olive Tree, we believe real food comes from real farms. That's why we work with trusted local growers across Cyprus to deliver seasonal, sustainable produce straight to your door. No middlemen, no chemicals – just honest food that's good for you.
-                  Let us take the hassle out of shopping so you can spend more time enjoying fresh, delicious meals with the people you love.
+                  {t('about.description')}
                 </p>
               </div>
             </div>
@@ -185,10 +187,10 @@ export default function Home() {
         <div className="container flex flex-col items-center justify-between gap-4 md:flex-row px-4 md:px-6">
           <div className="flex gap-2 items-center text-xl font-bold text-emerald-700">
             <Leaf className="h-5 w-5" />
-            <span>Olive Tree</span>
+            <span>{t('footer.brand')}</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Olive Tree. All rights reserved.
+            &copy; {new Date().getFullYear()} {t('footer.brand')}. {t('footer.copyright')}
           </p>
         </div>
       </footer>

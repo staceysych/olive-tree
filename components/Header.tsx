@@ -3,6 +3,7 @@ import { Leaf } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { MobileMenu } from "@/components/MobileMenu"
+import { LanguageSelector } from "./LanguageSelector"
 
 export function Header() {
   return (
@@ -38,11 +39,15 @@ export function Header() {
             >
               About
             </Link>
+            <LanguageSelector />
             <Button size="sm" asChild>
               <Link href="#order">Order</Link>
             </Button>
           </nav>
-          <MobileMenu />
+          <div className="flex items-center space-x-2 md:hidden">
+            <LanguageSelector />
+            <MobileMenu />
+          </div>
         </div>
       </div>
     </header>

@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
+import '../globals.css'
 import { BasketProvider } from '@/context/BasketContext'
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,18 +21,28 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
+  params: Promise<{locale: string}>;
 }) {
+  // Ensure that the incoming `locale` is valid
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={inter.className}>
-        <BasketProvider>
-          {children}
-        </BasketProvider>
+        <NextIntlClientProvider locale={locale}>
+          <BasketProvider>
+            {children}
+          </BasketProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
-  )
-}
+  );
+} 

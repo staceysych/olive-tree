@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "title": "Farm-Fresh Goodness, Delivered Across Cyprus",
+    "description": "Straight from local farms to your table – enjoy the taste of real, seasonal produce without lifting a finger.",
+    "cta": "Choose Your Basket"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Simple steps to get fresh farm goods delivered to your door",
+    "steps": {
+      "pick": {
+        "title": "Pick a Basket",
+        "description": "Choose from our selection of curated baskets filled with farm-fresh goods."
+      },
+      "deliver": {
+        "title": "We Deliver Weekly",
+        "description": "We'll deliver your basket to your doorstep every week, fresh from the farm."
+      },
+      "enjoy": {
+        "title": "Enjoy Farm-Fresh Food",
+        "description": "Savor the taste of fresh, locally-sourced produce and support Cyprus farmers."
+      }
+    }
+  },
+  "baskets": {
+    "title": "Basket Options",
+    "subtitle": "Choose the perfect basket to suit your needs",
+    "trial": {
+      "title": "Trial Basket",
+      "description": "Curious to taste the difference? Try our one-time basket packed with nature's best.",
+      "price": "Only €90",
+      "items": [
+        "15–20 handpicked seasonal items",
+        "Up to 10 kg of fresh fruits, veggies, herbs & greens",
+        "No commitment – just pure, farm-fresh flavor"
+      ],
+      "viewText": "View what's in season"
+    },
+    "standard": {
+      "title": "Standard Basket",
+      "description": "Perfect for singles or couples who want a weekly dose of vibrant health.",
+      "price": "€85",
+      "items": [
+        "Weekly delivery for 1-2 people",
+        "15–20 rotating seasonal items",
+        "Up to 10 kg of fresh, nutrient-rich produce"
+      ],
+      "viewText": "See what's included this week"
+    },
+    "family": {
+      "title": "Family Basket",
+      "description": "Feeding the whole family? This one's for you.",
+      "price": "€140",
+      "items": [
+        "Weekly delivery for 3–5 people",
+        "20+ rotating seasonal items",
+        "Up to 20 kg of the healthiest food around"
+      ],
+      "viewText": "Discover this week's harvest"
+    }
+  },
+  "order": {
+    "title": "Order Now",
+    "subtitle": "Get fresh farm goods delivered to your doorstep"
+  },
+  "about": {
+    "title": "About Olive Tree",
+    "description": "At Olive Tree, we believe real food comes from real farms. That's why we work with trusted local growers across Cyprus to deliver seasonal, sustainable produce straight to your door. No middlemen, no chemicals – just honest food that's good for you. Let us take the hassle out of shopping so you can spend more time enjoying fresh, delicious meals with the people you love."
+  },
+  "footer": {
+    "brand": "Olive Tree",
+    "copyright": "All rights reserved."
+  }
+}
