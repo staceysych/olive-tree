@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { getTranslations } from 'next-intl/server';
 import { Toaster } from '@/components/ui/toaster';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -48,6 +49,7 @@ export default async function RootLayout({
           <BasketProvider>
             {children}
             <Toaster />
+            <GoogleAnalytics />
           </BasketProvider>
         </NextIntlClientProvider>
       </body>
