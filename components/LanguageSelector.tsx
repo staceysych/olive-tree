@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { Check, Globe } from "lucide-react"
-import { useRouter, usePathname } from '@/i18n/navigation'
+import { useRouter } from '@/i18n/navigation'
+import { usePathname } from 'next/navigation'
 
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { LANGUAGES, STORAGE_KEY } from "@/utils/defaults"
 
 type Language = {
   code: string
@@ -14,42 +16,22 @@ type Language = {
   flag: string
 }
 
-const languages: Language[] = [
-  {
-    code: "en",
-    name: "English",
-    nativeName: "English",
-    flag: "🇬🇧",
-  },
-  {
-    code: "ru",
-    name: "Russian",
-    nativeName: "Русский",
-    flag: "🇷🇺",
-  },
-  {
-    code: "el",
-    name: "Greek",
-    nativeName: "Ελληνικά",
-    flag: "🇬🇷",
-  },
-]
-
-const STORAGE_KEY = 'olive-tree-language'
 
 export const LanguageSelector = () => {
   const router = useRouter()
   const pathname = usePathname()
   const currentLocale = pathname.split('/')[1] || 'en'
   const [currentLanguage, setCurrentLanguage] = useState<Language>(
-    languages.find(lang => lang.code === currentLocale) || languages[0]
+    LANGUAGES.find(lang => lang.code === currentLocale) || LANGUAGES[0]
   )
+
+
 
   // Load saved language preference on component mount
   useEffect(() => {
     const savedLanguage = localStorage.getItem(STORAGE_KEY)
     if (savedLanguage) {
-      const language = languages.find(lang => lang.code === savedLanguage)
+      const language = LANGUAGES.find(lang => lang.code === savedLanguage)
       if (language) {
         setCurrentLanguage(language)
         // If the current URL locale doesn't match the saved preference, redirect
@@ -59,14 +41,16 @@ export const LanguageSelector = () => {
         }
       }
     }
-  }, []) // Empty dependency array means this runs once on mount
+  }, [])
 
   const handleLanguageChange = (language: Language) => {
     setCurrentLanguage(language)
-    // Save the language preference to localStorage
     localStorage.setItem(STORAGE_KEY, language.code)
-    // Remove the current locale from the pathname
-    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '')
+
+    const pathWithoutLocale = pathname === `/${currentLocale}` 
+      ? '/'  // If we're on the home page, use root path
+      : pathname.replace(`/${currentLocale}`, '') // Otherwise, remove the locale prefix
+
     // Navigate to the new locale
     router.replace(pathWithoutLocale, { locale: language.code })
   }
@@ -79,7 +63,7 @@ export const LanguageSelector = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[200px]">
-        {languages.map((language) => (
+        {LANGUAGES.map((language) => (
           <DropdownMenuItem
             key={language.code}
             className="flex items-center justify-between cursor-pointer"

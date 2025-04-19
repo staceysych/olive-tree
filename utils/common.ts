@@ -1,0 +1,1 @@
+export const createPath = (pathname: string, hash: string) => `${pathname}${hash}`

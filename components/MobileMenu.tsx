@@ -11,11 +11,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { LanguageSelector } from "./LanguageSelector"
-
+import { usePathname } from 'next/navigation'
+import { createPath } from "@/utils/common"
+import { NavLinks } from "@/components/NavLinks"
 
 export function MobileMenu() {
   const [open, setOpen] = React.useState(false)
+  const pathname = usePathname()
+
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -33,36 +36,9 @@ export function MobileMenu() {
           <SheetTitle>Navigation Menu</SheetTitle>
         </SheetHeader>
         <nav className="flex flex-col gap-4 mt-4">
-          <Link
-            href="#how-it-works"
-            className="text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground hover:translate-x-1"
-            onClick={() => setOpen(false)}
-          >
-            How It Works
-          </Link>
-          <Link
-            href="#baskets"
-            className="text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground hover:translate-x-1"
-            onClick={() => setOpen(false)}
-          >
-            Baskets
-          </Link>
-          <Link
-            href="#faq"
-            className="text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground hover:translate-x-1"
-            onClick={() => setOpen(false)}
-          >
-            FAQ
-          </Link>
-          <Link
-            href="#about"
-            className="text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground hover:translate-x-1"
-            onClick={() => setOpen(false)}
-          >
-            About
-          </Link>
+          <NavLinks onClick={() => setOpen(false)} />
           <Button size="sm" asChild className="w-full transition-transform hover:scale-[1.02]">
-            <Link href="#order" onClick={() => setOpen(false)}>Order</Link>
+            <Link href={createPath(pathname, '#order')} onClick={() => setOpen(false)}>Order</Link>
           </Button>
         </nav>
       </SheetContent>

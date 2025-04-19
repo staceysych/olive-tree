@@ -84,7 +84,7 @@
       },
       "email": {
         "label": "Email",
-        "placeholder": "ваш.email@example.com",
+        "placeholder": "Ваш email@example.com",
         "error": "Пожалуйста, введите действительный email адрес."
       },
       "phone": {
@@ -265,5 +265,12 @@
       }
     },
     "close": "Закрыть"
+  },
+  "common": {
+    "backToHome": "Вернуться на главную"
+  },
+  "locations": {
+    "title": "Доставка свежих фермерских продуктов в {location}",
+    "description": "Получайте свежие фермерские продукты с доставкой на дом в {location}, Кипр"
   }
 }
