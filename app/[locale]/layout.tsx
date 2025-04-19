@@ -28,14 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description: t('description'),
       url: 'https://olivetree.cy',
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: t('title'),
-        },
-      ],
       locale: locale,
       type: 'website',
     },
