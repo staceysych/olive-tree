@@ -15,12 +15,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'metadata' });
 
-  const ogImage = {
-    en: '/og-en.png',
-    el: '/og-el.png',
-    ru: '/og-ru.png',
-  }[locale] || '/og-en.png';
-
   return {
     title: t('title'),
     description: t('description'),
@@ -35,7 +29,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: [ogImage],
     },
     icons: {
       icon: [
