@@ -19,10 +19,10 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const { locale, slug } = params;
   const location = locations.find(loc => loc.slug === slug);
   const t = await getTranslations('metadata');
-
+  
   if (!location) {
     return {
       title: t('notFound.title'),
@@ -30,9 +30,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const locationName = location.name[locale as keyof typeof location.name];
+  
   return {
-    title: t('location.title', { location: location.name[locale as keyof typeof location.name] }),
-    description: t('location.description', { location: location.name[locale as keyof typeof location.name] }),
+    title: t('location.title', { location: locationName }),
+    description: t('location.description', { location: locationName }),
     alternates: {
       canonical: `https://olive-tree.cy/locations/${slug}`,
       languages: {
@@ -44,14 +46,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export async function generateStaticParams() {
-  return locations.map((location) => ({
-    slug: location.slug,
-  }));
-}
-
 export default async function LocationPage({ params }: Props) {
-  const { locale, slug } = await params;
+  const { locale, slug } = params;
   const location = locations.find(loc => loc.slug === slug);
   const t = await getTranslations();
 
