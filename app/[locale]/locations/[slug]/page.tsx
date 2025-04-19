@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { locations } from '@/types/locations';
+import { locations } from '@/utils/defaults';
 import { getTranslations } from 'next-intl/server';
 import { OrderForm } from '@/components/OrderForm';
 import { Button } from '@/components/ui/button';
@@ -19,7 +19,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, slug } = params;
+  const { locale, slug } = await params;
   const location = locations.find(loc => loc.slug === slug);
   const t = await getTranslations('metadata');
   
@@ -36,18 +36,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t('location.title', { location: locationName }),
     description: t('location.description', { location: locationName }),
     alternates: {
-      canonical: `https://olive-tree.cy/locations/${slug}`,
+      canonical: `https://olivetree.cy/locations/${slug}`,
       languages: {
-        en: `https://olive-tree.cy/en/locations/${slug}`,
-        el: `https://olive-tree.cy/el/locations/${slug}`,
-        ru: `https://olive-tree.cy/ru/locations/${slug}`,
+        en: `https://olivetree.cy/en/locations/${slug}`,
+        el: `https://olivetree.cy/el/locations/${slug}`,
+        ru: `https://olivetree.cy/ru/locations/${slug}`,
       },
     },
   };
 }
 
 export default async function LocationPage({ params }: Props) {
-  const { locale, slug } = params;
+  const { locale, slug } = await params;
   const location = locations.find(loc => loc.slug === slug);
   const t = await getTranslations();
 

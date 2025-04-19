@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://olive-tree.cy/sitemap.xml',
+    sitemap: 'https://olivetree.cy/sitemap.xml',
   };
 } 
