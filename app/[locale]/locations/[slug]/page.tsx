@@ -21,17 +21,18 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const location = locations.find(loc => loc.slug === slug);
+  const t = await getTranslations('metadata');
 
   if (!location) {
     return {
-      title: 'Location Not Found',
-      description: 'The requested location could not be found.'
+      title: t('notFound.title'),
+      description: t('notFound.description')
     };
   }
 
   return {
-    title: `Olive Tree - ${location.name[locale as keyof typeof location.name]} Delivery`,
-    description: location.description[locale as keyof typeof location.description],
+    title: t('location.title', { location: location.name[locale as keyof typeof location.name] }),
+    description: t('location.description', { location: location.name[locale as keyof typeof location.name] }),
     alternates: {
       canonical: `https://olive-tree.cy/locations/${slug}`,
       languages: {

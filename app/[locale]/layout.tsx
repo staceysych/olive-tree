@@ -15,9 +15,36 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'metadata' });
 
+  const ogImage = {
+    en: '/og-en.png',
+    el: '/og-el.png',
+    ru: '/og-ru.png',
+  }[locale] || '/og-en.png';
+
   return {
     title: t('title'),
     description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: 'https://olivetree.cy',
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: t('title'),
+        },
+      ],
+      locale: locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+      images: [ogImage],
+    },
     icons: {
       icon: [
         {

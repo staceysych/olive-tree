@@ -198,7 +198,15 @@
   },
   "metadata": {
     "title": "Olive Tree - Farm Fresh Delivery in Cyprus",
-    "description": "Get fresh farm goods delivered to your doorstep in Cyprus"
+    "description": "Get fresh farm goods delivered to your doorstep in Cyprus",
+    "notFound": {
+      "title": "Location Not Found",
+      "description": "The requested location could not be found."
+    },
+    "location": {
+      "title": "Olive Tree - Farm Fresh Delivery in {location}",
+      "description": "Get fresh farm goods delivered to your doorstep in {location}, Cyprus"
+    }
   },
   "availableItems": {
     "title": "Available Items",
