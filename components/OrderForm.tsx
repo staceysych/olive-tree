@@ -44,6 +44,8 @@ export function OrderForm() {
     }),
     deliveryMorning: z.boolean().default(false).optional(),
     deliveryEvening: z.boolean().default(false).optional(),
+    deliveryFriday: z.boolean().default(false).optional(),
+    deliverySunday: z.boolean().default(false).optional(),
     deliveryPreference: z.string().optional(),
     promotion: z.string().optional(),
     notes: z.string().optional(),
@@ -60,6 +62,8 @@ export function OrderForm() {
       address: "",
       deliveryMorning: false,
       deliveryEvening: false,
+      deliveryFriday: false,
+      deliverySunday: false,
       deliveryPreference: "",
       promotion: "free-delivery",
       basket: selectedBasketType || undefined,
@@ -83,9 +87,11 @@ export function OrderForm() {
   useEffect(() => {
     const morning = form.watch("deliveryMorning")
     const evening = form.watch("deliveryEvening")
-    const preference = formatDeliveryPreference(morning, evening)
+    const friday = form.watch("deliveryFriday")
+    const sunday = form.watch("deliverySunday")
+    const preference = formatDeliveryPreference(morning, evening, friday, sunday)
     form.setValue("deliveryPreference", preference)
-  }, [form.watch("deliveryMorning"), form.watch("deliveryEvening")])
+  }, [form.watch("deliveryMorning"), form.watch("deliveryEvening"), form.watch("deliveryFriday"), form.watch("deliverySunday")])
 
 
 
@@ -254,34 +260,71 @@ export function OrderForm() {
 
             <div className="space-y-3">
               <div className="mb-2 font-medium">{t("order.orderForm.delivery.title")}</div>
-              <FormField
-                control={form.control}
-                name="deliveryMorning"
-                render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl>
-                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel>{t("order.orderForm.delivery.morning.label")}</FormLabel>
-                    </div>
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="deliveryEvening"
-                render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl>
-                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel>{t("order.orderForm.delivery.evening.label")}</FormLabel>
-                    </div>
-                  </FormItem>
-                )}
-              />
+              
+              <div className="space-y-2">
+                <div className="text-sm font-medium text-muted-foreground">{t("order.orderForm.delivery.time.title")}</div>
+                <FormField
+                  control={form.control}
+                  name="deliveryMorning"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>{t("order.orderForm.delivery.morning.label")}</FormLabel>
+                      </div>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="deliveryEvening"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>{t("order.orderForm.delivery.evening.label")}</FormLabel>
+                      </div>
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-sm font-medium text-muted-foreground">{t("order.orderForm.delivery.day.title")}</div>
+                <FormField
+                  control={form.control}
+                  name="deliveryFriday"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>{t("order.orderForm.delivery.friday.label")}</FormLabel>
+                      </div>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="deliverySunday"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>{t("order.orderForm.delivery.sunday.label")}</FormLabel>
+                      </div>
+                    </FormItem>
+                  )}
+                />
+              </div>
+
               <div className="text-sm text-muted-foreground">{t("order.orderForm.delivery.hint")}</div>
             </div>
 

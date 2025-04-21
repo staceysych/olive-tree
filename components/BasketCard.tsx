@@ -57,7 +57,7 @@ export function BasketCard({ title, description, price, items, imageSrc, showWee
         <CardContent className="flex-1">
           <div className="text-2xl font-bold mb-4">
             {price}
-            {showWeekText && <span className="text-sm text-muted-foreground"> / week</span>}
+            {showWeekText && <span className="text-sm text-muted-foreground"> / {t('common.week')}</span>}
           </div>
           <ul className="space-y-2">
             {items.map((item, index) => (
