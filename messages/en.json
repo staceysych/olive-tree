@@ -103,8 +103,8 @@
         "error": "Please select a basket.",
         "options": {
           "trial": "Trial Basket - €90 (One-time)",
-          "standard": "Standard Basket - €85/week",
-          "family": "Family Basket - €140/week"
+          "standard": "Standard Basket - €80/week",
+          "family": "Family Basket - €130/week"
         }
       },
       "delivery": {
@@ -166,7 +166,7 @@
   },
   "about": {
     "title": "About Olive Tree",
-    "description": "At Olive Tree, we believe real food comes from real farms. That's why we work with trusted local growers across Cyprus to deliver seasonal, sustainable produce straight to your door. No middlemen, no chemicals – just honest food that's good for you. Let us take the hassle out of shopping so you can spend more time enjoying fresh, delicious meals with the people you love."
+    "description": "At Olive Tree, we believe real food comes from real farms. That's why we work with trusted local growers across Cyprus to deliver seasonal, sustainable produce straight to your door. Let us take the hassle out of shopping so you can spend more time enjoying fresh, delicious meals with the people you love."
   },
   "footer": {
     "brand": "Olive Tree",
@@ -199,7 +199,7 @@
         "question": "How do I pay?",
         "answer": "We currently accept:",
         "methods": {
-          "cash": "Cash on delivery (for MVP)",
+          "cash": "Cash on delivery",
           "online": "Online payments (coming soon)"
         }
       },
@@ -257,10 +257,10 @@
           "Peach",
           "Nectarine",
           "Banana",
-          "Cherry (Seasonal)",
-          "Melon (Seasonal)",
-          "Strawberry (Seasonal)",
-          "Medlar (Seasonal)",
+          "Cherry",
+          "Melon",
+          "Strawberry",
+          "Medlar",
           "Orange",
           "Lemon",
           "Pomelo",

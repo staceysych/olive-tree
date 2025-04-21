@@ -48,17 +48,19 @@ export function BasketCard({ title, description, price, items, imageSrc, showWee
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
           />
         </div>
-        <CardHeader className="pb-2">
-          <CardTitle className="text-xl text-emerald-700 flex items-center gap-2">
-            {title}
-          </CardTitle>
-          <CardDescription>{description}</CardDescription>
-        </CardHeader>
-        <CardContent className="flex-1">
-          <div className="text-2xl font-bold mb-4">
+        <CardHeader className="pb-2 h-[150px] flex flex-col">
+          <div className="flex-1">
+            <CardTitle className="text-xl text-emerald-700 flex items-center gap-2">
+              {title}
+            </CardTitle>
+            <CardDescription className="line-clamp-2">{description}</CardDescription>
+          </div>
+          <div className="text-2xl font-bold">
             {price}
             {showWeekText && <span className="text-sm text-muted-foreground"> / {t('common.week')}</span>}
           </div>
+        </CardHeader>
+        <CardContent className="flex-1">
           <ul className="space-y-2">
             {items.map((item, index) => (
               <li key={index} className="flex items-center gap-2">
