@@ -27,6 +27,14 @@ interface Category {
   items: string[]
 }
 
+enum CategoryKey {
+  Vegetables = "vegetables",
+  Fruits = "fruits",
+  Greens = "greens",
+  Nuts = "nuts",
+  Mushrooms = "mushrooms"
+}
+
 export function AvailableItemsModal({ isOpen, onClose }: AvailableItemsModalProps) {
   const t = useTranslations("availableItems")
 
@@ -52,11 +60,40 @@ export function AvailableItemsModal({ isOpen, onClose }: AvailableItemsModalProp
                     <span>{typedCategory.title}</span>
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                    {typedCategory.items.map((item: string) => (
-                      <Badge key={item} variant="outline" className="bg-emerald-50 justify-start">
-                        {item}
-                      </Badge>
-                    ))}
+                    {typedCategory.items.map((item: string) => {
+                      let bgColor = "bg-emerald-50"
+                      
+                      // Set background color based on category
+                      switch (categoryKey) {
+                        case CategoryKey.Vegetables:
+                          bgColor = "bg-emerald-100"
+                          break
+                        case CategoryKey.Fruits:
+                          bgColor = "bg-orange-100"
+                          break
+                        case CategoryKey.Greens:
+                          bgColor = "bg-lime-100"
+                          break
+                        case CategoryKey.Nuts:
+                          bgColor = "bg-purple-100"
+                          break
+                        case CategoryKey.Mushrooms:
+                          bgColor = "bg-stone-100"
+                          break
+                        default:
+                          bgColor = "bg-emerald-50"
+                      }
+
+                      return (
+                        <Badge 
+                          key={item} 
+                          variant="outline" 
+                          className={`${bgColor} justify-start`}
+                        >
+                          {item}
+                        </Badge>
+                      )
+                    })}
                   </div>
                 </div>
               )

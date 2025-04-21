@@ -228,52 +228,65 @@
       "vegetables": {
         "title": "Vegetables",
         "items": [
-          "Tomatoes",
-          "Asparagus",
-          "Artichoke",
-          "Zucchini",
           "Cucumbers",
-          "Cauliflower",
-          "Brussels Sprouts",
-          "Green Bell Pepper",
           "Radish",
-          "Green Onion",
-          "New Potatoes",
+          "Tomatoes",
+          "Snow Peas",
+          "Artichoke",
+          "Asparagus",
+          "Fennel",
+          "Eggplant",
+          "Beetroot",
+          "Green Pepper",
+          "Zucchini",
           "Broccoli",
-          "Arugula (Seasonal)",
-          "Fava Beans (Seasonal)",
-          "Green Peas (Seasonal)"
+          "Cabbage",
+          "Cauliflower",
+          "String Beans",
+          "Carrot",
+          "Potato",
+          "Taro"
         ]
       },
-      "mushrooms": {
-        "title": "Mushrooms",
-        "items": ["Champignon Mushrooms"]
+      "fruits": {
+        "title": "Fruits",
+        "items": [
+          "Avocado",
+          "Apricot",
+          "Peach",
+          "Nectarine",
+          "Banana",
+          "Cherry (Seasonal)",
+          "Melon (Seasonal)",
+          "Strawberry (Seasonal)",
+          "Medlar (Seasonal)",
+          "Orange",
+          "Lemon",
+          "Pomelo",
+          "Grapefruit"
+        ]
+      },
+      "herbs": {
+        "title": "Herbs",
+        "items": [
+          "Mint",
+          "Rocket Salad",
+          "Spinach",
+          "Green Onion",
+          "Swiss Chard",
+          "Dill",
+          "Parsley",
+          "Cilantro",
+          "Basil"
+        ]
       },
       "nuts": {
         "title": "Nuts",
         "items": ["Walnut"]
       },
-      "fruits": {
-        "title": "Fruits",
-        "items": [
-          "Pears",
-          "Melon",
-          "Pomegranate",
-          "Plums",
-          "Dragon Fruit",
-          "Loquat (Medlar)",
-          "Grapefruit",
-          "Bananas",
-          "Papaya",
-          "Strawberries (Seasonal)",
-          "Cherries (Seasonal)",
-          "Apricots (Seasonal)",
-          "Melons (Seasonal – early harvest)"
-        ]
-      },
-      "herbs": {
-        "title": "Herbs (Seasonal – Fresh Spring Herbs)",
-        "items": ["Mint", "Basil", "Parsley", "Dill", "Cilantro"]
+      "mushrooms": {
+        "title": "Mushrooms",
+        "items": ["Mushrooms"]
       }
     },
     "notes": {
