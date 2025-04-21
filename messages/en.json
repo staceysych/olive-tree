@@ -42,7 +42,6 @@
         "No commitment – just pure, farm-fresh flavor",
         "15–20 handpicked seasonal items",
         "Up to 10 kg of fresh fruits, veggies, herbs & greens"
-        
       ],
       "viewText": "View what's in season"
     },
@@ -159,7 +158,8 @@
   },
   "footer": {
     "brand": "Olive Tree",
-    "copyright": "All rights reserved."
+    "copyright": "All rights reserved.",
+    "contacts": "Contact Us"
   },
   "faq": {
     "title": "Olive Tree — FAQ",
@@ -199,6 +199,7 @@
   "metadata": {
     "title": "Olive Tree - Farm Fresh Delivery in Cyprus",
     "description": "Get fresh farm goods delivered to your doorstep in Cyprus",
+    "keywords": "farm fresh delivery, local produce Cyprus, organic vegetables, fresh fruits delivery, farm to table Cyprus, weekly vegetable delivery, fresh produce delivery, local farmers Cyprus, seasonal produce, healthy food delivery",
     "notFound": {
       "title": "Location Not Found",
       "description": "The requested location could not be found."
