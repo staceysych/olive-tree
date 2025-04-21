@@ -48,10 +48,10 @@
     "standard": {
       "title": "Standard Basket",
       "description": "Perfect for singles or couples who want a weekly dose of vibrant health.",
-      "price": "€85",
+      "price": "€80",
       "items": [
         "Weekly delivery for 1-2 people",
-        "15–20 rotating seasonal items",
+        "10–15 rotating seasonal items",
         "Up to 10 kg of fresh, nutrient-rich produce"
       ],
       "viewText": "See what's included this week"
@@ -59,10 +59,10 @@
     "family": {
       "title": "Family Basket",
       "description": "Feeding the whole family? This one's for you.",
-      "price": "€140",
+      "price": "€130",
       "items": [
         "Weekly delivery for 3–5 people",
-        "20+ rotating seasonal items",
+        "15-20 rotating seasonal items",
         "Up to 20 kg of the healthiest food around"
       ],
       "viewText": "Discover this week's harvest"
