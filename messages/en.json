@@ -313,5 +313,22 @@
   "locations": {
     "title": "Fresh Farm Goods Delivery in {location}",
     "description": "Get fresh farm goods delivered to your doorstep in {location}, Cyprus"
+  },
+  "orderConfirmation": {
+    "title": "Order Request Sent!",
+    "thankYouMessage": "Thank you for your order. We've received your request for the {basketType}.",
+    "whatHappensNext": {
+      "title": "What happens next?",
+      "steps": {
+        "review": "Our team will review your order request",
+        "contact": "We'll contact you at {email} or {phone} to confirm details",
+        "schedule": "Once confirmed, we'll schedule your first delivery to {deliveryLocation}",
+        "enjoy": "Enjoy your farm-fresh goods!"
+      }
+    },
+    "actions": {
+      "placeAnother": "← Place Another Order",
+      "browse": "Browse Baskets"
+    }
   }
 }

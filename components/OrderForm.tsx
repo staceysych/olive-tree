@@ -19,12 +19,21 @@ import { toast } from "@/components/ui/use-toast"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { sendOrderEmail } from "@/utils/send-email"
 import { formatDeliveryPreference } from "@/utils/formatDeliveryPreference"
+import { OrderConfirmationCard } from "@/components/OrderConfirmationCard"
 
 export function OrderForm() {
   const t = useTranslations()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { selectedBasketType, setSelectedBasketType } = useBasket()
   const formRef = useRef<HTMLFormElement>(null!)
+  const confirmationCardRef = useRef<HTMLDivElement>(null)
+  const [showConfirmation, setShowConfirmation] = useState(false)
+  const [submittedData, setSubmittedData] = useState<{
+    basketType: string;
+    email: string;
+    phone: string;
+    deliveryLocation: string;
+  } | null>(null)
 
   const formSchema = z.object({
     name: z.string().min(2, {
@@ -98,7 +107,11 @@ export function OrderForm() {
     form.setValue("deliveryPreference", preference)
   }, [form.watch("deliveryMorning"), form.watch("deliveryEvening"), form.watch("deliveryFriday"), form.watch("deliverySunday")])
 
-
+  useEffect(() => {
+    if (showConfirmation && confirmationCardRef.current) {
+      confirmationCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [showConfirmation])
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
@@ -123,11 +136,15 @@ export function OrderForm() {
         notes: trimmedValues.notes,
       })
       
-      toast({
-        title: t("order.orderForm.success.title"),
-        description: t("order.orderForm.success.description"),
-        variant: "success",
+      // Store submitted data for confirmation card
+      setSubmittedData({
+        basketType: t(`order.orderForm.basket.options.${trimmedValues.basket.toLowerCase()}`),
+        email: trimmedValues.email,
+        phone: trimmedValues.phone,
+        deliveryLocation: trimmedValues.address,
       })
+      setShowConfirmation(true)
+      
       form.reset()
       setSelectedBasketType(null)
     } catch (error) {
@@ -140,6 +157,19 @@ export function OrderForm() {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  if (showConfirmation && submittedData) {
+    return (
+      <OrderConfirmationCard
+        ref={confirmationCardRef}
+        {...submittedData}
+        onPlaceAnotherOrder={() => {
+          setShowConfirmation(false)
+          setSubmittedData(null)
+        }}
+      />
+    )
   }
 
   return (
