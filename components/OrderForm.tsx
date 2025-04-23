@@ -29,16 +29,21 @@ export function OrderForm() {
   const formSchema = z.object({
     name: z.string().min(2, {
       message: t("order.orderForm.name.error"),
-    }),
-    email: z.string().email({
-      message: t("order.orderForm.email.error"),
-    }),
+    }).trim(),
+    email: z.string()
+      .transform(val => val.trim())
+      .refine(val => val.length > 0, {
+        message: t("order.orderForm.email.error"),
+      })
+      .refine(val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), {
+        message: t("order.orderForm.email.error"),
+      }),
     phone: z.string().min(8, {
       message: t("order.orderForm.phone.error"),
-    }),
+    }).trim(),
     address: z.string().min(2, {
       message: t("order.orderForm.address.error"),
-    }),
+    }).trim(),
     basket: z.nativeEnum(BasketType, {
       required_error: t("order.orderForm.basket.error"),
     }),
@@ -98,15 +103,24 @@ export function OrderForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
     try {
+      const trimmedValues = {
+        ...values,
+        name: values.name.trim(),
+        email: values.email.trim(),
+        phone: values.phone.trim(),
+        address: values.address.trim(),
+        notes: values.notes?.trim() || '',
+      }
+
       await sendOrderEmail({
-        name: values.name,
-        email: values.email,
-        phone: values.phone,
-        location: values.address,
-        basket: values.basket,
-        deliveryPreference: values.deliveryPreference || 'Anytime',
-        promotion: values.promotion || 'N/A',
-        notes: values.notes,
+        name: trimmedValues.name,
+        email: trimmedValues.email,
+        phone: trimmedValues.phone,
+        location: trimmedValues.address,
+        basket: trimmedValues.basket,
+        deliveryPreference: trimmedValues.deliveryPreference || 'Anytime',
+        promotion: trimmedValues.promotion || 'N/A',
+        notes: trimmedValues.notes,
       })
       
       toast({
