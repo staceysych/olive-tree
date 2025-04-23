@@ -74,9 +74,6 @@ export const OrderConfirmationCard = forwardRef<HTMLDivElement, OrderConfirmatio
               >
                 {t("actions.placeAnother")}
               </Button>
-              <Button className="flex-1 bg-emerald-600 hover:bg-emerald-700 shadow-sm" asChild>
-                <Link href="/baskets">{t("actions.browse")}</Link>
-              </Button>
             </div>
           </div>
         </CardContent>
