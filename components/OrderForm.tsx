@@ -65,7 +65,14 @@ export function OrderForm() {
     basket: z.nativeEnum(BasketType, {
       required_error: t("order.orderForm.basket.error"),
     }),
-    customizedItems: z.record(z.string(), z.array(z.string())).optional(),
+    customizedItems: z.record(z.string(), z.array(z.string()))
+      .optional()
+      .refine(
+        (val) => !val || Object.keys(val).length >= 3,
+        {
+          message: t("order.orderForm.customization.error.minCategories"),
+        }
+      ),
     deliveryFriday: z.boolean().default(false).optional(),
     deliverySunday: z.boolean().default(false).optional(),
     deliveryPreference: z.string().optional(),
@@ -272,17 +279,28 @@ export function OrderForm() {
 
             {form.watch("basket") && (
               <div className="space-y-3 bg-muted/50 p-4 rounded-lg border border-border">
-                <div className="font-medium">{t("order.orderForm.customization.title")}</div>
-                <p className="text-sm text-muted-foreground">{t("order.orderForm.customization.description")}</p>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 border-gray-400 transition-colors"
-                  onClick={() => setIsCustomizationModalOpen(true)}
-                >
-                  <Settings className="mr-2 h-4 w-4" />
-                  {t("order.orderForm.customization.button")}
-                </Button>
+                <FormField
+                  control={form.control}
+                  name="customizedItems"
+                  render={({ field }) => (
+                    <FormItem>
+                      <div className="font-medium">{t("order.orderForm.customization.title")}</div>
+                      <p className="text-sm text-muted-foreground">{t("order.orderForm.customization.description")}</p>
+                      <FormControl>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 border-gray-400 transition-colors"
+                          onClick={() => setIsCustomizationModalOpen(true)}
+                        >
+                          <Settings className="mr-2 h-4 w-4" />
+                          {t("order.orderForm.customization.button")}
+                        </Button>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 
                 {Object.keys(excludedItems).length > 0 && (
                   <div className="mt-2 text-sm text-amber-600">

@@ -113,6 +113,9 @@
         "button": "Customize Items",
         "excludedItems": {
           "description": "The following items have been excluded from your basket:"
+        },
+        "error": {
+          "minCategories": "Please select at least 3 categories for your basket."
         }
       },
       "delivery": {
