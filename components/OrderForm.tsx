@@ -3,6 +3,7 @@
 import { useBasket } from "@/context/BasketContext"
 import { BasketType } from "@/types/basket"
 import { useTranslations } from "next-intl"
+import { Settings } from "lucide-react"
 
 import { useState, useEffect, useRef } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -20,7 +21,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { sendOrderEmail } from "@/utils/send-email"
 import { formatDeliveryPreference } from "@/utils/formatDeliveryPreference"
 import { OrderConfirmationCard } from "@/components/OrderConfirmationCard"
-
+import { BasketCustomisationModal } from "@/components/BasketCustomisationModal"
+import { getInitialItems } from "@/utils/getInitialBasketItems"
 export function OrderForm() {
   const t = useTranslations()
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -28,12 +30,18 @@ export function OrderForm() {
   const formRef = useRef<HTMLFormElement>(null!)
   const confirmationCardRef = useRef<HTMLDivElement>(null)
   const [showConfirmation, setShowConfirmation] = useState(false)
+  const [isCustomizationModalOpen, setIsCustomizationModalOpen] = useState(false)
   const [submittedData, setSubmittedData] = useState<{
     basketType: string;
     email: string;
     phone: string;
     deliveryLocation: string;
   } | null>(null)
+  const [excludedItems, setExcludedItems] = useState<Record<string, string[]>>({})
+
+  const itemsCategories = t.raw("availableItems.categories")
+  const [customizedItems, setCustomizedItems] = useState<Record<string, string[]>>(getInitialItems(itemsCategories));
+
 
   const formSchema = z.object({
     name: z.string().min(2, {
@@ -56,6 +64,7 @@ export function OrderForm() {
     basket: z.nativeEnum(BasketType, {
       required_error: t("order.orderForm.basket.error"),
     }),
+    customizedItems: z.record(z.string(), z.array(z.string())).optional(),
     deliveryMorning: z.boolean().default(false).optional(),
     deliveryEvening: z.boolean().default(false).optional(),
     deliveryFriday: z.boolean().default(false).optional(),
@@ -74,6 +83,7 @@ export function OrderForm() {
       email: "",
       phone: "",
       address: "",
+      customizedItems,
       deliveryMorning: false,
       deliveryEvening: false,
       deliveryFriday: false,
@@ -141,6 +151,7 @@ export function OrderForm() {
         basketType: t(`order.orderForm.basket.options.${trimmedValues.basket.toLowerCase()}`),
         email: trimmedValues.email,
         phone: trimmedValues.phone,
+        
         deliveryLocation: trimmedValues.address,
       })
       setShowConfirmation(true)
@@ -157,6 +168,15 @@ export function OrderForm() {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  const handleSaveCustomization = (selectedItems: Record<string, string[]>) => {
+    setCustomizedItems(selectedItems)
+    form.setValue("customizedItems", selectedItems)
+  }
+
+  const handleExcludedItems = (excluded: Record<string, string[]>) => {
+    setExcludedItems(excluded)
   }
 
   if (showConfirmation && submittedData) {
@@ -251,6 +271,36 @@ export function OrderForm() {
                 </FormItem>
               )}
             />
+
+            {form.watch("basket") && (
+              <div className="space-y-3 bg-muted/50 p-4 rounded-lg border border-border">
+                <div className="font-medium">{t("order.orderForm.customization.title")}</div>
+                <p className="text-sm text-muted-foreground">{t("order.orderForm.customization.description")}</p>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 border-gray-400 transition-colors"
+                  onClick={() => setIsCustomizationModalOpen(true)}
+                >
+                  <Settings className="mr-2 h-4 w-4" />
+                  {t("order.orderForm.customization.button")}
+                </Button>
+                
+                {Object.keys(excludedItems).length > 0 && (
+                  <div className="mt-2 text-sm text-amber-600">
+                    <p className="text-sm text-muted-foreground mb-2 text-amber-600">{t("order.orderForm.customization.excludedItems.description")}</p>
+                    <ul className="list-disc pl-4 mt-1">
+                      {Object.entries(excludedItems).map(([category, items]) => (
+                        <li key={category}>
+                          <span className="font-medium">{itemsCategories[category].title}:</span>{" "}
+                          {items.join(", ")}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
 
             {form.watch("basket") && form.watch("basket") !== BasketType.TRIAL && (
               <FormField
@@ -396,6 +446,15 @@ export function OrderForm() {
           </form>
         </Form>
       </CardContent>
+
+      <BasketCustomisationModal
+        isOpen={isCustomizationModalOpen}
+        onClose={() => setIsCustomizationModalOpen(false)}
+        basketType={form.watch("basket") || ""}
+        onSaveCustomization={handleSaveCustomization}
+        initialSelections={customizedItems}
+        onExcludedItems={handleExcludedItems}
+      />
     </Card>
   )
 }

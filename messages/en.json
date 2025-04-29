@@ -107,6 +107,14 @@
           "family": "Family Basket - €130/week"
         }
       },
+      "customization": {
+        "title": "Customize Your Basket",
+        "description": "Want to make changes to your basket? Let us know your preferences.",
+        "button": "Customize Items",
+        "excludedItems": {
+          "description": "The following items have been excluded from your basket:"
+        }
+      },
       "delivery": {
         "title": "Delivery Preference",
         "time": {
@@ -225,6 +233,15 @@
   "availableItems": {
     "title": "Available Items",
     "description": "Here's what's currently available in our farm-fresh selection. Items may vary based on seasonal availability.",
+    "modal": {
+      "title": "Customize Your Basket",
+      "description": "Select the items you'd like to include in your basket. Unselected items will be excluded from your delivery.",
+      "selectAll": "Select All",
+      "clearAll": "Clear All",
+      "itemsSelected": "{selectedCount} of {totalCount} items selected",
+      "save": "Save Preferences",
+      "cancel": "Cancel"
+    },
     "categories": {
       "vegetables": {
         "title": "Vegetables",
