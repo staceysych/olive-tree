@@ -66,8 +66,6 @@ export function OrderForm() {
       required_error: t("order.orderForm.basket.error"),
     }),
     customizedItems: z.record(z.string(), z.array(z.string())).optional(),
-    deliveryMorning: z.boolean().default(false).optional(),
-    deliveryEvening: z.boolean().default(false).optional(),
     deliveryFriday: z.boolean().default(false).optional(),
     deliverySunday: z.boolean().default(false).optional(),
     deliveryPreference: z.string().optional(),
@@ -85,8 +83,6 @@ export function OrderForm() {
       phone: "",
       address: "",
       customizedItems,
-      deliveryMorning: false,
-      deliveryEvening: false,
       deliveryFriday: false,
       deliverySunday: false,
       deliveryPreference: "",
@@ -110,13 +106,11 @@ export function OrderForm() {
   }, [form.watch("basket")])
 
   useEffect(() => {
-    const morning = form.watch("deliveryMorning")
-    const evening = form.watch("deliveryEvening")
     const friday = form.watch("deliveryFriday")
     const sunday = form.watch("deliverySunday")
-    const preference = formatDeliveryPreference(morning, evening, friday, sunday)
+    const preference = formatDeliveryPreference(false, false, friday, sunday)
     form.setValue("deliveryPreference", preference)
-  }, [form.watch("deliveryMorning"), form.watch("deliveryEvening"), form.watch("deliveryFriday"), form.watch("deliverySunday")])
+  }, [form.watch("deliveryFriday"), form.watch("deliverySunday")])
 
   useEffect(() => {
     if (showConfirmation && confirmationCardRef.current) {
@@ -360,38 +354,6 @@ export function OrderForm() {
               <div className="mb-2 font-medium">{t("order.orderForm.delivery.title")}</div>
               
               <div className="space-y-2">
-                <div className="text-sm font-medium text-muted-foreground">{t("order.orderForm.delivery.time.title")}</div>
-                <FormField
-                  control={form.control}
-                  name="deliveryMorning"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                      <FormControl>
-                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                      </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel>{t("order.orderForm.delivery.morning.label")}</FormLabel>
-                      </div>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="deliveryEvening"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                      <FormControl>
-                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                      </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel>{t("order.orderForm.delivery.evening.label")}</FormLabel>
-                      </div>
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="space-y-2">
                 <div className="text-sm font-medium text-muted-foreground">{t("order.orderForm.delivery.day.title")}</div>
                 <FormField
                   control={form.control}
@@ -423,7 +385,11 @@ export function OrderForm() {
                 />
               </div>
 
-              <div className="text-sm text-muted-foreground">{t("order.orderForm.delivery.hint")}</div>
+              <div className="text-sm text-muted-foreground">
+                <p className="mt-2">
+                  {t("order.orderForm.delivery.morningInfo")}
+                </p>
+              </div>
             </div>
 
             <FormField

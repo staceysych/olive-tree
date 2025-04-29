@@ -123,19 +123,13 @@
         "day": {
           "title": "Day"
         },
-        "morning": {
-          "label": "Morning (8am - 12pm)"
-        },
-        "evening": {
-          "label": "Evening (4pm - 8pm)"
-        },
         "friday": {
           "label": "Friday"
         },
         "sunday": {
           "label": "Sunday"
         },
-        "hint": "Select your preferred delivery time slots and days."
+        "morningInfo": "To ensure maximum freshness, we deliver all orders between 9am and 1pm."
       },
       "promotion": {
         "title": "Promotional Offer",
