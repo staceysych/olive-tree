@@ -36,6 +36,7 @@ export type OrderFormData = {
   deliveryPreference?: string;
   promotion?: string;
   notes?: string;
+  customizedItems?: Record<string, string[]>;
 };
 
 export const sendOrderEmail = async (data: OrderFormData) => {

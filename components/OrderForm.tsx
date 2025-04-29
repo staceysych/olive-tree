@@ -39,8 +39,9 @@ export function OrderForm() {
   } | null>(null)
   const [excludedItems, setExcludedItems] = useState<Record<string, string[]>>({})
 
-  const itemsCategories = t.raw("availableItems.categories")
-  const [customizedItems, setCustomizedItems] = useState<Record<string, string[]>>(getInitialItems(itemsCategories));
+  const itemsCategories = t.raw("availableItems.categories");
+  const initialItems = getInitialItems(itemsCategories);
+  const [customizedItems, setCustomizedItems] = useState<Record<string, string[]>>(initialItems);
 
 
   const formSchema = z.object({
@@ -135,7 +136,7 @@ export function OrderForm() {
         notes: values.notes?.trim() || '',
       }
 
-      await sendOrderEmail({
+       await sendOrderEmail({
         name: trimmedValues.name,
         email: trimmedValues.email,
         phone: trimmedValues.phone,
@@ -144,6 +145,7 @@ export function OrderForm() {
         deliveryPreference: trimmedValues.deliveryPreference || 'Anytime',
         promotion: trimmedValues.promotion || 'N/A',
         notes: trimmedValues.notes,
+        customizedItems: trimmedValues.customizedItems,
       })
       
       // Store submitted data for confirmation card
@@ -151,13 +153,15 @@ export function OrderForm() {
         basketType: t(`order.orderForm.basket.options.${trimmedValues.basket.toLowerCase()}`),
         email: trimmedValues.email,
         phone: trimmedValues.phone,
-        
         deliveryLocation: trimmedValues.address,
       })
       setShowConfirmation(true)
       
+      // Reset form and customized items
       form.reset()
       setSelectedBasketType(null)
+      setCustomizedItems(initialItems)
+      setExcludedItems({})
     } catch (error) {
       console.error("Failed to send email:", error)
       toast({
