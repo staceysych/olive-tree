@@ -37,11 +37,11 @@
     "trial": {
       "title": "Trial Basket",
       "description": "Curious to taste the difference? Try our one-time basket packed with nature's best.",
-      "price": "Only €90",
+      "price": "Only €60",
       "items": [
         "No commitment – just pure, farm-fresh flavor",
-        "15–20 handpicked seasonal items",
-        "Up to 10 kg of fresh fruits, veggies, herbs & greens"
+        "Over 10 handpicked seasonal items",
+        "Over 10 kg of fresh fruits, veggies, herbs & greens"
       ],
       "viewText": "View what's in season"
     },
@@ -51,8 +51,8 @@
       "price": "€80",
       "items": [
         "Weekly delivery for 1-2 people",
-        "10–15 rotating seasonal items",
-        "Up to 10 kg of fresh, nutrient-rich produce"
+        "Over 15 rotating seasonal items in every box (fruits, veggies, berries, and greens)",
+        "Over 15 kg of fresh, nutrient-rich produce"
       ],
       "viewText": "See what's included this week"
     },
@@ -62,8 +62,8 @@
       "price": "€130",
       "items": [
         "Weekly delivery for 3–5 people",
-        "15-20 rotating seasonal items",
-        "Up to 20 kg of the healthiest food around"
+        "Over 20 rotating seasonal items in every box (fruits, veggies, berries, and greens)",
+        "Over 20 kg of the healthiest food around"
       ],
       "viewText": "Discover this week's harvest"
     }
