@@ -102,7 +102,7 @@
         "placeholder": "Select a basket",
         "error": "Please select a basket.",
         "options": {
-          "trial": "Trial Basket - €90 (One-time)",
+          "trial": "Trial Basket - €60 (One-time)",
           "standard": "Standard Basket - €80/week",
           "family": "Family Basket - €130/week"
         }
