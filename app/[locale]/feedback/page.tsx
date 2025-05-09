@@ -72,9 +72,6 @@ export default function FeedbackPage() {
     <div className="bg-[#f0fdf6] min-h-screen w-full">
       <div className="container max-w-2xl py-12">
         <div className="mb-10 text-center">
-          <div className="inline-block mb-4 px-4 py-1 rounded-md bg-emerald-100 text-emerald-800 text-sm font-medium">
-            {t("feedback.subtitle")}
-          </div>
           <h1 className="text-4xl font-bold mb-2 text-emerald-900">{t("feedback.title")}</h1>
           <p className="text-lg text-gray-600">
             {t("feedback.description")}

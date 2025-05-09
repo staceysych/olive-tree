@@ -225,6 +225,11 @@
     "location": {
       "title": "Olive Tree - Farm Fresh Delivery in {location}",
       "description": "Get fresh farm goods delivered to your doorstep in {location}, Cyprus"
+    },
+    "feedback": {
+      "title": "Share Your Feedback - Olive Tree",
+      "description": "Help us improve our farm-fresh delivery service by sharing your feedback. Your input helps us serve you better.",
+      "keywords": "customer feedback, farm delivery feedback, Olive Tree feedback, Cyprus farm delivery review, customer satisfaction"
     }
   },
   "availableItems": {
@@ -347,7 +352,6 @@
   },
   "feedback": {
     "title": "Share Your Feedback",
-    "subtitle": "We value your opinion",
     "description": "Help us improve by sharing your thoughts about our service.",
     "form": {
       "name": {
