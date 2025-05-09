@@ -6,9 +6,7 @@ import { useTranslations } from 'next-intl'
 import { Button } from "@/components/ui/button"
 import { OrderForm } from "@/components/OrderForm"
 import { FaqSection } from "@/components/FAQ"
-import { Header } from "@/components/Header"
 import { BasketOptions } from "@/components/BasketOptions"
-import { Footer } from "@/components/Footer"
 
 
 export default function Home() {
@@ -17,8 +15,6 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
-
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-emerald-50 to-white">
@@ -140,8 +136,6 @@ export default function Home() {
           </div>
         </section> 
       </main>
-
-      <Footer />
     </div>
   )
 }

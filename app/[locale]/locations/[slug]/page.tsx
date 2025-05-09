@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { Header } from '@/components/Header';
 import { FaqSection } from '@/components/FAQ';
 import { BasketOptions } from '@/components/BasketOptions';
+import { Footer } from '@/components/Footer';
 
 type Props = {
   params: {
@@ -60,7 +61,6 @@ export default async function LocationPage({ params }: Props) {
 
   return (
     <div className="flex min-h-screen flex-col">
-     <Header /> 
      <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-emerald-50 to-white">
@@ -182,19 +182,6 @@ export default async function LocationPage({ params }: Props) {
           </div>
         </section> 
       </main>
-
-      {/* Footer */}
-      <footer className="w-full border-t bg-white py-6 md:py-8">
-        <div className="container flex flex-col items-center justify-between gap-4 md:flex-row px-4 md:px-6">
-          <div className="flex gap-2 items-center text-xl font-bold text-emerald-700">
-            <Leaf className="h-5 w-5" />
-            <span>{t('footer.brand')}</span>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} {t('footer.brand')}. {t('footer.copyright')}
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

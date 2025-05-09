@@ -344,5 +344,47 @@
       "placeAnother": "← Place Another Order",
       "browse": "Browse Baskets"
     }
+  },
+  "feedback": {
+    "title": "Share Your Feedback",
+    "subtitle": "We value your opinion",
+    "description": "Help us improve by sharing your thoughts about our service.",
+    "form": {
+      "name": {
+        "label": "Your Name",
+        "placeholder": "Enter your name",
+        "error": "Name must be at least 2 characters long"
+      },
+      "email": {
+        "label": "Your Email",
+        "placeholder": "Enter your email address",
+        "error": "Please enter a valid email address"
+      },
+      "rating": {
+        "label": "Your Rating",
+        "error": "Please select a rating"
+      },
+      "feedback": {
+        "label": "Your Feedback",
+        "placeholder": "Tell us what you think...",
+        "error": "Feedback must be at least 10 characters long"
+      },
+      "allowDisplay": {
+        "label": "Allow us to display your feedback on our website"
+      },
+      "submit": {
+        "text": "Submit Feedback",
+        "processing": "Processing...",
+        "another": "Submit Another Feedback"
+      },
+      "success": {
+        "title": "Thank You!",
+        "description": "Your feedback has been submitted successfully."
+      },
+      "error": {
+        "title": "Error",
+        "description": "Failed to submit feedback. Please try again."
+      }
+    }
   }
 }
