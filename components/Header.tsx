@@ -13,6 +13,7 @@ import { NavLinks } from "@/components/NavLinks"
 export function Header() {
   const t = useTranslations()
   const pathname = usePathname()
+  const basePath = pathname.includes('/feedback') ? '/' : pathname;
 
 
   return (
@@ -27,7 +28,7 @@ export function Header() {
             <NavLinks />
             <LanguageSelector /> 
             <Button size="sm" asChild>
-              <Link href={createPath(pathname, '#order')}>{t('header.order')}</Link>
+              <Link href={createPath(basePath, '#order')}>{t('header.order')}</Link>
             </Button>
           </nav>
           <div className="flex items-center space-x-2 md:hidden">
