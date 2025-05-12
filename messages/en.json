@@ -257,15 +257,17 @@
           "Fennel",
           "Eggplant",
           "Beetroot",
-          "Green Pepper",
+          "Sweet Pepper",
           "Zucchini",
           "Broccoli",
-          "Cabbage",
+          "Red Cabbage",
           "Cauliflower",
           "String Beans",
           "Carrot",
           "Potato",
-          "Taro"
+          "Taro",
+          "Onion (various types)",
+          "Garlic"
         ]
       },
       "fruits": {
@@ -283,7 +285,9 @@
           "Orange",
           "Lemon",
           "Pomelo",
-          "Grapefruit"
+          "Grapefruit",
+          "Pear",
+          "Dragon Fruit"
         ]
       },
       "herbs": {
@@ -307,6 +311,13 @@
       "mushrooms": {
         "title": "Mushrooms",
         "items": ["Mushrooms"]
+      },
+      "other": {
+        "title": "Other",
+        "items": [
+          "Eggs",
+          "Honey"
+        ]
       }
     },
     "notes": {

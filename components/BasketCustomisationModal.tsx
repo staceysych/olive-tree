@@ -126,11 +126,14 @@ export function BasketCustomisationModal({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex items-center justify-between py-2">
-          <Badge variant="outline" className="bg-emerald-50">
+        <div className="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-2 py-2">
+          <Badge
+            variant="outline"
+            className="bg-emerald-50 text-emerald-800 text-base font-bold rounded-2xl px-4 py-3 w-full xs:w-auto text-center flex items-center justify-center whitespace-pre-line min-h-[48px] shadow-sm border-emerald-100/80"
+          >
             {t("modal.itemsSelected", { selectedCount: getSelectedCount(), totalCount: getTotalCount() })}
           </Badge>
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-center xs:justify-end w-full xs:w-auto">
             <Button
               variant="outline"
               size="sm"
@@ -164,10 +167,10 @@ export function BasketCustomisationModal({
 
         <ScrollArea className="h-[50vh] pr-4">
           <Tabs defaultValue="vegetables" value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid grid-cols-5 mb-4">
+            <TabsList className="grid grid-cols-6 mb-4">
               {Object.keys(categories).map((category) => (
                 <TabsTrigger key={category} value={category} className="flex items-center gap-1 text-xs md:text-sm">
-                  <span>{category === "vegetables" ? "🍅" : category === "mushrooms" ? "🍄" : category === "nuts" ? "🌰" : category === "fruits" ? "🍓" : "🌿"}</span>
+                  <span>{category === "vegetables" ? "🍅" : category === "mushrooms" ? "🍄" : category === "nuts" ? "🌰" : category === "fruits" ? "🍓" : category === "herbs" ? "🌿" : category === "other" ? "📦" : ""}</span>
                   <span className="hidden md:inline">{categories[category].title.split(" ")[0]}</span>
                 </TabsTrigger>
               ))}
