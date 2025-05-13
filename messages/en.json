@@ -401,5 +401,38 @@
         "description": "Failed to submit feedback. Please try again."
       }
     }
+  },
+  "standardBasketShowcase": {
+    "title": "This is what our Standard Basket looks like 😍",
+    "description": "We select everything so that the combinations of vegetables, fruits, and greens cover all the basic needs for the week.",
+    "whatsInSet": "What's in the set:",
+    "categories": {
+      "citrus": {
+        "title": "Citrus fruits (grapefruit, oranges, lemons)",
+        "description": "A vitamin boost!"
+      },
+      "juicy": {
+        "title": "Juicy fruits",
+        "description": "Loquat, bananas, apricots"
+      },
+      "vegetables": {
+        "title": "Vegetables",
+        "description": "Tomatoes, peppers, beets, potatoes, eggplants, zucchini, cucumbers"
+      },
+      "greens": {
+        "title": "Greens",
+        "description": "Dill, parsley, spinach, cilantro, basil — for aroma and vitamins"
+      },
+      "extras": {
+        "title": "Extras for variety",
+        "description": "Avocado, honey, and mushrooms"
+      },
+      "healthy": {
+        "title": "For healthy eating enthusiasts",
+        "description": "Cabbage (white and cauliflower) and taro"
+      }
+    },
+    "variationNote": "The set may vary depending on the season and preferences — just write to us or indicate your wishes when filling out the form.",
+    "orderButton": "Order Standard Basket Now"
   }
 }

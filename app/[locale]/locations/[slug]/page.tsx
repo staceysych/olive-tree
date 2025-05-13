@@ -11,6 +11,7 @@ import { Header } from '@/components/Header';
 import { FaqSection } from '@/components/FAQ';
 import { BasketOptions } from '@/components/BasketOptions';
 import { Footer } from '@/components/Footer';
+import { StandardBasketShowcase } from '@/components/StandardBasketShowcase';
 
 type Props = {
   params: {
@@ -141,6 +142,9 @@ export default async function LocationPage({ params }: Props) {
 
         {/* Basket Options */}
         <BasketOptions />
+
+         {/* Basket Options */}
+         <StandardBasketShowcase />
 
         {/* Order Form */}
         <section id="order" className="w-full py-12 md:py-24 bg-white">
