@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { OrderForm } from "@/components/OrderForm"
 import { FaqSection } from "@/components/FAQ"
 import { BasketOptions } from "@/components/BasketOptions"
+import { StandardBasketShowcase } from "@/components/StandardBasketShowcase"
 
 
 export default function Home() {
@@ -95,6 +96,9 @@ export default function Home() {
 
         {/* Basket Options */}
         <BasketOptions />
+
+        {/* Standard Basket Showcase */}
+        <StandardBasketShowcase />
 
         {/* Order Form */}
         <section id="order" className="w-full py-12 md:py-24 bg-white">
