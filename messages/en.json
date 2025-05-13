@@ -210,7 +210,8 @@
       },
       "feedback": {
         "question": "How do I leave feedback or suggestions?",
-        "answer": "We love hearing from you! After your order, we'll send a short feedback form. You can also message us directly through the website or email."
+        "answer": "We love hearing from you! After your order, we'll send a short feedback form. You can also message us directly through the website or email.",
+        "leaveReview": "Leave a review"
       }
     }
   },

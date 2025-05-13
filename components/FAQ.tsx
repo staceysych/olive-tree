@@ -116,6 +116,14 @@ export function FaqSection() {
                 <p className="text-muted-foreground">
                   {t("items.feedback.answer")}
                 </p>
+                <div className="mt-4">
+                  <a 
+                    href="/feedback" 
+                    className="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium"
+                  >
+                    {t("items.feedback.leaveReview")}
+                  </a>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
