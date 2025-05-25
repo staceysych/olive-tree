@@ -3,14 +3,20 @@
 import { Button } from "@/components/ui/button"
 import { BasketCard } from "@/components/BasketCard"
 import { BasketType } from "@/types/basket"
-import { List } from "lucide-react"
+import { List, ShoppingBasket } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { useState } from "react"
 import { AvailableItemsModal } from "@/components/AvailableItemsModal"
+import { useRouter } from 'next/navigation'
 
 export function BasketOptions() {
   const t = useTranslations()
   const [isItemsModalOpen, setIsItemsModalOpen] = useState(false)
+  const router = useRouter()
+
+  const handleCustomBasketClick = () => {
+    router.push('/register/create-basket')
+  }
 
   return (
     <section id="baskets" className="w-full py-12 md:py-24 bg-emerald-50">
@@ -32,7 +38,7 @@ export function BasketOptions() {
             <span>{t('baskets.seeAllButton')}</span>
           </Button>
         </div>
-        <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3 md:gap-12">
+        <div className="mx-auto grid max-w-7xl gap-4 py-12 md:grid-cols-2 md:gap-8 lg:grid-cols-4 lg:gap-12">
           <BasketCard
             title={t('baskets.trial.title')}
             description={t('baskets.trial.description')}
@@ -41,7 +47,6 @@ export function BasketOptions() {
             imageSrc="/trialBasket.jpg"
             showWeekText={false}
             basketType={BasketType.TRIAL}
-            viewText={t('baskets.trial.viewText')}
           />
           <BasketCard
             title={t('baskets.standard.title')}
@@ -50,7 +55,6 @@ export function BasketOptions() {
             items={t.raw('baskets.standard.items')}
             imageSrc="/standardBasket.jpg"
             basketType={BasketType.STANDARD}
-            viewText={t('baskets.standard.viewText')}
           />
           <BasketCard
             title={t('baskets.family.title')}
@@ -59,7 +63,17 @@ export function BasketOptions() {
             items={t.raw('baskets.family.items')}
             imageSrc="/familyBasket.jpg"
             basketType={BasketType.FAMILY}
-            viewText={t('baskets.family.viewText')}
+          />
+          <BasketCard
+            title={t('baskets.custom.title')}
+            description={t('baskets.custom.description')}
+            price={t('baskets.custom.price')}
+            showWeekText={false}
+            items={t.raw('baskets.custom.items')}
+            icon={<ShoppingBasket className="w-12 h-12 text-emerald-600" />}
+            basketType={BasketType.CUSTOM}
+            orderText={t('baskets.custom.orderText')}
+            onClick={handleCustomBasketClick}
           />
         </div>
         <AvailableItemsModal isOpen={isItemsModalOpen} onClose={() => setIsItemsModalOpen(false)} />

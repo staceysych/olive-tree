@@ -66,6 +66,18 @@
         "Over 20 kg of the healthiest food around"
       ],
       "viewText": "Discover this week's harvest"
+    },
+    "custom": {
+      "title": "Create Your Own",
+      "description": "Build a custom basket with exactly what you want.",
+      "price": "from 40€",
+      "items": [
+        "Choose exactly what goes in your basket",
+        "Select quantities for each item",
+        "One-time or recurring delivery options",
+        "Pay only for what you select"
+      ],
+      "orderText": "Create Your Basket"
     }
   },
   "order": {
