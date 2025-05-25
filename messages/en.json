@@ -351,7 +351,8 @@
   },
   "common": {
     "backToHome": "Back to Home",
-    "week": "week"
+    "week": "week",
+    "categories": "Categories"
   },
   "locations": {
     "title": "Fresh Farm Goods Delivery in {location}",
@@ -447,5 +448,343 @@
     },
     "variationNote": "The set may vary depending on the season and preferences — just write to us or indicate your wishes when filling out the form.",
     "orderButton": "Order Standard Basket Now"
+  },
+  "marketplace": {
+    "title": "Custom Marketplace",
+    "description": "Choose exactly what you want from our fresh selection of farm goods",
+    "createBasket": "Create Your Basket",
+    "categoriesTitle": "Categories",
+    "categories": {
+      "vegetables": {
+        "title": "Vegetables",
+        "items": [
+          {
+            "name": "Cucumbers",
+            "description": "Crisp and refreshing cucumbers",
+            "price": 2.8,
+            "unit": "kg"
+          },
+          {
+            "name": "Radish",
+            "description": "Fresh and peppery radishes",
+            "price": 2.5,
+            "unit": "kg"
+          },
+          {
+            "name": "Tomatoes",
+            "description": "Fresh, juicy tomatoes perfect for salads and cooking",
+            "price": 3.5,
+            "unit": "kg",
+            "image": "/market/tomatoes.jpg"
+          },
+          {
+            "name": "Snow Peas",
+            "description": "Sweet and crunchy snow peas",
+            "price": 4.0,
+            "unit": "kg"
+          },
+          {
+            "name": "Artichoke",
+            "description": "Fresh artichokes, perfect for Mediterranean dishes",
+            "price": 3.8,
+            "unit": "piece"
+          },
+          {
+            "name": "Asparagus",
+            "description": "Tender green asparagus spears",
+            "price": 4.5,
+            "unit": "bunch"
+          },
+          {
+            "name": "Fennel",
+            "description": "Aromatic fennel with its distinctive anise flavor",
+            "price": 3.2,
+            "unit": "piece"
+          },
+          {
+            "name": "Eggplant",
+            "description": "Purple eggplants, great for Mediterranean dishes",
+            "price": 3.5,
+            "unit": "kg"
+          },
+          {
+            "name": "Beetroot",
+            "description": "Sweet and earthy beetroot",
+            "price": 2.8,
+            "unit": "kg"
+          },
+          {
+            "name": "Sweet Pepper",
+            "description": "Colorful bell peppers, sweet and crunchy",
+            "price": 4.2,
+            "unit": "kg"
+          },
+          {
+            "name": "Zucchini",
+            "description": "Fresh zucchini, perfect for grilling or baking",
+            "price": 3.0,
+            "unit": "kg"
+          },
+          {
+            "name": "Broccoli",
+            "description": "Fresh green broccoli florets",
+            "price": 3.5,
+            "unit": "kg"
+          },
+          {
+            "name": "Red Cabbage",
+            "description": "Crisp and colorful red cabbage",
+            "price": 2.5,
+            "unit": "kg"
+          },
+          {
+            "name": "Cauliflower",
+            "description": "Fresh white cauliflower heads",
+            "price": 3.2,
+            "unit": "piece"
+          },
+          {
+            "name": "String Beans",
+            "description": "Tender green string beans",
+            "price": 3.8,
+            "unit": "kg"
+          },
+          {
+            "name": "Carrot",
+            "description": "Sweet and crunchy carrots",
+            "price": 2.2,
+            "unit": "kg"
+          },
+          {
+            "name": "Potato",
+            "description": "Fresh potatoes, perfect for any meal",
+            "price": 1.8,
+            "unit": "kg"
+          },
+          {
+            "name": "Taro",
+            "description": "Traditional Cypriot taro root",
+            "price": 3.5,
+            "unit": "kg"
+          },
+          {
+            "name": "Onion (various types)",
+            "description": "Fresh onions including red, white, and yellow varieties",
+            "price": 2.0,
+            "unit": "kg"
+          },
+          {
+            "name": "Garlic",
+            "description": "Fresh local garlic bulbs",
+            "price": 3.0,
+            "unit": "kg"
+          }
+        ]
+      },
+      "fruits": {
+        "title": "Fruits",
+        "items": [
+          {
+            "name": "Avocado",
+            "description": "Creamy and nutritious avocados",
+            "price": 4.5,
+            "unit": "piece",
+            "image": "/market/avocado.jpg"
+          },
+          {
+            "name": "Apricot",
+            "description": "Sweet and juicy apricots",
+            "price": 3.8,
+            "unit": "kg"
+          },
+          {
+            "name": "Peach",
+            "description": "Juicy and fragrant peaches",
+            "price": 3.5,
+            "unit": "kg"
+          },
+          {
+            "name": "Nectarine",
+            "description": "Sweet and smooth nectarines",
+            "price": 3.6,
+            "unit": "kg"
+          },
+          {
+            "name": "Banana",
+            "description": "Sweet and nutritious bananas",
+            "price": 2.8,
+            "unit": "kg"
+          },
+          {
+            "name": "Cherry",
+            "description": "Sweet and tart cherries",
+            "price": 5.5,
+            "unit": "kg"
+          },
+          {
+            "name": "Melon",
+            "description": "Sweet and refreshing melons",
+            "price": 3.2,
+            "unit": "piece"
+          },
+          {
+            "name": "Strawberry",
+            "description": "Sweet and fragrant strawberries",
+            "price": 4.5,
+            "unit": "kg",
+            "image": "/market/strawberry.jpg"
+          },
+          {
+            "name": "Medlar",
+            "description": "Unique and flavorful medlars",
+            "price": 4.0,
+            "unit": "kg"
+          },
+          {
+            "name": "Orange",
+            "description": "Sweet and juicy oranges, packed with vitamin C",
+            "price": 2.5,
+            "unit": "kg"
+          },
+          {
+            "name": "Lemon",
+            "description": "Fresh and tangy lemons",
+            "price": 2.8,
+            "unit": "kg",
+            "image": "/market/lemons.jpg"
+          },
+          {
+            "name": "Pomelo",
+            "description": "Large and sweet pomelos",
+            "price": 3.5,
+            "unit": "piece"
+          },
+          {
+            "name": "Grapefruit",
+            "description": "Tangy and refreshing grapefruits",
+            "price": 2.8,
+            "unit": "kg"
+          },
+          {
+            "name": "Pear",
+            "description": "Sweet and juicy pears",
+            "price": 3.2,
+            "unit": "kg"
+          },
+          {
+            "name": "Dragon Fruit",
+            "description": "Exotic and refreshing dragon fruit",
+            "price": 5.0,
+            "unit": "piece"
+          }
+        ]
+      },
+      "herbs": {
+        "title": "Herbs",
+        "items": [
+          {
+            "name": "Mint",
+            "description": "Fresh mint leaves, perfect for teas and cooking",
+            "price": 1.2,
+            "unit": "bunch"
+          },
+          {
+            "name": "Rocket Salad",
+            "description": "Peppery and fresh rocket leaves",
+            "price": 2.5,
+            "unit": "bunch"
+          },
+          {
+            "name": "Spinach",
+            "description": "Fresh and nutritious spinach leaves",
+            "price": 2.8,
+            "unit": "bunch"
+          },
+          {
+            "name": "Green Onion",
+            "description": "Fresh green onions with their mild flavor",
+            "price": 1.5,
+            "unit": "bunch"
+          },
+          {
+            "name": "Swiss Chard",
+            "description": "Colorful and nutritious Swiss chard",
+            "price": 2.2,
+            "unit": "bunch"
+          },
+          {
+            "name": "Dill",
+            "description": "Fresh dill, perfect for fish and salads",
+            "price": 1.3,
+            "unit": "bunch"
+          },
+          {
+            "name": "Parsley",
+            "description": "Fresh parsley, essential for many dishes",
+            "price": 1.0,
+            "unit": "bunch"
+          },
+          {
+            "name": "Cilantro",
+            "description": "Fresh cilantro with its distinctive flavor",
+            "price": 1.2,
+            "unit": "bunch"
+          },
+          {
+            "name": "Basil",
+            "description": "Fresh basil leaves, aromatic and flavorful",
+            "price": 1.5,
+            "unit": "bunch"
+          }
+        ]
+      },
+      "nuts": {
+        "title": "Nuts",
+        "items": [
+          {
+            "name": "Walnut",
+            "description": "Fresh local walnuts, rich in omega-3",
+            "price": 8.5,
+            "unit": "kg"
+          }
+        ]
+      },
+      "mushrooms": {
+        "title": "Mushrooms",
+        "items": [
+          {
+            "name": "Mushrooms",
+            "description": "Fresh local mushrooms, perfect for cooking",
+            "price": 4.5,
+            "unit": "kg"
+          }
+        ]
+      },
+      "other": {
+        "title": "Other",
+        "items": [
+          {
+            "name": "Eggs",
+            "description": "Fresh eggs from free-range chickens",
+            "price": 3.6,
+            "unit": "dozen"
+          },
+          {
+            "name": "Honey",
+            "description": "Pure honey from local beekeepers",
+            "price": 8.5,
+            "unit": "jar"
+          }
+        ]
+      }
+    }
+  },
+  "basketSidebar": {
+    "title": "Your Basket",
+    "empty": "Your basket is empty",
+    "totalItems": "Total Items",
+    "totalPrice": "Total Price",
+    "proceedToCheckout": "Proceed to Checkout",
+    "minimumOrder": "Minimum order amount:"
   }
 }
