@@ -13,7 +13,7 @@ import { NavLinks } from "@/components/NavLinks"
 export function Header() {
   const t = useTranslations()
   const pathname = usePathname()
-  const basePath = pathname.includes('/feedback') ? '/' : pathname;
+  const basePath = ['/feedback', '/register'].some(path => pathname.includes(path)) ? '/' : pathname;
 
 
   return (

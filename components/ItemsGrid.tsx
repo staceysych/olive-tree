@@ -17,8 +17,8 @@ export function ItemsGrid({ items, onAddToBasket, onRemoveFromBasket, getItemQua
         return (
           <div
             key={item.id}
-            className={`flex flex-col justify-between h-full bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-all ${
-              quantity > 0 ? 'bg-emerald-50/50 border-emerald-100' : ''
+            className={`flex flex-col justify-between h-full rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-all ${
+              quantity > 0 ? 'bg-emerald-50/50 border-emerald-100' : 'bg-white'
             }`}
           >
             <div>

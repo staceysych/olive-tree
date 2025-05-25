@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button"
 import { Trash2 } from "lucide-react"
 import type { BasketItem } from "@/app/[locale]/register/create-basket/page"
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { CheckoutModal } from './CheckoutModal'
 
 interface BasketSidebarProps {
   basketItems: BasketItem[]
@@ -19,6 +22,16 @@ export function BasketSidebar({
   onRemoveItem,
 }: BasketSidebarProps) {
   const t = useTranslations('basketSidebar')
+  const router = useRouter()
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false)
+
+  const handleOrderNow = () => {
+    router.push('/register/confirm-order')
+  }
+
+  const handleCreateAccount = () => {
+    router.push('/register')
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 min-h-[300px] flex flex-col">
@@ -86,10 +99,21 @@ export function BasketSidebar({
         <Button 
           className="w-full bg-emerald-600 hover:bg-emerald-700" 
           disabled={basketItems.length === 0 || totalPrice < 40}
+          onClick={() => setIsCheckoutModalOpen(true)}
         >
           {t('proceedToCheckout')}
         </Button>
       </div>
+
+      <CheckoutModal
+        isOpen={isCheckoutModalOpen}
+        onClose={() => setIsCheckoutModalOpen(false)}
+        basketItems={basketItems}
+        totalPrice={totalPrice}
+        totalItems={totalItems}
+        onOrderNow={handleOrderNow}
+        onCreateAccount={handleCreateAccount}
+      />
     </div>
   )
 } 

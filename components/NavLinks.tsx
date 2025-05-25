@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl"
 export const NavLinks = ({onClick}: {onClick?: () => void}) => {
     const pathname = usePathname()
     const t = useTranslations();
-    const basePath = pathname.includes('/feedback') ? '/' : pathname;
+    const basePath = ['/feedback', '/register'].some(path => pathname.includes(path)) ? '/' : pathname;
 
     return (
         <>

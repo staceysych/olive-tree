@@ -786,5 +786,39 @@
     "totalPrice": "Total Price",
     "proceedToCheckout": "Proceed to Checkout",
     "minimumOrder": "Minimum order amount:"
+  },
+  "checkoutModal": {
+    "title": "Checkout Options",
+    "description": "Choose how you'd like to proceed with your custom basket",
+    "orderSummary": {
+      "title": "Order Summary",
+      "items": "Items:",
+      "moreItems": "+{count} more items"
+    },
+    "createAccount": {
+      "title": "Create Account & Save",
+      "recommended": "Recommended",
+      "description": "Create an account to save your basket and enjoy additional benefits.",
+      "benefits": {
+        "saveBasket": "Save your custom basket for future orders",
+        "trackOrders": "Track order history and preferences",
+        "fasterCheckout": "Faster checkout for future orders",
+        "exclusiveOffers": "Exclusive member offers and updates"
+      },
+      "button": "Create Account"
+    },
+    "orderNow": {
+      "title": "Order Now",
+      "quickAndEasy": "Quick & Easy",
+      "description": "Place your order immediately as a guest. Perfect for one-time purchases.",
+      "benefits": {
+        "proceedToForm": "Proceed directly to order form",
+        "noAccount": "No account required",
+        "fastestCheckout": "Fastest checkout process",
+        "basketNotSaved": "Basket will not be saved"
+      },
+      "button": "Order Now"
+    },
+    "continueShopping": "Continue Shopping"
   }
 }
