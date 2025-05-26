@@ -1,3 +1,5 @@
+import { BasketItem } from "@/app/[locale]/register/create-basket/page"
+
 export type OrderFormData = {
   name: string;
   email: string;
@@ -8,6 +10,7 @@ export type OrderFormData = {
   promotion?: string;
   notes?: string;
   customizedItems?: Record<string, string[]>;
+  customBasketItems?: BasketItem[];
 };
 
 export const sendOrderEmail = async (data: OrderFormData) => {

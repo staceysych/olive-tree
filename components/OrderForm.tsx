@@ -8,7 +8,7 @@ import { Settings } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { custom, z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -22,8 +22,11 @@ import { sendOrderEmail } from "@/utils/send-email"
 import { formatDeliveryPreference } from "@/utils/formatDeliveryPreference"
 import { OrderConfirmationCard } from "@/components/OrderConfirmationCard"
 import { BasketCustomisationModal } from "@/components/BasketCustomisationModal"
-import { getInitialItems } from "@/utils/getInitialBasketItems"
-export function OrderForm() {
+import { getInitialItems } from "@/utils/getInitialBasketItems";
+import { BasketItem } from "@/app/[locale]/register/create-basket/page"
+
+
+export function OrderForm({customBasketItems}: {customBasketItems?: BasketItem[]}) {
   const t = useTranslations()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { selectedBasketType, setSelectedBasketType } = useBasket()
@@ -99,6 +102,14 @@ export function OrderForm() {
     },
   })
 
+  // Set custom basket type if customBasketItems is provided
+  useEffect(() => {
+    if (customBasketItems) {
+      setSelectedBasketType(BasketType.CUSTOM);
+      form.setValue("basket", BasketType.CUSTOM);
+    }
+  }, [customBasketItems, form, setSelectedBasketType]);
+
   useEffect(() => {
     if (selectedBasketType) {
       form.setValue("basket", selectedBasketType)
@@ -147,11 +158,12 @@ export function OrderForm() {
         promotion: trimmedValues.promotion || 'N/A',
         notes: trimmedValues.notes,
         customizedItems: trimmedValues.customizedItems,
+        customBasketItems: customBasketItems || undefined,
       })
       
       // Store submitted data for confirmation card
       setSubmittedData({
-        basketType: t(`order.orderForm.basket.options.${trimmedValues.basket.toLowerCase()}`),
+        basketType: customBasketItems ? 'Custom Basket' : t(`order.orderForm.basket.options.${trimmedValues.basket.toLowerCase()}`),
         email: trimmedValues.email,
         phone: trimmedValues.phone,
         deliveryLocation: trimmedValues.address,
@@ -192,6 +204,7 @@ export function OrderForm() {
         onPlaceAnotherOrder={() => {
           setShowConfirmation(false)
           setSubmittedData(null)
+          window.location.reload()
         }}
       />
     )
@@ -254,6 +267,8 @@ export function OrderForm() {
                 </FormItem>
               )}
             />
+
+            {!customBasketItems && <>
             <FormField
               control={form.control}
               name="basket"
@@ -367,6 +382,7 @@ export function OrderForm() {
                 )}
               />
             )}
+            </>}
 
             <div className="space-y-3">
               <div className="mb-2 font-medium">{t("order.orderForm.delivery.title")}</div>

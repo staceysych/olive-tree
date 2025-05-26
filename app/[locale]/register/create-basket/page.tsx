@@ -23,6 +23,7 @@ interface MarketplaceItem {
   price: number
   unit: string
   image: string
+  key: string
 }
 
 export interface BasketItem {
@@ -33,6 +34,7 @@ export interface BasketItem {
   quantity: number
   image: string
   category: string
+  key: string
 }
 
 export interface MarketItem {
@@ -43,7 +45,8 @@ export interface MarketItem {
   unit: string
   image: string
   category: string
-  inSeason: boolean
+  inSeason: boolean;
+  key: string;
 }
 
 export default function CreateBasketPage() {
@@ -76,6 +79,7 @@ export default function CreateBasketPage() {
       image: item.image || "/placeholder.svg?height=200&width=200",
       category,
       inSeason: true,
+      key: item.key,
     }))
   )
 
@@ -101,6 +105,7 @@ export default function CreateBasketPage() {
             quantity: quantity,
             image: item.image,
             category: item.category,
+            key: item.key,
           },
         ]
       }

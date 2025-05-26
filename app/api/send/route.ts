@@ -1,15 +1,14 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { BasketItem } from "@/app/[locale]/register/create-basket/page";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-type CustomizedItems = {
-  [key: string]: string[];
-};
+type CustomizedItems = Record<string, string[]>;
 
 export async function POST(request: Request) {
   try {
-    const { name, email, phone, location, basket, deliveryPreference, promotion, notes, customizedItems } = await request.json() as {
+    const { name, email, phone, location, basket, deliveryPreference, promotion, notes, customizedItems, customBasketItems } = await request.json() as {
       name: string;
       email: string;
       phone: string;
@@ -19,6 +18,7 @@ export async function POST(request: Request) {
       promotion: string;
       notes?: string;
       customizedItems?: CustomizedItems;
+      customBasketItems?: BasketItem[];
     };
 
     const data = await resend.emails.send({
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
             <p><strong>Delivery Preference:</strong> ${deliveryPreference}</p>
             <p><strong>Promotion Selected:</strong> ${promotion}</p>
             
-            ${customizedItems ? `
+            ${customizedItems && !customBasketItems ? `
               <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 20px 0;" />
               
               <h3 style="color: #333; margin-top: 20px; margin-bottom: 15px;">Chosen Items:</h3>
@@ -52,6 +52,28 @@ export async function POST(request: Request) {
                   <p><strong>${category}:</strong> ${items.length > 0 ? items.join(', ') : '-'}</p>
                 `).join('')}
               </div>
+            ` : ''}
+
+            ${customBasketItems && customBasketItems.length > 0 ? `
+              <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 20px 0;" />
+              
+              <h3 style="color: #333; margin-top: 20px; margin-bottom: 15px;">Custom Basket Items</h3>
+              ${Object.entries(customBasketItems.reduce((acc: Record<string, BasketItem[]>, item: BasketItem) => {
+                if (!acc[item.category]) acc[item.category] = [];
+                acc[item.category].push(item);
+                return acc;
+              }, {})).map(([category, items]) => `
+                <div style="margin-bottom: 15px;">
+                  <h4 style="color: #666; margin-bottom: 10px;">${category}</h4>
+                  <ul style="list-style: none; padding: 0; margin: 0;">
+                    ${items.map((item: BasketItem) => `
+                      <li style="margin-bottom: 5px;">
+                        ${item.key} - ${item.quantity} ${item.unit} (€${item.price})
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              `).join('')}
             ` : ''}
             
             ${notes ? `

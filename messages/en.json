@@ -459,18 +459,21 @@
         "title": "Vegetables",
         "items": [
           {
+            "key": "cucumbers",
             "name": "Cucumbers",
             "description": "Crisp and refreshing cucumbers",
             "price": 2.8,
             "unit": "kg"
           },
           {
+            "key": "radish",
             "name": "Radish",
             "description": "Fresh and peppery radishes",
             "price": 2.5,
             "unit": "kg"
           },
           {
+            "key": "tomatoes",
             "name": "Tomatoes",
             "description": "Fresh, juicy tomatoes perfect for salads and cooking",
             "price": 3.5,
@@ -478,102 +481,119 @@
             "image": "/market/tomatoes.jpg"
           },
           {
+            "key": "snow-peas",
             "name": "Snow Peas",
             "description": "Sweet and crunchy snow peas",
             "price": 4.0,
             "unit": "kg"
           },
           {
+            "key": "artichoke",
             "name": "Artichoke",
             "description": "Fresh artichokes, perfect for Mediterranean dishes",
             "price": 3.8,
             "unit": "piece"
           },
           {
+            "key": "asparagus",
             "name": "Asparagus",
             "description": "Tender green asparagus spears",
             "price": 4.5,
             "unit": "bunch"
           },
           {
+            "key": "fennel",
             "name": "Fennel",
             "description": "Aromatic fennel with its distinctive anise flavor",
             "price": 3.2,
             "unit": "piece"
           },
           {
+            "key": "eggplant",
             "name": "Eggplant",
             "description": "Purple eggplants, great for Mediterranean dishes",
             "price": 3.5,
             "unit": "kg"
           },
           {
+            "key": "beetroot",
             "name": "Beetroot",
             "description": "Sweet and earthy beetroot",
             "price": 2.8,
             "unit": "kg"
           },
           {
+            "key": "sweet-pepper",
             "name": "Sweet Pepper",
             "description": "Colorful bell peppers, sweet and crunchy",
             "price": 4.2,
             "unit": "kg"
           },
           {
-            "name": "Zucchini",
+            "key": "zucchini",
+              "name": "Zucchini",
             "description": "Fresh zucchini, perfect for grilling or baking",
             "price": 3.0,
             "unit": "kg"
           },
           {
+            "key": "broccoli",
             "name": "Broccoli",
             "description": "Fresh green broccoli florets",
             "price": 3.5,
             "unit": "kg"
           },
           {
+            "key": "red-cabbage",
             "name": "Red Cabbage",
             "description": "Crisp and colorful red cabbage",
             "price": 2.5,
             "unit": "kg"
           },
           {
+            "key": "cauliflower",
             "name": "Cauliflower",
             "description": "Fresh white cauliflower heads",
             "price": 3.2,
             "unit": "piece"
           },
           {
+            "key": "string-beans",
             "name": "String Beans",
             "description": "Tender green string beans",
             "price": 3.8,
             "unit": "kg"
           },
           {
+            "key": "carrot",
             "name": "Carrot",
             "description": "Sweet and crunchy carrots",
             "price": 2.2,
             "unit": "kg"
           },
           {
+            "key": "potato",
             "name": "Potato",
             "description": "Fresh potatoes, perfect for any meal",
             "price": 1.8,
             "unit": "kg"
           },
           {
+            "key": "taro",
             "name": "Taro",
             "description": "Traditional Cypriot taro root",
             "price": 3.5,
             "unit": "kg"
           },
           {
+            "key": "onion",
             "name": "Onion (various types)",
             "description": "Fresh onions including red, white, and yellow varieties",
             "price": 2.0,
             "unit": "kg"
           },
           {
+            "key": "garlic",
             "name": "Garlic",
             "description": "Fresh local garlic bulbs",
             "price": 3.0,
@@ -585,6 +605,7 @@
         "title": "Fruits",
         "items": [
           {
+            "key": "avocado",
             "name": "Avocado",
             "description": "Creamy and nutritious avocados",
             "price": 4.5,
@@ -592,42 +613,49 @@
             "image": "/market/avocado.jpg"
           },
           {
+            "key": "apricot",
             "name": "Apricot",
             "description": "Sweet and juicy apricots",
             "price": 3.8,
             "unit": "kg"
           },
           {
+            "key": "peach",
             "name": "Peach",
             "description": "Juicy and fragrant peaches",
             "price": 3.5,
             "unit": "kg"
           },
           {
+            "key": "nectarine",
             "name": "Nectarine",
             "description": "Sweet and smooth nectarines",
             "price": 3.6,
             "unit": "kg"
           },
           {
+            "key": "banana",
             "name": "Banana",
             "description": "Sweet and nutritious bananas",
             "price": 2.8,
             "unit": "kg"
           },
           {
+            "key": "cherry",
             "name": "Cherry",
             "description": "Sweet and tart cherries",
             "price": 5.5,
             "unit": "kg"
           },
           {
+            "key": "melon",
             "name": "Melon",
             "description": "Sweet and refreshing melons",
             "price": 3.2,
             "unit": "piece"
           },
           {
+            "key": "strawberry",
             "name": "Strawberry",
             "description": "Sweet and fragrant strawberries",
             "price": 4.5,
@@ -635,18 +663,21 @@
             "image": "/market/strawberry.jpg"
           },
           {
+            "key": "medlar",
             "name": "Medlar",
             "description": "Unique and flavorful medlars",
             "price": 4.0,
             "unit": "kg"
           },
           {
+            "key": "orange",
             "name": "Orange",
             "description": "Sweet and juicy oranges, packed with vitamin C",
             "price": 2.5,
             "unit": "kg"
           },
           {
+            "key": "lemon",
             "name": "Lemon",
             "description": "Fresh and tangy lemons",
             "price": 2.8,
@@ -654,24 +685,28 @@
             "image": "/market/lemons.jpg"
           },
           {
+            "key": "pomelo",
             "name": "Pomelo",
             "description": "Large and sweet pomelos",
             "price": 3.5,
             "unit": "piece"
           },
           {
+            "key": "grapefruit",
             "name": "Grapefruit",
             "description": "Tangy and refreshing grapefruits",
             "price": 2.8,
             "unit": "kg"
           },
           {
+            "key": "pear",
             "name": "Pear",
             "description": "Sweet and juicy pears",
             "price": 3.2,
             "unit": "kg"
           },
           {
+            "key": "dragon-fruit",
             "name": "Dragon Fruit",
             "description": "Exotic and refreshing dragon fruit",
             "price": 5.0,
@@ -683,54 +718,63 @@
         "title": "Herbs",
         "items": [
           {
+            "key": "mint",
             "name": "Mint",
             "description": "Fresh mint leaves, perfect for teas and cooking",
             "price": 1.2,
             "unit": "bunch"
           },
           {
+            "key": "rocket-salad",
             "name": "Rocket Salad",
             "description": "Peppery and fresh rocket leaves",
             "price": 2.5,
             "unit": "bunch"
           },
           {
+            "key": "spinach",
             "name": "Spinach",
             "description": "Fresh and nutritious spinach leaves",
             "price": 2.8,
             "unit": "bunch"
           },
           {
+            "key": "green-onion",
             "name": "Green Onion",
             "description": "Fresh green onions with their mild flavor",
             "price": 1.5,
             "unit": "bunch"
           },
           {
+            "key": "swiss-chard",
             "name": "Swiss Chard",
             "description": "Colorful and nutritious Swiss chard",
             "price": 2.2,
             "unit": "bunch"
           },
           {
+            "key": "dill",
             "name": "Dill",
             "description": "Fresh dill, perfect for fish and salads",
             "price": 1.3,
             "unit": "bunch"
           },
           {
+            "key": "parsley",
             "name": "Parsley",
             "description": "Fresh parsley, essential for many dishes",
             "price": 1.0,
             "unit": "bunch"
           },
           {
+            "key": "cilantro",
             "name": "Cilantro",
             "description": "Fresh cilantro with its distinctive flavor",
             "price": 1.2,
             "unit": "bunch"
           },
           {
+            "key": "basil",
             "name": "Basil",
             "description": "Fresh basil leaves, aromatic and flavorful",
             "price": 1.5,
@@ -742,6 +786,7 @@
         "title": "Nuts",
         "items": [
           {
+            "key": "walnut",
             "name": "Walnut",
             "description": "Fresh local walnuts, rich in omega-3",
             "price": 8.5,
@@ -753,6 +798,7 @@
         "title": "Mushrooms",
         "items": [
           {
+            "key": "mushrooms",
             "name": "Mushrooms",
             "description": "Fresh local mushrooms, perfect for cooking",
             "price": 4.5,
@@ -764,12 +810,14 @@
         "title": "Other",
         "items": [
           {
+            "key": "eggs",
             "name": "Eggs",
             "description": "Fresh eggs from free-range chickens",
             "price": 3.6,
             "unit": "dozen"
           },
           {
+            "key": "honey",
             "name": "Honey",
             "description": "Pure honey from local beekeepers",
             "price": 8.5,
