@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ShoppingCart, User, UserPlus, ArrowRight, Save, Clock } from "lucide-react"
+import { ShoppingCart, User, UserPlus, ArrowRight, Save, Clock, CloudCog } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useRouter } from "next/navigation"
 
@@ -40,7 +40,7 @@ const transformBasketToOrderList = (items: BasketItem[], totalPrice: number, tot
       categories[item.category] = {}
     }
     
-    categories[item.category][item.key] = {
+    categories[item.category][item.id] = {
       unit: item.unit,
       quantity: item.quantity,
       price: item.price
@@ -60,7 +60,6 @@ interface CheckoutModalProps {
   basketItems: BasketItem[]
   totalPrice: number
   totalItems: number
-  onOrderNow: () => void
   onCreateAccount: () => void
 }
 
@@ -70,14 +69,17 @@ export function CheckoutModal({
   basketItems,
   totalPrice,
   totalItems,
-  onOrderNow,
   onCreateAccount,
 }: CheckoutModalProps) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
   const [showOrderForm, setShowOrderForm] = useState(false)
   const [showAccountForm, setShowAccountForm] = useState(false)
   const t = useTranslations("checkoutModal")
-  const router = useRouter()
+  const router = useRouter();
+
+
+  const orderList = transformBasketToOrderList(basketItems, totalPrice, totalItems);
+
 
   const handleOrderNow = () => {
     setSelectedOption("order")
@@ -87,6 +89,7 @@ export function CheckoutModal({
   const handleCreateAccount = () => {
     setSelectedOption("account")
     setShowAccountForm(true)
+    console.log(orderList)
   }
 
   const handleAccountCreated = () => {
@@ -101,7 +104,6 @@ export function CheckoutModal({
     onClose()
   }
 
-  const orderList = transformBasketToOrderList(basketItems, totalPrice, totalItems);
 
   return (
     <>
@@ -111,7 +113,10 @@ export function CheckoutModal({
             <OrderForm customBasketItems={basketItems} />
           ) :
           showAccountForm ? (
-            <AccountCreationForm onCancel={() => setShowAccountForm(false)} />
+            <AccountCreationForm 
+              onCancel={() => setShowAccountForm(false)} 
+              orderList={orderList}
+            />
           ) :
            (
             <>

@@ -7,6 +7,8 @@ import { z } from "zod"
 import { Eye, EyeOff } from "lucide-react"
 import { signup } from "@/app/actions/auth"
 import { useRouter } from "next/navigation"
+import { createClient } from "@/utils/supabase/client"
+import { useTranslations } from 'next-intl'
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -36,13 +38,33 @@ const formSchema = z
     path: ["confirmPassword"],
   })
 
+type BasketOrderList = {
+  categories: {
+    [categoryName: string]: {
+      [itemName: string]: {
+        unit: string
+        quantity: number
+        price: number
+      }
+    }
+  }
+  totalPrice: number
+  totalItems: number
+}
 
-export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
+interface AccountCreationFormProps {
+  onCancel: () => void
+  orderList?: BasketOrderList
+}
+
+export function AccountCreationForm({ onCancel, orderList }: AccountCreationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
+  const supabase = createClient()
+  const t = useTranslations('accountCreation')
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -68,9 +90,32 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
       formData.append('last_name', values.lastName)
       formData.append('phone', values.phone)
       
-      await signup(formData)
-    } catch (err) {
-      setError('Failed to create account. Please try again.')
+      const { user } = await signup(formData)
+      if (!user) {
+        throw new Error('Failed to create user')
+      }
+
+      // Save basket to Supabase if orderList is provided
+      if (orderList) {
+        const { error: basketError } = await supabase
+          .from('Baskets')
+          .insert({
+            user_id: user.id,
+            categories: orderList.categories,
+            total_price: orderList.totalPrice,
+            total_items: orderList.totalItems,
+          })
+
+        if (basketError) throw basketError
+      }
+
+      router.push('/dashboard')
+    } catch (err: any) {
+      if (err.message?.includes('User already registered')) {
+        setError(t('errors.userExists'))
+      } else {
+        setError(t('errors.general'))
+      }
       console.error('Account creation error:', err)
     } finally {
       setIsSubmitting(false)
@@ -82,7 +127,6 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
       <Form {...form}>
         <form 
           onSubmit={(e) => {
-            console.log("Form submit event triggered")
             form.handleSubmit(onSubmit)(e)
           }} 
           className="space-y-8"
@@ -96,7 +140,7 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
           <div>
             <div className="flex items-center mb-4">
               <span className="flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-700 font-bold mr-3">1</span>
-              <span className="text-lg font-semibold text-green-800">Personal Information</span>
+              <span className="text-lg font-semibold text-green-800">{t('sections.personalInfo.title')}</span>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <FormField
@@ -104,9 +148,9 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>First Name</FormLabel>
+                    <FormLabel>{t('sections.personalInfo.firstName.label')}</FormLabel>
                     <FormControl>
-                      <Input placeholder="John" {...field} />
+                      <Input placeholder={t('sections.personalInfo.firstName.placeholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -117,9 +161,9 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Last Name</FormLabel>
+                    <FormLabel>{t('sections.personalInfo.lastName.label')}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Doe" {...field} />
+                      <Input placeholder={t('sections.personalInfo.lastName.placeholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -132,16 +176,16 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
           <div>
             <div className="flex items-center mb-4">
               <span className="flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-700 font-bold mr-3">2</span>
-              <span className="text-lg font-semibold text-green-800">Contact Information</span>
+              <span className="text-lg font-semibold text-green-800">{t('sections.contactInfo.title')}</span>
             </div>
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t('sections.contactInfo.email.label')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="john@example.com" type="email" {...field} />
+                    <Input placeholder={t('sections.contactInfo.email.placeholder')} type="email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -152,9 +196,9 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone</FormLabel>
+                  <FormLabel>{t('sections.contactInfo.phone.label')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="+1234567890" {...field} />
+                    <Input placeholder={t('sections.contactInfo.phone.placeholder')} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -166,7 +210,7 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
           <div>
             <div className="flex items-center mb-4">
               <span className="flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-700 font-bold mr-3">3</span>
-              <span className="text-lg font-semibold text-green-800">Account Security</span>
+              <span className="text-lg font-semibold text-green-800">{t('sections.security.title')}</span>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <FormField
@@ -174,12 +218,12 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>{t('sections.security.password.label')}</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
                           type={showPassword ? "text" : "password"}
-                          placeholder="••••••••"
+                          placeholder={t('sections.security.password.placeholder')}
                           {...field}
                         />
                         <Button
@@ -206,12 +250,12 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Confirm Password</FormLabel>
+                    <FormLabel>{t('sections.security.confirmPassword.label')}</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
                           type={showConfirmPassword ? "text" : "password"}
-                          placeholder="••••••••"
+                          placeholder={t('sections.security.confirmPassword.placeholder')}
                           {...field}
                         />
                         <Button
@@ -239,10 +283,10 @@ export function AccountCreationForm({onCancel}: {onCancel: () => void}) {
           {/* Buttons */}
           <div className="flex gap-4 pt-4">
             <Button type="button" variant="outline" className="flex-1" onClick={onCancel}>
-              Cancel
+              {t('buttons.cancel')}
             </Button>
             <Button type="submit" className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white" disabled={isSubmitting}>
-              {isSubmitting ? "Creating Account..." : "Create Account"}
+              {isSubmitting ? t('buttons.submit.processing') : t('buttons.submit.default')}
             </Button>
           </div>
         </form>

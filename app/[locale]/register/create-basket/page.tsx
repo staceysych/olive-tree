@@ -34,7 +34,6 @@ export interface BasketItem {
   quantity: number
   image: string
   category: string
-  key: string
 }
 
 export interface MarketItem {
@@ -46,7 +45,6 @@ export interface MarketItem {
   image: string
   category: string
   inSeason: boolean;
-  key: string;
 }
 
 export default function CreateBasketPage() {
@@ -71,7 +69,7 @@ export default function CreateBasketPage() {
   // Transform items into MarketItem format
   const marketItems: MarketItem[] = Object.entries(categoriesData).flatMap(([category, { items }]) =>
     items.map((item) => ({
-      id: item.name.toLowerCase().replace(/\s+/g, '-'),
+      id: item.key,
       name: item.name,
       description: item.description,
       price: item.price,
@@ -79,7 +77,6 @@ export default function CreateBasketPage() {
       image: item.image || "/placeholder.svg?height=200&width=200",
       category,
       inSeason: true,
-      key: item.key,
     }))
   )
 
@@ -105,7 +102,6 @@ export default function CreateBasketPage() {
             quantity: quantity,
             image: item.image,
             category: item.category,
-            key: item.key,
           },
         ]
       }

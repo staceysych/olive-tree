@@ -868,5 +868,60 @@
       "button": "Order Now"
     },
     "continueShopping": "Continue Shopping"
+  },
+  "accountCreation": {
+    "title": "Create Your Account",
+    "sections": {
+      "personalInfo": {
+        "title": "Personal Information",
+        "firstName": {
+          "label": "First Name",
+          "placeholder": "John",
+          "error": "First name must be at least 2 characters."
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Doe",
+          "error": "Last name must be at least 2 characters."
+        }
+      },
+      "contactInfo": {
+        "title": "Contact Information",
+        "email": {
+          "label": "Email",
+          "placeholder": "john@example.com",
+          "error": "Please enter a valid email address."
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "+1234567890",
+          "error": "Please enter a valid phone number."
+        }
+      },
+      "security": {
+        "title": "Account Security",
+        "password": {
+          "label": "Password",
+          "placeholder": "••••••••",
+          "error": "Password must be at least 6 characters."
+        },
+        "confirmPassword": {
+          "label": "Confirm Password",
+          "placeholder": "••••••••",
+          "error": "Passwords don't match"
+        }
+      }
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": {
+        "default": "Create Account",
+        "processing": "Creating Account..."
+      }
+    },
+    "errors": {
+      "userExists": "An account with this email already exists. Please try logging in instead.",
+      "general": "Failed to create account. Please try again."
+    }
   }
 }
