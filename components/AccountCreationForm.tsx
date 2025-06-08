@@ -14,30 +14,6 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
-const formSchema = z
-  .object({
-    firstName: z.string().min(2, {
-      message: "First name must be at least 2 characters.",
-    }),
-    lastName: z.string().min(2, {
-      message: "Last name must be at least 2 characters.",
-    }),
-    email: z.string().email({
-      message: "Please enter a valid email address.",
-    }),
-    password: z.string().min(6, {
-      message: "Password must be at least 6 characters.",
-    }),
-    confirmPassword: z.string(),
-    phone: z.string().min(8, {
-      message: "Please enter a valid phone number.",
-    }),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
-  })
-
 type BasketOrderList = {
   categories: {
     [categoryName: string]: {
@@ -53,7 +29,7 @@ type BasketOrderList = {
 }
 
 interface AccountCreationFormProps {
-  onCancel: () => void
+  onCancel?: () => void
   orderList?: BasketOrderList
 }
 
@@ -65,6 +41,30 @@ export function AccountCreationForm({ onCancel, orderList }: AccountCreationForm
   const router = useRouter()
   const supabase = createClient()
   const t = useTranslations('accountCreation')
+
+  const formSchema = z
+    .object({
+      firstName: z.string().min(2, {
+        message: t('sections.personalInfo.firstName.error'),
+      }),
+      lastName: z.string().min(2, {
+        message: t('sections.personalInfo.lastName.error'),
+      }),
+      email: z.string().email({
+        message: t('sections.contactInfo.email.error'),
+      }),
+      password: z.string().min(6, {
+        message: t('sections.security.password.error'),
+      }),
+      confirmPassword: z.string(),
+      phone: z.string().min(8, {
+        message: t('sections.contactInfo.phone.error'),
+      }),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+      message: t('sections.security.confirmPassword.error'),
+      path: ["confirmPassword"],
+    })
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -123,7 +123,7 @@ export function AccountCreationForm({ onCancel, orderList }: AccountCreationForm
   }
 
   return (
-    <div className="w-full mt-10 rounded-lg bg-white shadow p-8 border border-green-100">
+    <div className="w-full">
       <Form {...form}>
         <form 
           onSubmit={(e) => {
@@ -282,9 +282,11 @@ export function AccountCreationForm({ onCancel, orderList }: AccountCreationForm
 
           {/* Buttons */}
           <div className="flex gap-4 pt-4">
-            <Button type="button" variant="outline" className="flex-1" onClick={onCancel}>
-              {t('buttons.cancel')}
-            </Button>
+            {onCancel && (
+              <Button type="button" variant="outline" className="flex-1" onClick={onCancel}>
+                {t('buttons.cancel')}
+              </Button>
+            )}
             <Button type="submit" className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white" disabled={isSubmitting}>
               {isSubmitting ? t('buttons.submit.processing') : t('buttons.submit.default')}
             </Button>

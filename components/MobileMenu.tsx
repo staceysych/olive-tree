@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Menu } from "lucide-react"
+import { Menu, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -37,6 +37,17 @@ export function MobileMenu() {
         </SheetHeader>
         <nav className="flex flex-col gap-4 mt-4">
           <NavLinks onClick={() => setOpen(false)} />
+          <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className="border-emerald-200 text-emerald-700 hover:bg-emerald-50"
+              >
+                <Link href="/login" className="flex items-center gap-1">
+                  <User className="h-4 w-4" />
+                  <span>My Olive Tree</span>
+                </Link>
+              </Button>
           <Button size="sm" asChild className="w-full transition-transform hover:scale-[1.02]">
             <Link href={createPath(pathname, '#order')} onClick={() => setOpen(false)}>Order</Link>
           </Button>

@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link"
-import { Leaf } from "lucide-react"
+import { Leaf, User } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 
@@ -27,6 +27,17 @@ export function Header() {
           <nav className="hidden md:flex items-center space-x-2">
             <NavLinks />
             <LanguageSelector /> 
+            <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className="border-emerald-200 text-emerald-700 hover:bg-emerald-50"
+              >
+                <Link href="/login" className="flex items-center gap-1">
+                  <User className="h-4 w-4" />
+                  <span>My Olive Tree</span>
+                </Link>
+              </Button>
             <Button size="sm" asChild>
               <Link href={createPath(basePath, '#order')}>{t('header.order')}</Link>
             </Button>

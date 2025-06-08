@@ -923,5 +923,43 @@
       "userExists": "An account with this email already exists. Please try logging in instead.",
       "general": "Failed to create account. Please try again."
     }
+  },
+  "auth": {
+    "welcome": {
+      "badge": "Welcome to Your Account",
+      "title": "My Olive Tree",
+      "description": "Sign in to your account or create a new one to start enjoying fresh farm goods delivered to your door"
+    },
+    "tabs": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up"
+    },
+    "signIn": {
+      "title": "Welcome back!",
+      "description": "Sign in to your account to access your dashboard and manage your orders",
+      "email": {
+        "label": "Email",
+        "placeholder": "your.email@example.com"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "••••••••"
+      },
+      "submit": {
+        "default": "Sign In",
+        "loading": "Signing in..."
+      }
+    },
+    "signUp": {
+      "title": "Create your account",
+      "description": "Join the Olive Tree family and start enjoying fresh farm goods"
+    },
+    "benefits": {
+      "title": "🌿 Why Join Olive Tree?",
+      "items": [
+        "Save custom baskets and reorder with one click",
+        "Track your order history and delivery preferences"
+      ]
+    }
   }
 }
