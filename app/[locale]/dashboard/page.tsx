@@ -32,7 +32,7 @@ export default function DashboardPage() {
   }, [supabase])
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-emerald-50 min-h-screen">
+    <div className="container mx-auto px-4 py-8 min-h-screen">
       <div className="mx-auto p-6 rounded-lg">
         <div className="space-y-1">
           <h2 className="text-4xl font-bold text-emerald-800 flex items-center gap-2">
