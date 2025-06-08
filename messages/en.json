@@ -960,6 +960,11 @@
         "Save custom baskets and reorder with one click",
         "Track your order history and delivery preferences"
       ]
+    },
+    "errors": {
+      "invalidEmail": "Please enter a valid email address",
+      "passwordRequired": "Password is required",
+      "loginFailed": "Failed to log in. Please check your credentials and try again."
     }
   }
 }
