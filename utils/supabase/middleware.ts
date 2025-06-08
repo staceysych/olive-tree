@@ -26,7 +26,7 @@ export async function updateSession(request: NextRequest, response: NextResponse
     data: { user },
   } = await supabase.auth.getUser();
 
-  const privateRoutes = ['/profile'];
+  const privateRoutes = ['/dashboard'];
   const isPrivateRoute = privateRoutes.some(route => request.nextUrl.pathname.startsWith(route));
 
   if (!user && isPrivateRoute) {
