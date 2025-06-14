@@ -1,13 +1,26 @@
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
 import { type NextRequest } from 'next/server';
-import { updateSession } from './utils/supabase/middleware';
+import { getToken } from 'next-auth/jwt';
 
 const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(request: NextRequest) {
   const response = await intlMiddleware(request);
-  return await updateSession(request, response);
+
+  const token = await getToken({ req: request });
+  const isAuthenticated = !!token;
+
+  const privateRoutes = ['/dashboard'];
+  const isPrivateRoute = privateRoutes.some(route => request.nextUrl.pathname.startsWith(route));
+
+  if (!isAuthenticated && isPrivateRoute) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/login';
+    return Response.redirect(url);
+  }
+
+  return response;
 }
 
 export const config = {

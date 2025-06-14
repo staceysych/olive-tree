@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useTranslations } from "next-intl"
-import { createClient } from "@/utils/supabase/client"
+import { useSession } from "next-auth/react"
 import { Leaf, User, ShoppingBasket } from "lucide-react"
 import { format } from "date-fns"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -13,23 +13,16 @@ export default function DashboardPage() {
   const [userName, setUserName] = useState<string>("")
   const [memberSince, setMemberSince] = useState<string>("")
   const [activeTab, setActiveTab] = useState("personal")
-  const supabase = createClient()
+  const { data: session } = useSession()
 
   useEffect(() => {
-    const getUserData = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        const firstName = user.user_metadata?.first_name || ""
-        setUserName(firstName)
-        if (user.created_at) {
-          const date = new Date(user.created_at)
-          setMemberSince(format(date, "MMMM yyyy"))
-        }
-      }
+    if (session?.user) {
+      const name = session.user.name || ""
+      setUserName(name)
+      // Note: You might want to store and retrieve the actual creation date from your database
+      setMemberSince(format(new Date(), "MMMM yyyy"))
     }
-
-    getUserData()
-  }, [supabase])
+  }, [session])
 
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen">
@@ -52,31 +45,31 @@ export default function DashboardPage() {
                 value="personal"
                 className="flex items-center gap-2 data-[state=active]:bg-emerald-600 data-[state=active]:text-white"
               >
-                <User className="h-4 w-4" />
+            <User className="h-4 w-4" />
                 <span className="hidden sm:inline">Personal Info</span>
                 <span className="sm:hidden">Info</span>
-              </TabsTrigger>
+          </TabsTrigger>
               <TabsTrigger
                 value="baskets"
                 className="flex items-center gap-2 data-[state=active]:bg-emerald-600 data-[state=active]:text-white"
               >
-                <ShoppingBasket className="h-4 w-4" />
+            <ShoppingBasket className="h-4 w-4" />
                 <span className="hidden sm:inline">Saved Baskets</span>
                 <span className="sm:hidden">Baskets</span>
-              </TabsTrigger>
-            </TabsList>
-          </CardHeader>
+          </TabsTrigger>
+        </TabsList>
+            </CardHeader>
 
-          <CardContent>
+            <CardContent>
             <TabsContent value="personal" className="mt-0">
               <div>Personal Info Content</div>
-            </TabsContent>
+        </TabsContent>
 
             <TabsContent value="baskets" className="mt-0">
               <div>Saved Baskets Content</div>
-            </TabsContent>
+        </TabsContent>
           </CardContent>
-        </Tabs>
+      </Tabs>
       </Card>
     </div>
   )

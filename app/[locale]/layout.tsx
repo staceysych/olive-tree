@@ -10,6 +10,7 @@ import { Toaster } from '@/components/ui/toaster';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import { Providers } from '@/app/providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -46,30 +47,29 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function RootLayout({
   children,
-  params
+  params,
 }: {
-  children: React.ReactNode;
-  params: Promise<{locale: string}>;
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
 }) {
-  // Ensure that the incoming `locale` is valid
-  const {locale} = await params;
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
 
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <NextIntlClientProvider locale={locale}>
+        <Providers>
           <BasketProvider>
-            <Header />
-            {children}
-            <Footer />
-            <Toaster />
-            <GoogleAnalytics />
+            <NextIntlClientProvider locale={locale}>
+                <Header />
+                {children}
+                <Footer />
+              <Toaster />
+              <GoogleAnalytics />
+            </NextIntlClientProvider>
           </BasketProvider>
-        </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
-  );
+  )
 } 
