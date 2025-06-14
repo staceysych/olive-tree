@@ -11,7 +11,21 @@ declare module "next-auth" {
       id: string;
       name?: string | null;
       email?: string | null;
+      firstName?: string | null;
+      lastName?: string | null;
+      phone?: string | null;
+      createdAt?: Date | null;
     }
+  }
+
+  interface User {
+    id: string;
+    name?: string | null;
+    email?: string | null;
+    firstName?: string | null;
+    lastName?: string | null;
+    phone?: string | null;
+    createdAt?: Date | null;
   }
 }
 
@@ -52,6 +66,10 @@ export const authOptions: NextAuthOptions = {
           id: user.id,
           email: user.email,
           name: `${user.firstName} ${user.lastName}`,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          phone: user.phone,
+          createdAt: user.createdAt,
         };
       }
     })
@@ -70,12 +88,20 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id as string;
         session.user.name = token.name;
         session.user.email = token.email;
+        session.user.firstName = token.firstName as string;
+        session.user.lastName = token.lastName as string;
+        session.user.phone = token.phone as string;
+        session.user.createdAt = token.createdAt as Date;
       }
       return session;
     },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.firstName = user.firstName;
+        token.lastName = user.lastName;
+        token.phone = user.phone;
+        token.createdAt = user.createdAt;
       }
       return token;
     }

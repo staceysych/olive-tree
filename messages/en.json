@@ -874,6 +874,7 @@
     "sections": {
       "personalInfo": {
         "title": "Personal Information",
+        "description": "Manage your personal details and contact information",
         "firstName": {
           "label": "First Name",
           "placeholder": "John",
@@ -965,6 +966,75 @@
       "invalidEmail": "Please enter a valid email address",
       "passwordRequired": "Password is required",
       "loginFailed": "Failed to log in. Please check your credentials and try again."
+    }
+  },
+  "dashboard": {
+    "welcome": {
+      "title": "Welcome, {name}!",
+      "memberSince": "Member since {date}"
+    },
+    "tabs": {
+      "personal": {
+        "label": "Personal Information",
+        "shortLabel": "Info"
+      },
+      "baskets": {
+        "label": "Saved Baskets",
+        "shortLabel": "Baskets"
+      }
+    },
+    "personalInfo": {
+      "title": "Profile Information",
+      "description": "Manage your personal details and contact information",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "fields": {
+        "firstName": {
+          "label": "First Name",
+          "error": "First name is required"
+        },
+        "lastName": {
+          "label": "Last Name",
+          "error": "Last name is required"
+        },
+        "email": {
+          "label": "Email Address",
+          "error": "Invalid email address"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "error": "Phone number is required"
+        }
+      },
+      "contactInfo": {
+        "title": "Contact Information"
+      },
+      "deliveryAddress": {
+        "title": "Delivery Address",
+        "noAddress": {
+          "title": "No Delivery Address",
+          "description": "Please add delivery address information to ensure smooth order processing."
+        },
+        "fields": {
+          "street": {
+            "label": "Street Address",
+            "error": "Street address is required"
+          },
+          "city": {
+            "label": "City",
+            "error": "City is required"
+          },
+          "postalCode": {
+            "label": "Postal Code",
+            "error": "Postal code is required"
+          },
+          "country": {
+            "label": "Country",
+            "error": "Country is required"
+          }
+        }
+      }
     }
   }
 }

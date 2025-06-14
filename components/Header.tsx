@@ -28,6 +28,8 @@ export function Header() {
         </div>
         <div className="flex flex-1 items-center justify-end space-x-4">
           {isDashboard ? (
+            <>
+            <LanguageSelector /> 
             <Button
               variant="outline"
               size="sm"
@@ -36,7 +38,7 @@ export function Header() {
             >
               <LogOut className="h-4 w-4" />
               <span>Logout</span>
-            </Button>
+            </Button></> 
           ) : (
             <>
               <nav className="hidden md:flex items-center space-x-2">
