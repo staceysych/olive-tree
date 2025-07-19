@@ -10,49 +10,11 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import type { BasketItem } from "@/app/[locale]/register/create-basket/page"
 import { OrderForm } from "@/components/OrderForm"
 import { AccountCreationForm } from "@/components/AccountCreationForm"
+import { BasketItem } from "@/types/basket"
+import { transformBasketToOrderList } from "@/utils/basket/basket"
 
-type BasketOrderItem = {
-  unit: string
-  quantity: number
-  price: number
-}
-
-type BasketOrderCategory = {
-  [itemName: string]: BasketOrderItem
-}
-
-type BasketOrderList = {
-  categories: {
-    [categoryName: string]: BasketOrderCategory
-  }
-  totalPrice: number
-  totalItems: number
-}
-
-const transformBasketToOrderList = (items: BasketItem[], totalPrice: number, totalItems: number): BasketOrderList => {
-  const categories: { [key: string]: BasketOrderCategory } = {}
-  
-  items.forEach(item => {
-    if (!categories[item.category]) {
-      categories[item.category] = {}
-    }
-    
-    categories[item.category][item.id] = {
-      unit: item.unit,
-      quantity: item.quantity,
-      price: item.price
-    }
-  })
-
-  return {
-    categories,
-    totalPrice,
-    totalItems
-  }
-}
 
 interface CheckoutModalProps {
   isOpen: boolean
@@ -90,12 +52,6 @@ export function CheckoutModal({
     setSelectedOption("account")
     setShowAccountForm(true)
     console.log(orderList)
-  }
-
-  const handleAccountCreated = () => {
-    setShowAccountForm(false)
-    onClose()
-    onCreateAccount()
   }
 
   const handleClose = () => {

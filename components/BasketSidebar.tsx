@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { Trash2 } from "lucide-react"
-import type { BasketItem } from "@/app/[locale]/register/create-basket/page"
+import type { BasketItem } from "@/components/Marketplace"
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { useSession } from 'next-auth/react'
 import { CheckoutModal } from './CheckoutModal'
+import { useCreateBasket } from '@/hooks/useCreateBasket'
+
+import { transformBasketToOrderList } from "@/utils/basket/basket"
 
 interface BasketSidebarProps {
   basketItems: BasketItem[]
@@ -23,14 +27,37 @@ export function BasketSidebar({
 }: BasketSidebarProps) {
   const t = useTranslations('basketSidebar')
   const router = useRouter()
+  const { data: session } = useSession()
+  const { createBasket, isLoading } = useCreateBasket()
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false)
-
-  const handleOrderNow = () => {
-    router.push('/register/confirm-order')
-  }
 
   const handleCreateAccount = () => {
     router.push('/register')
+  }
+
+
+  const handleProceedToCheckout = async () => {
+    if (session?.user?.id) {
+      // User is logged in, create basket
+      const orderList = transformBasketToOrderList(basketItems, totalPrice, totalItems)
+      
+      const result = await createBasket(session.user.id, {
+        categories: orderList.categories,
+        totalPrice: orderList.totalPrice,
+        totalItems: orderList.totalItems,
+        name: "Custom Basket",
+        frequency: "Once"
+      })
+
+      if (result) {
+        router.push('/dashboard')
+      } else {
+        console.error('Failed to create basket')
+      }
+    } else {
+      // User is not logged in, show checkout modal
+      setIsCheckoutModalOpen(true)
+    }
   }
 
   return (
@@ -98,10 +125,10 @@ export function BasketSidebar({
         </p>
         <Button 
           className="w-full bg-emerald-600 hover:bg-emerald-700" 
-          disabled={basketItems.length === 0 || totalPrice < 40}
-          onClick={() => setIsCheckoutModalOpen(true)}
+          disabled={basketItems.length === 0 || totalPrice < 40 || isLoading}
+          onClick={handleProceedToCheckout}
         >
-          {t('proceedToCheckout')}
+          {isLoading ? 'Creating Basket...' : t('proceedToCheckout')}
         </Button>
       </div>
 
@@ -111,7 +138,6 @@ export function BasketSidebar({
         basketItems={basketItems}
         totalPrice={totalPrice}
         totalItems={totalItems}
-        onOrderNow={handleOrderNow}
         onCreateAccount={handleCreateAccount}
       />
     </div>
