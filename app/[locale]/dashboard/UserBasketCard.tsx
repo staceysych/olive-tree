@@ -81,7 +81,11 @@ export default function UserBasketCard() {
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {baskets.map((basket) => (
-            <Card key={basket.id} className="hover:shadow-md transition-shadow">
+            <Card 
+              key={basket.id} 
+              className="hover:shadow-md transition-shadow cursor-pointer"
+              onClick={() => router.push(`/dashboard/basket/${basket.id}`)}
+            >
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -103,14 +107,14 @@ export default function UserBasketCard() {
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2 text-gray-600">
                     <Package className="h-4 w-4" />
-                    <span>Items</span>
+                    <span>{t("dashboard.basketDetails.totalItems")}</span>
                   </div>
                   <span className="font-medium">{basket.totalItems}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2 text-gray-600">
                     <Euro className="h-4 w-4" />
-                    <span>Total</span>
+                    <span>{t("dashboard.basketDetails.totalPrice")}</span>
                   </div>
                   <span className="font-medium text-emerald-700">
                     €{basket.totalPrice.toFixed(2)}
@@ -119,7 +123,7 @@ export default function UserBasketCard() {
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2 text-gray-600">
                     <Calendar className="h-4 w-4" />
-                    <span>Frequency</span>
+                    <span>{t("dashboard.basketDetails.frequency")}</span>
                   </div>
                   <span className="font-medium">{basket.frequency}</span>
                 </div>

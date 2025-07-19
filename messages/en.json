@@ -1045,6 +1045,35 @@
         "description": "Click on 'Create basket' to add your first basket"
       },
       "createdAt": "Created on {date}"
+    },
+    "basketDetails": {
+      "editTitle": "Edit Basket",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "saving": "Saving...",
+      "backToDashboard": "Back to Dashboard",
+      "notFound": "Basket not found",
+      "summary": "Basket Summary",
+      "name": "Basket Name",
+      "frequency": "Delivery Frequency",
+      "frequencyOptions": {
+        "once": "Once",
+        "weekly": "Weekly",
+        "biweekly": "Bi-weekly",
+        "monthly": "Monthly"
+      },
+      "totalItems": "Total Items",
+      "totalPrice": "Total Price",
+      "items": "Basket Items",
+      "itemsDescription": "View and manage the items in your basket",
+      "noItems": "No items in this basket",
+      "orderBasket": "Order This Basket",
+      "createdAt": "Created on {date}",
+      "deleteConfirmTitle": "Delete Basket",
+      "deleteConfirmDescription": "Are you sure you want to delete the basket? This action cannot be undone."
     }
   }
 }

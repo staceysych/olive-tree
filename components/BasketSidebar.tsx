@@ -50,7 +50,7 @@ export function BasketSidebar({
       })
 
       if (result) {
-        router.push('/dashboard')
+        router.push(`/dashboard/basket/${result.id}`)
       } else {
         console.error('Failed to create basket')
       }
