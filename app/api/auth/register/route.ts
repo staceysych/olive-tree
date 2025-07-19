@@ -44,6 +44,8 @@ export async function POST(req: Request) {
           categories: orderList.categories,
           totalPrice: orderList.totalPrice,
           totalItems: orderList.totalItems,
+          name: "Basket 1",
+          frequency: "Once",
         },
       })
     }

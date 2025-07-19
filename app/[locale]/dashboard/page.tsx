@@ -8,6 +8,7 @@ import { format } from "date-fns"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import PersonalInfoCard from "./PersonalInfoCard"
+import UserBasketCard from "./UserBasketCard"
 import { useGetUserById } from "@/hooks/useGetUserById"
 
 export default function DashboardPage() {
@@ -67,7 +68,7 @@ export default function DashboardPage() {
             </TabsContent>
 
             <TabsContent value="baskets" className="mt-0">
-              Baskets
+              <UserBasketCard />
             </TabsContent>
           </CardContent>
         </Tabs>

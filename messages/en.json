@@ -979,7 +979,7 @@
         "shortLabel": "Info"
       },
       "baskets": {
-        "label": "Saved Baskets",
+        "label": "My Baskets",
         "shortLabel": "Baskets"
       }
     },
@@ -1035,6 +1035,16 @@
           }
         }
       }
+    },
+    "baskets": {
+      "title": "My baskets",
+      "description": "Add and manage your baskets",
+      "createButton": "Create basket",
+      "noBaskets": {
+        "title": "No baskets yet",
+        "description": "Click on 'Create basket' to add your first basket"
+      },
+      "createdAt": "Created on {date}"
     }
   }
 }
