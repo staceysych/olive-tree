@@ -45,7 +45,7 @@ export async function POST(req: Request) {
           totalPrice: orderList.totalPrice,
           totalItems: orderList.totalItems,
           name: "Basket 1",
-          frequency: "Once",
+          frequency: "once",
         },
       })
     }

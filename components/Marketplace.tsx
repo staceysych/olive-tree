@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl"
 import { CategorySidebar } from "@/components/CategorySidebar"
 import { ItemsGrid } from "@/components/ItemsGrid"
 import { BasketSidebar } from "@/components/BasketSidebar"
+import { mapMarketCategoryToEmoji } from "@/utils/common"
 
 interface Category {
   title: string
@@ -75,7 +76,7 @@ export default function Marketplace({
     ...Object.entries(categoriesData).map(([id, category]) => ({
       id,
       name: category.title,
-      emoji: id === "vegetables" ? "🍅" : id === "mushrooms" ? "🍄" : id === "nuts" ? "🌰" : id === "fruits" ? "🍓" : id === "herbs" ? "🌿" : "📦",
+      emoji: mapMarketCategoryToEmoji(id),
       count: category.items.length,
     })),
   ]

@@ -64,7 +64,7 @@ export async function POST(
 
     const { id: userId } = await context.params
     const body = await request.json()
-    const { categories, totalPrice, totalItems, name = "Basket", frequency = "Once" } = body
+    const { categories, totalPrice, totalItems, name = "Basket", frequency = "once" } = body
 
     // Create new basket for the user
     const basket = await prisma.basket.create({

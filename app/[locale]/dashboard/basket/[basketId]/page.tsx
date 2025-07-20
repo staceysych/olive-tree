@@ -38,6 +38,7 @@ import { useGetBasketById } from "@/hooks/useGetBasketById"
 import { useGetUserById } from "@/hooks/useGetUserById"
 import { useUpdateBasket } from "@/hooks/useUpdateBasket"
 import { useDeleteBasket } from "@/hooks/useDeleteBasket"
+import { mapMarketCategoryToEmoji } from "@/utils/common"
 
 export default function BasketDetailsPage() {
   const t = useTranslations()
@@ -57,7 +58,7 @@ export default function BasketDetailsPage() {
   const handleEdit = () => {
     setEditedBasket({
       name: basket?.name || "",
-      frequency: basket?.frequency || "Once",
+      frequency: basket?.frequency || "once",
       categories: basket?.categories || {},
       totalPrice: basket?.totalPrice || 0,
       totalItems: basket?.totalItems || 0
@@ -173,14 +174,14 @@ export default function BasketDetailsPage() {
       
       return (
         <div key={categoryName} className="space-y-3">
-          <h4 className="font-medium text-emerald-800 capitalize">{categoryTitle}</h4>
-          <div className="space-y-2">
+          <h4 className="font-medium text-emerald-800 capitalize">{mapMarketCategoryToEmoji(categoryName)} {categoryTitle}</h4>
+          <div className="space-y-2 bg-gray-50 rounded-lg p-3">
             {Object.entries(items).map(([itemName, itemData]: [string, any]) => {
               // Get translated item name using the helper function
               const translatedItemName = getTranslatedItemName(categoryName, itemName)
               
               return (
-                <div key={itemName} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div key={itemName} className="flex items-center justify-between">
                   <div className="flex-1">
                     <p className="font-medium text-gray-900">{translatedItemName}</p>
                     <p className="text-sm text-gray-600">
@@ -318,17 +319,17 @@ export default function BasketDetailsPage() {
                   <div>
                     <Label htmlFor="basket-frequency">{t("dashboard.basketDetails.frequency")}</Label>
                     <Select
-                      value={editedBasket?.frequency || "Once"}
+                      value={editedBasket?.frequency || "once"}
                       onValueChange={(value) => setEditedBasket({...editedBasket, frequency: value})}
                     >
                       <SelectTrigger className="mt-1">
                         <SelectValue />
                       </SelectTrigger>
                                              <SelectContent>
-                         <SelectItem value="Once">{t("dashboard.basketDetails.frequencyOptions.once")}</SelectItem>
-                         <SelectItem value="Weekly">{t("dashboard.basketDetails.frequencyOptions.weekly")}</SelectItem>
-                         <SelectItem value="Bi-weekly">{t("dashboard.basketDetails.frequencyOptions.biweekly")}</SelectItem>
-                         <SelectItem value="Monthly">{t("dashboard.basketDetails.frequencyOptions.monthly")}</SelectItem>
+                         <SelectItem value="once">{t("dashboard.basketDetails.frequencyOptions.once")}</SelectItem>
+                         <SelectItem value="weekly">{t("dashboard.basketDetails.frequencyOptions.weekly")}</SelectItem>
+                         <SelectItem value="biweekly">{t("dashboard.basketDetails.frequencyOptions.biweekly")}</SelectItem>
+                         <SelectItem value="monthly">{t("dashboard.basketDetails.frequencyOptions.monthly")}</SelectItem>
                        </SelectContent>
                     </Select>
                   </div>
@@ -344,19 +345,19 @@ export default function BasketDetailsPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-gray-600">
-                      <Euro className="h-4 w-4" />
-                      <span>{t("dashboard.basketDetails.totalPrice")}</span>
-                    </div>
-                    <span className="font-medium text-emerald-700">
-                      €{basket.totalPrice.toFixed(2)}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-gray-600">
                       <Calendar className="h-4 w-4" />
                       <span>{t("dashboard.basketDetails.frequency")}</span>
                     </div>
-                    <Badge variant="secondary">{basket.frequency}</Badge>
+                    <Badge variant="secondary">{t(`dashboard.basketDetails.frequencyOptions.${basket.frequency}`)}</Badge>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-gray-600">
+                      <Euro className="h-4 w-4" />
+                      <span>{t("dashboard.basketDetails.totalPrice")}</span>
+                    </div>
+                    <span className="text-xl font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-200">
+                      €{basket.totalPrice.toFixed(2)}
+                    </span>
                   </div>
                 </>
               )}

@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { useRouter } from "next/navigation"
 import { useGetUserBaskets } from "@/hooks/useGetUserBaskets"
+import { Separator } from "@/components/ui/separator"
 
 export default function UserBasketCard() {
   const t = useTranslations()
@@ -92,15 +93,12 @@ export default function UserBasketCard() {
                     <CardTitle className="text-lg text-emerald-800">
                       {basket.name}
                     </CardTitle>
-                    <CardDescription className="text-sm text-gray-600 mt-1">
+                    <CardDescription className="text-xs text-gray-600">
                       {t("dashboard.baskets.createdAt", { 
                         date: format(new Date(basket.createdAt), "MMM dd, yyyy") 
                       })}
                     </CardDescription>
                   </div>
-                  <Badge variant="secondary" className="text-xs">
-                    {basket.frequency}
-                  </Badge>
                 </div>
               </CardHeader>
               <CardContent className="space-y-3">
@@ -125,7 +123,7 @@ export default function UserBasketCard() {
                     <Calendar className="h-4 w-4" />
                     <span>{t("dashboard.basketDetails.frequency")}</span>
                   </div>
-                  <span className="font-medium">{basket.frequency}</span>
+                  <span className="font-medium">{t(`dashboard.basketDetails.frequencyOptions.${basket.frequency}`)}</span>
                 </div>
               </CardContent>
             </Card>
