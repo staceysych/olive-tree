@@ -63,7 +63,7 @@ export default function DashboardPage() {
               ) : error ? (
                 <div className="text-center py-2 sm:py-4 text-red-500 text-sm sm:text-base">{error}</div>
               ) : user ? (
-                <PersonalInfoCard user={user} />
+                <PersonalInfoCard user={user} onTabChange={setActiveTab} />
               ) : null}
             </TabsContent>
 

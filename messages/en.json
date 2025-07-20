@@ -1074,6 +1074,22 @@
       "createdAt": "Created on {date}",
       "deleteConfirmTitle": "Delete Basket",
       "deleteConfirmDescription": "Are you sure you want to delete the basket? This action cannot be undone."
+    },
+    "ordersHistory": {
+      "title": "Orders History",
+      "description": "View your past orders and delivery history",
+      "noOrders": {
+        "title": "No Orders Yet",
+        "description": "You currently don't have any orders. Please proceed to your \"Baskets\" tab to manage or complete your first order.",
+        "action": "Go to Baskets"
+      },
+      "order": {
+        "title": "Order",
+        "date": "Order Date",
+        "status": "Status",
+        "total": "Total",
+        "items": "Items"
+      }
     }
   }
 }

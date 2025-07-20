@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Mail, MapPin, Pencil, Check, X, AlertCircle } from "lucide-react"
+import { Mail, MapPin, Pencil, Check, X, AlertCircle, Package, ShoppingBag } from "lucide-react"
 import EmojiPicker from "emoji-picker-react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -8,6 +8,7 @@ import * as z from "zod"
 import { useTranslations } from "next-intl"
 import { useUpdateUser } from "@/hooks/useUpdateUser"
 import { toast } from "sonner"
+import { Button } from "@/components/ui/button"
 
 type PersonalInfoFormData = {
   firstName: string;
@@ -35,13 +36,16 @@ interface PersonalInfoCardProps {
     emoji?: string | null;
   };
   onSave?: (data: PersonalInfoFormData) => void;
+  onTabChange?: (tab: string) => void;
 }
 
 export default function PersonalInfoCard({
   user,
   onSave,
+  onTabChange,
 }: PersonalInfoCardProps) {
   const t = useTranslations("dashboard.personalInfo")
+  const tOrders = useTranslations("dashboard.ordersHistory")
   const [emoji, setEmoji] = useState<string>(user.emoji || "🧑")
   const [showPicker, setShowPicker] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
@@ -279,7 +283,7 @@ export default function PersonalInfoCard({
           </div>
 
           {/* Delivery Address */}
-          <div>
+          <div className="pb-6 border-b border-gray-100">
             <div className="flex items-center gap-2 text-emerald-700 font-semibold text-lg mb-2">
               <MapPin className="w-5 h-5" /> {t("deliveryAddress.title")}
             </div>
@@ -303,6 +307,39 @@ export default function PersonalInfoCard({
                 <div className="min-w-0 w-full">{renderField(t("deliveryAddress.fields.country.label"), "country")}</div>
               </div>
             )}
+          </div>
+
+          {/* Orders History */}
+          <div>
+            <div className="flex items-center gap-2 text-emerald-700 font-semibold text-lg mb-2">
+              <Package className="w-5 h-5" /> {tOrders("title")}
+            </div>
+            <div className="text-sm text-gray-500 mb-4">{tOrders("description")}</div>
+            
+            {/* No Orders Warning */}
+            <div className="bg-amber-50 border border-amber-200 rounded-md p-4">
+              <div className="flex items-start gap-3">
+                <ShoppingBag className="w-5 h-5 text-amber-500 mt-0.5" />
+                <div className="flex-1">
+                  <h4 className="text-sm font-medium text-amber-800">{tOrders("noOrders.title")}</h4>
+                  <p className="text-sm text-amber-700 mt-1 mb-3">
+                    {tOrders("noOrders.description")}
+                  </p>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-amber-200 text-amber-700 hover:bg-amber-100"
+                    onClick={() => {
+                      if (onTabChange) {
+                        onTabChange("baskets")
+                      }
+                    }}
+                  >
+                    {tOrders("noOrders.action")}
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </CardContent>
