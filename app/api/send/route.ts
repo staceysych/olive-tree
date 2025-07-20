@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { BasketItem } from "@/app/[locale]/register/create-basket/page";
+import { BasketItem } from "@/types/basket"
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -68,7 +68,7 @@ export async function POST(request: Request) {
                   <ul style="list-style: none; padding: 0; margin: 0;">
                     ${items.map((item: BasketItem) => `
                       <li style="margin-bottom: 5px;">
-                        ${item.key} - ${item.quantity} ${item.unit} (€${item.price})
+                        ${item.id} - ${item.quantity} ${item.unit} (€${item.price})
                       </li>
                     `).join('')}
                   </ul>

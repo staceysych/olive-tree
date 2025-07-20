@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Trash2 } from "lucide-react"
-import type { BasketItem } from "@/components/Marketplace"
+import type { BasketItem } from "@/types/basket"
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'

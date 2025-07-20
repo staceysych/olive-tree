@@ -1,4 +1,4 @@
-import { BasketItem } from "@/app/[locale]/register/create-basket/page"
+import { BasketItem } from "@/types/basket"
 
 export type OrderFormData = {
   name: string;

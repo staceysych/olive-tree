@@ -10,7 +10,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { useRouter } from "next/navigation"
 import { useGetUserBaskets } from "@/hooks/useGetUserBaskets"
-import { Separator } from "@/components/ui/separator"
 
 export default function UserBasketCard() {
   const t = useTranslations()

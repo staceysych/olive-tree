@@ -23,7 +23,7 @@ import { formatDeliveryPreference } from "@/utils/formatDeliveryPreference"
 import { OrderConfirmationCard } from "@/components/OrderConfirmationCard"
 import { BasketCustomisationModal } from "@/components/BasketCustomisationModal"
 import { getInitialItems } from "@/utils/getInitialBasketItems";
-import { BasketItem } from "@/app/[locale]/register/create-basket/page"
+import { BasketItem } from "@/types/basket"
 
 
 export function OrderForm({customBasketItems}: {customBasketItems?: BasketItem[]}) {

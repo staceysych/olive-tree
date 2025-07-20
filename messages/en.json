@@ -1073,7 +1073,23 @@
       "orderBasket": "Order This Basket",
       "createdAt": "Created on {date}",
       "deleteConfirmTitle": "Delete Basket",
-      "deleteConfirmDescription": "Are you sure you want to delete the basket? This action cannot be undone."
+      "deleteConfirmDescription": "Are you sure you want to delete the basket? This action cannot be undone.",
+      "confirmOrder": {
+        "title": "Confirm Order",
+        "description": "Please review your order details and delivery information before confirming.",
+        "orderSummary": "Order Summary",
+        "basketName": "Basket Name",
+        "totalItems": "Total Items",
+        "frequency": "Delivery Frequency",
+        "totalPrice": "Total Price",
+        "deliveryInfo": "Delivery Information",
+        "deliveryAddress": "Delivery Address",
+        "noAddress": "No delivery address found. Please update your profile information.",
+        "deliveryDate": "Estimated Delivery Date",
+        "deliveryTime": "Delivery time: 9:00 AM - 1:00 PM",
+        "cancel": "Cancel",
+        "confirm": "Confirm Order"
+      }
     },
     "ordersHistory": {
       "title": "Orders History",

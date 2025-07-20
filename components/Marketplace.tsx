@@ -8,6 +8,7 @@ import { CategorySidebar } from "@/components/CategorySidebar"
 import { ItemsGrid } from "@/components/ItemsGrid"
 import { BasketSidebar } from "@/components/BasketSidebar"
 import { mapMarketCategoryToEmoji } from "@/utils/common"
+import { BasketItem } from "@/types/basket"
 
 interface Category {
   title: string
@@ -25,16 +26,6 @@ interface MarketplaceItem {
   unit: string
   image: string
   key: string
-}
-
-export interface BasketItem {
-  id: string
-  name: string
-  price: number
-  unit: string
-  quantity: number
-  image: string
-  category: string
 }
 
 export interface MarketItem {

@@ -13,7 +13,7 @@ import {
   Package, 
   Euro, 
   Calendar,
-  Trash2,
+  Trash2
 
 } from "lucide-react"
 import {
@@ -39,6 +39,7 @@ import { useGetUserById } from "@/hooks/useGetUserById"
 import { useUpdateBasket } from "@/hooks/useUpdateBasket"
 import { useDeleteBasket } from "@/hooks/useDeleteBasket"
 import { mapMarketCategoryToEmoji } from "@/utils/common"
+import OrderConfirmationModal from "@/app/[locale]/dashboard/OrderConfirmationModal"
 
 export default function BasketDetailsPage() {
   const t = useTranslations()
@@ -49,11 +50,14 @@ export default function BasketDetailsPage() {
   
   const [isEditing, setIsEditing] = useState(false)
   const [editedBasket, setEditedBasket] = useState<any>(null)
+  const [showOrderModal, setShowOrderModal] = useState(false)
 
   const { basket, isLoading, error } = useGetBasketById(session?.user?.id || "", basketId)
   const { user } = useGetUserById(session?.user?.id || "")
   const { updateBasket, isLoading: isUpdating, error: updateError } = useUpdateBasket()
   const { deleteBasket, isLoading: isDeleting, error: deleteError } = useDeleteBasket()
+
+
 
   const handleEdit = () => {
     setEditedBasket({
@@ -95,9 +99,10 @@ export default function BasketDetailsPage() {
   }
 
   const handleOrderBasket = () => {
-    // Navigate to order form with basket data
-    router.push(`/register/confirm-order?basketId=${basketId}`)
+    setShowOrderModal(true)
   }
+
+
 
   if (isLoading) {
     return (
@@ -403,6 +408,15 @@ export default function BasketDetailsPage() {
           </Card>
         </div>
       </div>
+
+      {/* Order Confirmation Modal */}
+      <OrderConfirmationModal
+        isOpen={showOrderModal}
+        onClose={() => setShowOrderModal(false)}
+        basket={basket}
+        user={user}
+        basketId={basketId}
+      />
     </div>
   )
 } 
