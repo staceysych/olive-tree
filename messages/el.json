@@ -266,7 +266,8 @@
             "name": "Αγγούρια",
             "description": "Τραγανά και δροσερά αγγούρια",
             "price": 2.8,
-            "unit": "κιλό"
+            "unit": "κιλό",
+            "image": "/market/cucumber.jpg"
           },
           {
             "key": "radish",
@@ -420,21 +421,24 @@
             "name": "Βερίκοκο",
             "description": "Γλυκά και ζουμερά βερίκοκα",
             "price": 3.8,
-            "unit": "κιλό"
+            "unit": "κιλό",
+            "image": "/market/apricot.jpg"
           },
           {
             "key": "peach",
             "name": "Ροδάκινο",
             "description": "Ζουμερά και αρωματικά ροδάκινα",
             "price": 3.5,
-            "unit": "κιλό"
+            "unit": "κιλό",
+            "image": "/market/peach.jpg"
           },
           {
             "key": "nectarine",
             "name": "Νεκταρίνι",
             "description": "Γλυκά και λεία νεκταρίνια",
             "price": 3.6,
-            "unit": "κιλό"
+            "unit": "κιλό",
+            "image": "/market/nectarine.jpg"
           },
           {
             "key": "banana",

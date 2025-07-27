@@ -460,7 +460,8 @@
             "name": "Огурцы",
             "description": "Хрустящие и освежающие огурцы",
             "price": 2.8,
-            "unit": "кг"
+            "unit": "кг",
+            "image": "/market/cucumber.jpg"
           },
           {
             "key": "radish",
@@ -614,21 +615,24 @@
             "name": "Абрикос",
             "description": "Сладкие и сочные абрикосы",
             "price": 3.8,
-            "unit": "кг"
+            "unit": "кг",
+            "image": "/market/apricot.jpg"
           },
           {
             "key": "peach",
             "name": "Персик",
             "description": "Сочные и ароматные персики",
             "price": 3.5,
-            "unit": "кг"
+            "unit": "кг",
+            "image": "/market/peach.jpg"
           },
           {
             "key": "nectarine",
             "name": "Нектарин",
             "description": "Сладкие и гладкие нектарины",
             "price": 3.6,
-            "unit": "кг"
+            "unit": "кг",
+            "image": "/market/nectarine.jpg"
           },
           {
             "key": "banana",

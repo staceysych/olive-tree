@@ -46,7 +46,7 @@ export function BasketSidebar({
         totalPrice: orderList.totalPrice,
         totalItems: orderList.totalItems,
         name: "Custom Basket",
-        frequency: "Once"
+        frequency: "once"
       })
 
       if (result) {

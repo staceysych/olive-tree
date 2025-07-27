@@ -463,7 +463,8 @@
             "name": "Cucumbers",
             "description": "Crisp and refreshing cucumbers",
             "price": 2.8,
-            "unit": "kg"
+            "unit": "kg",
+            "image": "/market/cucumber.jpg"
           },
           {
             "key": "radish",
@@ -617,21 +618,24 @@
             "name": "Apricot",
             "description": "Sweet and juicy apricots",
             "price": 3.8,
-            "unit": "kg"
+            "unit": "kg",
+            "image": "/market/apricot.jpg"
           },
           {
             "key": "peach",
             "name": "Peach",
             "description": "Juicy and fragrant peaches",
             "price": 3.5,
-            "unit": "kg"
+            "unit": "kg",
+            "image": "/market/peach.jpg"
           },
           {
             "key": "nectarine",
             "name": "Nectarine",
             "description": "Sweet and smooth nectarines",
             "price": 3.6,
-            "unit": "kg"
+            "unit": "kg",
+            "image": "/market/nectarine.jpg"
           },
           {
             "key": "banana",
