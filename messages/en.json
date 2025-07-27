@@ -837,6 +837,7 @@
     "totalItems": "Total Items",
     "totalPrice": "Total Price",
     "proceedToCheckout": "Proceed to Checkout",
+    "updateBasket": "Update Basket",
     "minimumOrder": "Minimum order amount:"
   },
   "checkoutModal": {
@@ -1059,6 +1060,7 @@
       "deleting": "Deleting...",
       "saving": "Saving...",
       "backToDashboard": "Back to Dashboard",
+      "backToBasket": "Back to Basket",
       "notFound": "Basket not found",
       "summary": "Basket Summary",
       "name": "Basket Name",
@@ -1078,6 +1080,11 @@
       "createdAt": "Created on {date}",
       "deleteConfirmTitle": "Delete Basket",
       "deleteConfirmDescription": "Are you sure you want to delete the basket? This action cannot be undone.",
+      "basketSettings": "Basket Settings",
+      "editBasket": "Edit Your Basket",
+      "editBasketDescription": "Add or remove items from your basket. You can also change the basket name and delivery frequency.",
+      "editItems": "Edit Basket Items",
+      "clickEditToModify": "Click 'Edit Items' to modify the basket contents",
       "confirmOrder": {
         "title": "Confirm Order",
         "description": "Please review your order details and delivery information before confirming.",

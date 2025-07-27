@@ -45,6 +45,7 @@ interface MarketplaceProps {
   showHeader?: boolean
   onBasketChange?: (basketItems: BasketItem[]) => void
   initialBasketItems?: BasketItem[]
+  updateBasket?: (basketItems: BasketItem[]) => void
 }
 
 export default function Marketplace({
@@ -52,7 +53,8 @@ export default function Marketplace({
   description,
   showHeader = true,
   onBasketChange,
-  initialBasketItems = []
+  initialBasketItems = [],
+  updateBasket
 }: MarketplaceProps) {
   const t = useTranslations("marketplace")
   const [selectedCategory, setSelectedCategory] = useState("all")
@@ -203,6 +205,7 @@ export default function Marketplace({
                 totalItems={totalItems}
                 onUpdateQuantity={updateQuantity}
                 onRemoveItem={(itemId) => updateQuantity(itemId, 0)}
+                updateBasket={updateBasket}
               />
             </div>
           </div>

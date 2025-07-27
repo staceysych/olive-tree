@@ -16,6 +16,7 @@ interface BasketSidebarProps {
   totalItems: number
   onUpdateQuantity: (itemId: string, quantity: number) => void
   onRemoveItem: (itemId: string) => void
+  updateBasket?: (basketItems: BasketItem[]) => void
 }
 
 export function BasketSidebar({
@@ -24,6 +25,7 @@ export function BasketSidebar({
   totalItems,
   onUpdateQuantity,
   onRemoveItem,
+  updateBasket,
 }: BasketSidebarProps) {
   const t = useTranslations('basketSidebar')
   const router = useRouter()
@@ -37,6 +39,12 @@ export function BasketSidebar({
 
 
   const handleProceedToCheckout = async () => {
+    if (updateBasket) {
+      // If updateBasket function is provided, use it
+      updateBasket(basketItems)
+      return
+    }
+
     if (session?.user?.id) {
       // User is logged in, create basket
       const orderList = transformBasketToOrderList(basketItems, totalPrice, totalItems)
@@ -128,7 +136,7 @@ export function BasketSidebar({
           disabled={basketItems.length === 0 || totalPrice < 40 || isLoading}
           onClick={handleProceedToCheckout}
         >
-          {isLoading ? 'Creating Basket...' : t('proceedToCheckout')}
+          {isLoading ? 'Creating Basket...' : updateBasket ? t('updateBasket') : t('proceedToCheckout')}
         </Button>
       </div>
 
