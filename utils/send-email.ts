@@ -1,3 +1,5 @@
+import { BasketItem } from "@/types/basket"
+
 export type OrderFormData = {
   name: string;
   email: string;
@@ -8,6 +10,7 @@ export type OrderFormData = {
   promotion?: string;
   notes?: string;
   customizedItems?: Record<string, string[]>;
+  customBasketItems?: BasketItem[];
 };
 
 export const sendOrderEmail = async (data: OrderFormData) => {

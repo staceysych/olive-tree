@@ -66,6 +66,18 @@
         "Over 20 kg of the healthiest food around"
       ],
       "viewText": "Discover this week's harvest"
+    },
+    "custom": {
+      "title": "Create Your Own",
+      "description": "Build a custom basket with exactly what you want.",
+      "price": "from 40€",
+      "items": [
+        "Choose exactly what goes in your basket",
+        "Select quantities for each item",
+        "One-time or recurring delivery options",
+        "Pay only for what you select"
+      ],
+      "orderText": "Create Your Basket"
     }
   },
   "order": {
@@ -339,7 +351,8 @@
   },
   "common": {
     "backToHome": "Back to Home",
-    "week": "week"
+    "week": "week",
+    "categories": "Categories"
   },
   "locations": {
     "title": "Fresh Farm Goods Delivery in {location}",
@@ -435,5 +448,675 @@
     },
     "variationNote": "The set may vary depending on the season and preferences — just write to us or indicate your wishes when filling out the form.",
     "orderButton": "Order Standard Basket Now"
+  },
+  "marketplace": {
+    "title": "Custom Marketplace",
+    "description": "Choose exactly what you want from our fresh selection of farm goods",
+    "createBasket": "Create Your Basket",
+    "categoriesTitle": "Categories",
+    "categories": {
+      "vegetables": {
+        "title": "Vegetables",
+        "items": [
+          {
+            "key": "cucumbers",
+            "name": "Cucumbers",
+            "description": "Crisp and refreshing cucumbers",
+            "price": 2.8,
+            "unit": "kg",
+            "image": "/market/cucumber.jpg"
+          },
+          {
+            "key": "radish",
+            "name": "Radish",
+            "description": "Fresh and peppery radishes",
+            "price": 2.5,
+            "unit": "kg"
+          },
+          {
+            "key": "tomatoes",
+            "name": "Tomatoes",
+            "description": "Fresh, juicy tomatoes perfect for salads and cooking",
+            "price": 3.5,
+            "unit": "kg",
+            "image": "/market/tomatoes.jpg"
+          },
+          {
+            "key": "snow-peas",
+            "name": "Snow Peas",
+            "description": "Sweet and crunchy snow peas",
+            "price": 4.0,
+            "unit": "kg"
+          },
+          {
+            "key": "artichoke",
+            "name": "Artichoke",
+            "description": "Fresh artichokes, perfect for Mediterranean dishes",
+            "price": 3.8,
+            "unit": "piece"
+          },
+          {
+            "key": "asparagus",
+            "name": "Asparagus",
+            "description": "Tender green asparagus spears",
+            "price": 4.5,
+            "unit": "bunch"
+          },
+          {
+            "key": "fennel",
+            "name": "Fennel",
+            "description": "Aromatic fennel with its distinctive anise flavor",
+            "price": 3.2,
+            "unit": "piece"
+          },
+          {
+            "key": "eggplant",
+            "name": "Eggplant",
+            "description": "Purple eggplants, great for Mediterranean dishes",
+            "price": 3.5,
+            "unit": "kg"
+          },
+          {
+            "key": "beetroot",
+            "name": "Beetroot",
+            "description": "Sweet and earthy beetroot",
+            "price": 2.8,
+            "unit": "kg"
+          },
+          {
+            "key": "sweet-pepper",
+            "name": "Sweet Pepper",
+            "description": "Colorful bell peppers, sweet and crunchy",
+            "price": 4.2,
+            "unit": "kg"
+          },
+          {
+            "key": "zucchini",
+              "name": "Zucchini",
+            "description": "Fresh zucchini, perfect for grilling or baking",
+            "price": 3.0,
+            "unit": "kg"
+          },
+          {
+            "key": "broccoli",
+            "name": "Broccoli",
+            "description": "Fresh green broccoli florets",
+            "price": 3.5,
+            "unit": "kg"
+          },
+          {
+            "key": "red-cabbage",
+            "name": "Red Cabbage",
+            "description": "Crisp and colorful red cabbage",
+            "price": 2.5,
+            "unit": "kg"
+          },
+          {
+            "key": "cauliflower",
+            "name": "Cauliflower",
+            "description": "Fresh white cauliflower heads",
+            "price": 3.2,
+            "unit": "piece"
+          },
+          {
+            "key": "string-beans",
+            "name": "String Beans",
+            "description": "Tender green string beans",
+            "price": 3.8,
+            "unit": "kg"
+          },
+          {
+            "key": "carrot",
+            "name": "Carrot",
+            "description": "Sweet and crunchy carrots",
+            "price": 2.2,
+            "unit": "kg"
+          },
+          {
+            "key": "potato",
+            "name": "Potato",
+            "description": "Fresh potatoes, perfect for any meal",
+            "price": 1.8,
+            "unit": "kg"
+          },
+          {
+            "key": "taro",
+            "name": "Taro",
+            "description": "Traditional Cypriot taro root",
+            "price": 3.5,
+            "unit": "kg"
+          },
+          {
+            "key": "onion",
+            "name": "Onion (various types)",
+            "description": "Fresh onions including red, white, and yellow varieties",
+            "price": 2.0,
+            "unit": "kg"
+          },
+          {
+            "key": "garlic",
+            "name": "Garlic",
+            "description": "Fresh local garlic bulbs",
+            "price": 3.0,
+            "unit": "kg"
+          }
+        ]
+      },
+      "fruits": {
+        "title": "Fruits",
+        "items": [
+          {
+            "key": "avocado",
+            "name": "Avocado",
+            "description": "Creamy and nutritious avocados",
+            "price": 4.5,
+            "unit": "piece",
+            "image": "/market/avocado.jpg"
+          },
+          {
+            "key": "apricot",
+            "name": "Apricot",
+            "description": "Sweet and juicy apricots",
+            "price": 3.8,
+            "unit": "kg",
+            "image": "/market/apricot.jpg"
+          },
+          {
+            "key": "peach",
+            "name": "Peach",
+            "description": "Juicy and fragrant peaches",
+            "price": 3.5,
+            "unit": "kg",
+            "image": "/market/peach.jpg"
+          },
+          {
+            "key": "nectarine",
+            "name": "Nectarine",
+            "description": "Sweet and smooth nectarines",
+            "price": 3.6,
+            "unit": "kg",
+            "image": "/market/nectarine.jpg"
+          },
+          {
+            "key": "banana",
+            "name": "Banana",
+            "description": "Sweet and nutritious bananas",
+            "price": 2.8,
+            "unit": "kg"
+          },
+          {
+            "key": "cherry",
+            "name": "Cherry",
+            "description": "Sweet and tart cherries",
+            "price": 5.5,
+            "unit": "kg"
+          },
+          {
+            "key": "melon",
+            "name": "Melon",
+            "description": "Sweet and refreshing melons",
+            "price": 3.2,
+            "unit": "piece"
+          },
+          {
+            "key": "strawberry",
+            "name": "Strawberry",
+            "description": "Sweet and fragrant strawberries",
+            "price": 4.5,
+            "unit": "kg",
+            "image": "/market/strawberry.jpg"
+          },
+          {
+            "key": "medlar",
+            "name": "Medlar",
+            "description": "Unique and flavorful medlars",
+            "price": 4.0,
+            "unit": "kg"
+          },
+          {
+            "key": "orange",
+            "name": "Orange",
+            "description": "Sweet and juicy oranges, packed with vitamin C",
+            "price": 2.5,
+            "unit": "kg"
+          },
+          {
+            "key": "lemon",
+            "name": "Lemon",
+            "description": "Fresh and tangy lemons",
+            "price": 2.8,
+            "unit": "kg",
+            "image": "/market/lemons.jpg"
+          },
+          {
+            "key": "pomelo",
+            "name": "Pomelo",
+            "description": "Large and sweet pomelos",
+            "price": 3.5,
+            "unit": "piece"
+          },
+          {
+            "key": "grapefruit",
+            "name": "Grapefruit",
+            "description": "Tangy and refreshing grapefruits",
+            "price": 2.8,
+            "unit": "kg"
+          },
+          {
+            "key": "pear",
+            "name": "Pear",
+            "description": "Sweet and juicy pears",
+            "price": 3.2,
+            "unit": "kg"
+          },
+          {
+            "key": "dragon-fruit",
+            "name": "Dragon Fruit",
+            "description": "Exotic and refreshing dragon fruit",
+            "price": 5.0,
+            "unit": "piece"
+          }
+        ]
+      },
+      "herbs": {
+        "title": "Herbs",
+        "items": [
+          {
+            "key": "mint",
+            "name": "Mint",
+            "description": "Fresh mint leaves, perfect for teas and cooking",
+            "price": 1.2,
+            "unit": "bunch"
+          },
+          {
+            "key": "rocket-salad",
+            "name": "Rocket Salad",
+            "description": "Peppery and fresh rocket leaves",
+            "price": 2.5,
+            "unit": "bunch"
+          },
+          {
+            "key": "spinach",
+            "name": "Spinach",
+            "description": "Fresh and nutritious spinach leaves",
+            "price": 2.8,
+            "unit": "bunch"
+          },
+          {
+            "key": "green-onion",
+            "name": "Green Onion",
+            "description": "Fresh green onions with their mild flavor",
+            "price": 1.5,
+            "unit": "bunch"
+          },
+          {
+            "key": "swiss-chard",
+            "name": "Swiss Chard",
+            "description": "Colorful and nutritious Swiss chard",
+            "price": 2.2,
+            "unit": "bunch"
+          },
+          {
+            "key": "dill",
+            "name": "Dill",
+            "description": "Fresh dill, perfect for fish and salads",
+            "price": 1.3,
+            "unit": "bunch"
+          },
+          {
+            "key": "parsley",
+            "name": "Parsley",
+            "description": "Fresh parsley, essential for many dishes",
+            "price": 1.0,
+            "unit": "bunch"
+          },
+          {
+            "key": "cilantro",
+            "name": "Cilantro",
+            "description": "Fresh cilantro with its distinctive flavor",
+            "price": 1.2,
+            "unit": "bunch"
+          },
+          {
+            "key": "basil",
+            "name": "Basil",
+            "description": "Fresh basil leaves, aromatic and flavorful",
+            "price": 1.5,
+            "unit": "bunch"
+          }
+        ]
+      },
+      "nuts": {
+        "title": "Nuts",
+        "items": [
+          {
+            "key": "walnut",
+            "name": "Walnut",
+            "description": "Fresh local walnuts, rich in omega-3",
+            "price": 8.5,
+            "unit": "kg"
+          }
+        ]
+      },
+      "mushrooms": {
+        "title": "Mushrooms",
+        "items": [
+          {
+            "key": "mushrooms",
+            "name": "Mushrooms",
+            "description": "Fresh local mushrooms, perfect for cooking",
+            "price": 4.5,
+            "unit": "kg"
+          }
+        ]
+      },
+      "other": {
+        "title": "Other",
+        "items": [
+          {
+            "key": "eggs",
+            "name": "Eggs",
+            "description": "Fresh eggs from free-range chickens",
+            "price": 3.6,
+            "unit": "dozen"
+          },
+          {
+            "key": "honey",
+            "name": "Honey",
+            "description": "Pure honey from local beekeepers",
+            "price": 8.5,
+            "unit": "jar"
+          }
+        ]
+      }
+    }
+  },
+  "basketSidebar": {
+    "title": "Your Basket",
+    "empty": "Your basket is empty",
+    "totalItems": "Total Items",
+    "totalPrice": "Total Price",
+    "proceedToCheckout": "Proceed to Checkout",
+    "updateBasket": "Update Basket",
+    "minimumOrder": "Minimum order amount:"
+  },
+  "checkoutModal": {
+    "title": "Checkout Options",
+    "description": "Choose how you'd like to proceed with your custom basket",
+    "orderSummary": {
+      "title": "Order Summary",
+      "items": "Items:",
+      "moreItems": "+{count} more items"
+    },
+    "createAccount": {
+      "title": "Create Account & Save",
+      "recommended": "Recommended",
+      "description": "Create an account to save your basket and enjoy additional benefits.",
+      "benefits": {
+        "saveBasket": "Save your custom basket for future orders",
+        "trackOrders": "Track order history and preferences",
+        "fasterCheckout": "Faster checkout for future orders",
+        "exclusiveOffers": "Exclusive member offers and updates"
+      },
+      "button": "Create Account"
+    },
+    "orderNow": {
+      "title": "Order Now",
+      "quickAndEasy": "Quick & Easy",
+      "description": "Place your order immediately as a guest. Perfect for one-time purchases.",
+      "benefits": {
+        "proceedToForm": "Proceed directly to order form",
+        "noAccount": "No account required",
+        "fastestCheckout": "Fastest checkout process",
+        "basketNotSaved": "Basket will not be saved"
+      },
+      "button": "Order Now"
+    },
+    "continueShopping": "Continue Shopping"
+  },
+  "accountCreation": {
+    "title": "Create Your Account",
+    "sections": {
+      "personalInfo": {
+        "title": "Personal Information",
+        "description": "Manage your personal details and contact information",
+        "firstName": {
+          "label": "First Name",
+          "placeholder": "John",
+          "error": "First name must be at least 2 characters."
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Doe",
+          "error": "Last name must be at least 2 characters."
+        }
+      },
+      "contactInfo": {
+        "title": "Contact Information",
+        "email": {
+          "label": "Email",
+          "placeholder": "john@example.com",
+          "error": "Please enter a valid email address."
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "+1234567890",
+          "error": "Please enter a valid phone number."
+        }
+      },
+      "security": {
+        "title": "Account Security",
+        "password": {
+          "label": "Password",
+          "placeholder": "••••••••",
+          "error": "Password must be at least 6 characters."
+        },
+        "confirmPassword": {
+          "label": "Confirm Password",
+          "placeholder": "••••••••",
+          "error": "Passwords don't match"
+        }
+      }
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": {
+        "default": "Create Account",
+        "processing": "Creating Account..."
+      }
+    },
+    "errors": {
+      "userExists": "An account with this email already exists. Please try logging in instead.",
+      "general": "Failed to create account. Please try again."
+    }
+  },
+  "auth": {
+    "welcome": {
+      "badge": "Welcome to Your Account",
+      "title": "My Olive Tree",
+      "description": "Sign in to your account or create a new one to start enjoying fresh farm goods delivered to your door"
+    },
+    "tabs": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up"
+    },
+    "signIn": {
+      "title": "Welcome back!",
+      "description": "Sign in to your account to access your dashboard and manage your orders",
+      "email": {
+        "label": "Email",
+        "placeholder": "your.email@example.com"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "••••••••"
+      },
+      "submit": {
+        "default": "Sign In",
+        "loading": "Signing in..."
+      }
+    },
+    "signUp": {
+      "title": "Create your account",
+      "description": "Join the Olive Tree family and start enjoying fresh farm goods"
+    },
+    "benefits": {
+      "title": "🌿 Why Join Olive Tree?",
+      "items": [
+        "Save custom baskets and reorder with one click",
+        "Track your order history and delivery preferences"
+      ]
+    },
+    "errors": {
+      "invalidEmail": "Please enter a valid email address",
+      "passwordRequired": "Password is required",
+      "loginFailed": "Failed to log in. Please check your credentials and try again."
+    }
+  },
+  "dashboard": {
+    "welcome": {
+      "title": "Welcome, {name}!",
+      "memberSince": "Member since {date}"
+    },
+    "tabs": {
+      "personal": {
+        "label": "Personal Information",
+        "shortLabel": "Info"
+      },
+      "baskets": {
+        "label": "My Baskets",
+        "shortLabel": "Baskets"
+      }
+    },
+    "personalInfo": {
+      "title": "Profile Information",
+      "description": "Manage your personal details and contact information",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "fields": {
+        "firstName": {
+          "label": "First Name",
+          "error": "First name is required"
+        },
+        "lastName": {
+          "label": "Last Name",
+          "error": "Last name is required"
+        },
+        "email": {
+          "label": "Email Address",
+          "error": "Invalid email address"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "error": "Phone number is required"
+        }
+      },
+      "contactInfo": {
+        "title": "Contact Information"
+      },
+      "deliveryAddress": {
+        "title": "Delivery Address",
+        "noAddress": {
+          "title": "No Delivery Address",
+          "description": "Please add delivery address information to ensure smooth order processing."
+        },
+        "fields": {
+          "street": {
+            "label": "Street Address",
+            "error": "Street address is required"
+          },
+          "city": {
+            "label": "City",
+            "error": "City is required"
+          },
+          "postalCode": {
+            "label": "Postal Code",
+            "error": "Postal code is required"
+          },
+          "country": {
+            "label": "Country",
+            "error": "Country is required"
+          }
+        }
+      }
+    },
+    "baskets": {
+      "title": "My baskets",
+      "description": "Add and manage your baskets",
+      "createButton": "Create basket",
+      "noBaskets": {
+        "title": "No baskets yet",
+        "description": "Click on 'Create basket' to add your first basket"
+      },
+      "createdAt": "Created on {date}"
+    },
+    "basketDetails": {
+      "editTitle": "Edit Basket",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "saving": "Saving...",
+      "backToDashboard": "Back to Dashboard",
+      "backToBasket": "Back to Basket",
+      "notFound": "Basket not found",
+      "summary": "Basket Summary",
+      "name": "Basket Name",
+      "frequency": "Delivery Frequency",
+      "frequencyOptions": {
+        "once": "Once",
+        "weekly": "Weekly",
+        "biweekly": "Bi-weekly",
+        "monthly": "Monthly"
+      },
+      "totalItems": "Total Items",
+      "totalPrice": "Total Price",
+      "items": "Basket Items",
+      "itemsDescription": "View and manage the items in your basket",
+      "noItems": "No items in this basket",
+      "orderBasket": "Order This Basket",
+      "createdAt": "Created on {date}",
+      "deleteConfirmTitle": "Delete Basket",
+      "deleteConfirmDescription": "Are you sure you want to delete the basket? This action cannot be undone.",
+      "basketSettings": "Basket Settings",
+      "editBasket": "Edit Your Basket",
+      "editBasketDescription": "Add or remove items from your basket. You can also change the basket name and delivery frequency.",
+      "editItems": "Edit Basket Items",
+      "clickEditToModify": "Click 'Edit Items' to modify the basket contents",
+      "confirmOrder": {
+        "title": "Confirm Order",
+        "description": "Please review your order details and delivery information before confirming.",
+        "orderSummary": "Order Summary",
+        "basketName": "Basket Name",
+        "totalItems": "Total Items",
+        "frequency": "Delivery Frequency",
+        "totalPrice": "Total Price",
+        "deliveryInfo": "Delivery Information",
+        "deliveryAddress": "Delivery Address",
+        "noAddress": "No delivery address found. Please update your profile information.",
+        "deliveryDate": "Estimated Delivery Date",
+        "deliveryTime": "Delivery time: 9:00 AM - 1:00 PM",
+        "cancel": "Cancel",
+        "confirm": "Confirm Order"
+      }
+    },
+    "ordersHistory": {
+      "title": "Orders History",
+      "description": "View your past orders and delivery history",
+      "noOrders": {
+        "title": "No Orders Yet",
+        "description": "You currently don't have any orders. Please proceed to your \"Baskets\" tab to manage or complete your first order.",
+        "action": "Go to Baskets"
+      },
+      "order": {
+        "title": "Order",
+        "date": "Order Date",
+        "status": "Status",
+        "total": "Total",
+        "items": "Items"
+      }
+    }
   }
 }
